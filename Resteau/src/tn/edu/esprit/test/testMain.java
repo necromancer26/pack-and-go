@@ -29,7 +29,8 @@ public class testMain {
     
         ServiceResteau sp = new ServiceResteau();
         Resteau R1 =new Resteau( "fast food","cool","ariena");
-      //sp.ajouter(R1);
+       
+        //sp.ajouter(R1);
             //sp.supprimerR(new Resteau(12));
             //System.out.println(sp.modifier(new Resteau("m","chez tout","ariena",9)));
 
@@ -39,15 +40,15 @@ public class testMain {
          // sp.ajouter(R1);
                   CommentaireResteau C = new CommentaireResteau();
     // System.out.println(C.modifierCommentaire(new Commentaire(5,6,1,"eya")));
-           Commentaire C1=new Commentaire(1,1,"waw ","10/21/20");
-        // C.AjouterCommentaire(C1);
+           Commentaire C1=new Commentaire(7,1,"waw ","10/21/20");
+         C.AjouterCommentaire(C1);
            //System.out.println(C.modifierCommentaireR(new Commentaire(10,6,4,"eya")));
            //C.supprimerCommentaireR(new Commentaire(10));
 
                              cReservationR RE = new cReservationR();
-                      reservationR RE1= new reservationR(2,3,10,"10:10","21/10/2021");
-                     // RE.AjouterReservationR(RE1);
-                      System.out.println(RE.modifierReservationR(new reservationR(1,1,1,1,"10:10","21/10/2021")) );
+                      reservationR RE1= new reservationR(7,1,10,"10:10","21/10/2021");
+                     //RE.AjouterReservationR(RE1);
+                      System.out.println(RE.modifierReservationR(new reservationR(3,7,1,50,"10:10","21/10/2021")) );
           // RE.supprimerReservationR(new reservationR(1));
 
          System.out.println(sp.getAll());

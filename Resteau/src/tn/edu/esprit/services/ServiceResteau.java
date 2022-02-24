@@ -19,7 +19,7 @@ import tn.edu.esprit.utils.DataSource;
  *
  * @author hp
  */
-public class ServiceResteau   implements IService<Resteau> {
+public class ServiceResteau   implements Iresteau<Resteau> {
 
     Connection cnx = DataSource.getInstance().getCnx();
     @Override

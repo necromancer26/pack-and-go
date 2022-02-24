@@ -5,16 +5,17 @@
  */
 package tn.edu.esprit.services;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author hp
+ * @author Wala
  */
 public interface IService <T>{
     public void ajouter(T t);
-   // public T getById(int adr);
-    public List<T> getAll();
-public boolean modifier(T t);
-        public boolean supprimerR(T t);
+    public T getById(long id) throws SQLException;
+    public List<T> getAll() throws SQLException;
+    public void modifier(long id, T t) throws SQLException;
+    public void supprimer(long id) throws SQLException;
 }

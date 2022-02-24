@@ -17,17 +17,17 @@ public class Commentaire {
     private String contenuCommentaireR;
     private String  dateCR;
 
-    //private utilisateur utilisateur;
-    private Resteau Resteau;
+  //  private User User;
+   // private Resteau Resteau;
     
     public Commentaire() {
-    //    utilisateur = new utilisateur(id_user);
-        Resteau = new Resteau(idR);
+      // User = new User(id_user);
+      //  Resteau = new Resteau(idR);
     }
 
     public Commentaire(int idCommentaireR, int idR, int id_user, String contenuCommentaireR,String dateCR) { 
-    //    utilisateur = new utilisateur(id_user);
-        Resteau = new Resteau(idR);
+   //User = new User(id_user);
+        //Resteau = new Resteau(idR);
         
         this.idCommentaireR = idCommentaireR;
         this.idR = idR;
@@ -39,7 +39,7 @@ public class Commentaire {
     public Commentaire( int idR,int id_user, String contenuCommentaireR,String dateCR) { 
 
         //utilisateur = new utilisateur(id_user);
-        Resteau = new Resteau(idR);
+       // Resteau = new Resteau(idR);
                 this.idR = idR;
                 this.id_user = id_user;
         this.dateCR=dateCR;
