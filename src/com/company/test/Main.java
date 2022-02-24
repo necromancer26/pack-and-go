@@ -1,28 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.company.test;
-import com.company.models.Personne;
-import com.company.services.PersonalityTest;
-import com.company.services.PersonalityUser;
-import com.company.services.ServicePersonne;
-import com.company.services.User;
-import com.company.utils.DataSource;
-
-import java.util.List;
 
 
+import com.company.models.Roles;
+import com.company.models.User;
+import com.company.services.ServiceUser;
+
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.Month;
+
+/**
+ *
+ * @author Wala
+ */
 public class Main {
 
-    public static void main(String[] args) {
-	// write your code here
-        ServicePersonne sp = new ServicePersonne();
-        User user = new User("walddha","ggggg","gaussian@g.com","wawwwlha06","123",1,"client");
-        sp.ajouter(user);
-        PersonalityTest personalityTest= new PersonalityTest();
-        List<PersonalityUser>personalityUsers= personalityTest.getAllPersonalityUsers();
-        System.out.println(personalityUsers);
-        //personalityTest.supprimerUserPersonality(user);
-        personalityTest.ajouterUserPersonality(user);
-        //personalityTest.modifierUserPersonality(user);
+    public static void main(String[] args) throws SQLException {
 
-        //System.out.println(sp.getAll());
+        ServiceUser serviceUser = new ServiceUser();
+        //add user
+        User user = new User("ezzedine", "Djobbi", "wala@gmail.com", "wala123", "wala123", 55111222, Roles.ADMIN, LocalDateTime.of(1998, Month.MARCH, 3, 17, 45), LocalDateTime.now(), LocalDateTime.now());
+        serviceUser.ajouter(user);
+        //modifier
+        /*User user = new User("Wala", "Djobbi", "wala@gmail.com", "wala123", "wala123", 22222222, Roles.ADMIN,LocalDateTime.of(1998, Month.MARCH, 3, 17, 45), LocalDateTime.now(), LocalDateTime.now());
+        serviceUser.modifier(2, user);*/
+
+        //supprimer
+        /*serviceUser.supprimer(1);*/
     }
+
 }
