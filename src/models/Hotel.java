@@ -86,6 +86,11 @@ public class Hotel {
         return "Hotel{" + "id_hotel=" + id_hotel + ", nom_hotel=" + nom_hotel+ ", nbr_etoiles=" + nbr_etoiles + ", nbr_chambres=" + nbr_chambres + ", adresse=" + adresse + ", pays=" + pays + ", tel=" + tel + ", email=" + email + '}';
     }
 
+    public Hotel(String nom_hotel) {
+        this.nom_hotel = nom_hotel;
+    }
+    
+
     public Hotel(String nom_hotel, int nbr_etoiles, int nbr_chambres, String adresse, String pays, int tel, String email) {
         this.nom_hotel = nom_hotel;
         this.nbr_etoiles = nbr_etoiles;
