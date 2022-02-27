@@ -7,6 +7,7 @@ package tn.edu.esprit.services;
 
 import java.util.List;
 import tn.edu.esprit.models.Commentaire;
+import tn.edu.esprit.models.Resteau;
 
 /**
  *
@@ -17,5 +18,6 @@ public void AjouterCommentaire(T t);
 public boolean modifierCommentaireR(T t);
         public boolean supprimerCommentaireR(T t);
        public List<Commentaire> getAll();
+       public List<Commentaire>  getCommentaireById(int idR);
 
 }

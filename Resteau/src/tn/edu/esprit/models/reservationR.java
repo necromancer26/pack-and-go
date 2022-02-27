@@ -49,6 +49,8 @@ public class reservationR {
       
     }
 
+  
+
     public void setNbrPersonneR(int nbrPersonneR) {
         this.nbrPersonneR = nbrPersonneR;
     }

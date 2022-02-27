@@ -17,4 +17,5 @@ public interface Iresteau <T>{
     public List<T> getAll();
 public boolean modifier(T t);
         public boolean supprimerR(T t);
+        public void TRIRestau();
 }

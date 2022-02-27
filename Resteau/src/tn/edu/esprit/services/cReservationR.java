@@ -92,7 +92,7 @@ public class cReservationR implements Ireserv <reservationR> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                reservationR R = new reservationR(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(4),rs.getString(5));
+                reservationR R = new reservationR(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
                 list.add(R);
             }
                 System.out.println("affichage");
@@ -102,6 +102,7 @@ public class cReservationR implements Ireserv <reservationR> {
         return list;
         
     } 
+ 
 
 
 }

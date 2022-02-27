@@ -15,7 +15,6 @@ public class Commentaire {
     private int idR;
     private int id_user;
     private String contenuCommentaireR;
-    private String  dateCR;
 
   //  private User User;
    // private Resteau Resteau;
@@ -25,7 +24,7 @@ public class Commentaire {
       //  Resteau = new Resteau(idR);
     }
 
-    public Commentaire(int idCommentaireR, int idR, int id_user, String contenuCommentaireR,String dateCR) { 
+    public Commentaire(int idCommentaireR, int idR, int id_user, String contenuCommentaireR) { 
    //User = new User(id_user);
         //Resteau = new Resteau(idR);
         
@@ -33,16 +32,14 @@ public class Commentaire {
         this.idR = idR;
         this.id_user = id_user;
         this.contenuCommentaireR = contenuCommentaireR;
-        this.dateCR=dateCR;
     }
 
-    public Commentaire( int idR,int id_user, String contenuCommentaireR,String dateCR) { 
+    public Commentaire( int idR,int id_user, String contenuCommentaireR) { 
 
         //utilisateur = new utilisateur(id_user);
        // Resteau = new Resteau(idR);
                 this.idR = idR;
                 this.id_user = id_user;
-        this.dateCR=dateCR;
 
         this.contenuCommentaireR = contenuCommentaireR;
     }
@@ -66,13 +63,7 @@ public class Commentaire {
         return id_user;
     }
 
-    public String getDateCR() {
-        return dateCR;
-    }
-
-    public void setDateCR(String dateCR) {
-        this.dateCR = dateCR;
-    }
+  
     
 
     public void setid_user(int id_user) {
@@ -97,7 +88,7 @@ public class Commentaire {
 
     @Override
     public String toString() {
-        return "Commentaire{" + "idCommentaireR=" + idCommentaireR + ", idR=" + idR + ", id_user=" + id_user + ", contenuCommentaireR=" + contenuCommentaireR + ", dateCR=" + dateCR + '}';
+        return "Commentaire{" + "idCommentaireR=" + idCommentaireR + ", idR=" + idR + ", id_user=" + id_user + ", contenuCommentaireR=" + contenuCommentaireR + '}';
     }
 
 

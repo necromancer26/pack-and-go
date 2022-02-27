@@ -1,0 +1,66 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tn.edu.esprit.gui;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import tn.edu.esprit.models.Resteau;
+import tn.edu.esprit.services.ServiceResteau;
+
+/**
+ * FXML Controller class
+ *
+ * @author hp
+ */
+public class ShowRestauFormController implements Initializable {
+
+    private Label lblNomR;
+    private Label lblAdressR;
+    private Label lblTypeR;
+    private Label lblPaysR;
+    private Label lblTelR;
+    private Label lblListR;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
+    void setNomR(String nomR) {
+        lblNomR.setText(nomR);
+    }
+
+    void setTypeR(String typeR) {
+        lblTypeR.setText(typeR);
+    }
+     void setAdressR(String adressR) {
+        lblAdressR.setText(adressR);
+    }
+      void setPaysR(String paysR) {
+        lblPaysR.setText(paysR);
+    }
+       void setTelR(String telR) {
+        lblTelR.setText(telR);
+    }
+
+    private void AfficherRestau(ActionEvent event) {
+                 ServiceResteau sp = new ServiceResteau();
+                 List<Resteau> list = sp.getAll();
+                 String Resteau = "";
+                 for (Resteau R : list){
+                 Resteau+= R.getNomR()+" "+ R.getTypeR()+" "+R.getAdressR()+" "+R.getPaysR()+" "+R.getTelR()+"\n";   
+                 }
+                 lblListR.setText(Resteau);
+}
+}

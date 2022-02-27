@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.utils.DataSource;
 
@@ -27,10 +30,10 @@ public class ServiceResteau   implements Iresteau<Resteau> {
       
     
           try {
-            String req = "INSERT INTO resteau( idR,typeR,nomR,adressR) VALUES ('"+t.getIdR()+"','" + t.getTypeR()+ "','" + t.getnomR()+ "','" + t.getAdressR()+ "')";
+            String req = "INSERT INTO resteau( typeR,nomR,adressR,paysR,telR,idR) VALUES ('" + t.getTypeR()+ "' , '" + t.getnomR()+ "' , '" + t.getAdressR()+ "'  , '" +t.getPaysR()+ "' , '" +t.getTelR()+ "',NULL)";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
-            System.out.println("resteau  ajoutée pravonnn !");
+            System.out.println("resteau  ajoutée !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -41,15 +44,16 @@ public class ServiceResteau   implements Iresteau<Resteau> {
 
     public List<Resteau> getAll() {
         List<Resteau> list = new ArrayList<>();
+        
         try {
             String req = "Select * from resteau";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                Resteau R = new Resteau(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+                Resteau R = new Resteau(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
                 list.add(R);
             }
-                System.out.println("hay cv haw laffichage");
+                System.out.println("Notre resteau");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -61,13 +65,16 @@ public class ServiceResteau   implements Iresteau<Resteau> {
       public boolean modifier(Resteau t) {
        boolean modif=true;
        try {
-           String req = "UPDATE resteau SET  typeR=?, nomR=?, adressR=? WHERE idR =?";
+           String req = "UPDATE resteau SET  typeR=?, nomR=?, adressR=?, paysR=?, telR=? WHERE idR =?";
            PreparedStatement ps = cnx.prepareStatement(req);
          //  super.modifier(t);
             ps.setString(1, t.getTypeR());
             ps.setString(2, t.getnomR());
             ps.setString(3, t.getAdressR());
-            ps.setInt(4, t.getIdR());
+            ps.setString(4, t.getPaysR());
+            ps.setString(5, t.getTelR());
+
+            ps.setInt(6, t.getIdR());
 
             ps.executeUpdate(); 
             System.out.println("resteau Modifièè  sahyyyyt!");
@@ -90,7 +97,7 @@ public class ServiceResteau   implements Iresteau<Resteau> {
                PreparedStatement ps =  cnx.prepareStatement(req);
             ps.setInt(1, t.getIdR());
             ps.executeUpdate();
-            System.out.println("fasakhtniii  Sa7yteekk !");
+            System.out.println("restau supprimer!");
 
         } catch (SQLException ex) {
                         System.err.println(ex.getMessage());
@@ -101,9 +108,29 @@ public class ServiceResteau   implements Iresteau<Resteau> {
        
     }
    
-
-
-
-   
+    @Override
+    public void TRIRestau(){
+        List<Resteau> list = new ArrayList<>();
+         List<Resteau> list2= getAll();
+         
+         list= list2.stream().sorted((o1,o2)->o1.getNomR().compareTo(o2.getNomR())).collect(Collectors.toList());
+         System.out.println(list);
+               
+     }
+   public ObservableList<Resteau> getListResteau() {
+        ObservableList<Resteau> ResteaulList = FXCollections.observableArrayList();
+        try {
+            String req = "Select * from resteau";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                Resteau R = new Resteau(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                ResteaulList.add(R);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return ResteaulList; 
+    }
 
 }
