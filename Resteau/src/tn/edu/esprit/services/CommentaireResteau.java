@@ -125,7 +125,7 @@ public class CommentaireResteau implements ICom<Commentaire>  {
     @Override
     public List<Commentaire>  getCommentaireById(int idR) {
                List<Commentaire> list = new ArrayList<>();
- /*
+ 
         try {
             String req = "Select * from `commentaire`where idR= '"+idR+"'";
             Statement st = cnx.createStatement();
@@ -139,7 +139,7 @@ public class CommentaireResteau implements ICom<Commentaire>  {
                    System.err.println(ex.getMessage());
 
    }
-   */     
+       
         return list;
  
        

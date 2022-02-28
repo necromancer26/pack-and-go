@@ -45,7 +45,7 @@ public class testMain {
               //  reservationR( int idR, int id_user, int nbrPersonneR,String timeR ,String dateR)
                
                      reservationR RE1= new reservationR(15,1,10,"10:10","21/10/2021");
-                    // RE.AjouterReservationR(RE1);
+                     //RE.AjouterReservationR(RE1);
                       //System.out.println(RE.modifierReservationR(new reservationR(3,7,1,50,"10:10","21/10/2021")) );
           // RE.supprimerReservationR(new reservationR(1));
          sp.TRIRestau();

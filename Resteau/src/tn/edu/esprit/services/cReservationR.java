@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tn.edu.esprit.models.reservationR;
 import tn.edu.esprit.utils.DataSource;
 
@@ -103,6 +105,20 @@ public class cReservationR implements Ireserv <reservationR> {
         
     } 
  
-
+public ObservableList<reservationR> getListResteau() {
+        ObservableList<reservationR> ReservationlList = FXCollections.observableArrayList();
+        try {
+            String req = "Select * from reservationr";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                reservationR R = new reservationR(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
+                ReservationlList.add(R);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return ReservationlList; 
+    }
 
 }

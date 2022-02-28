@@ -194,16 +194,18 @@ public class ShowCommentaireController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
+                      
             stage.setTitle("Ajout de commentaire");
             stage.show();
 
         } catch (IOException ex){
             System.out.println(ex.getMessage());
         }
+      refrechcmntr();
     }
 
     @FXML
-    private void refrechcmntr(MouseEvent event) {
+    private void refrechcmntr() {
                         loaDate();
 
     }
