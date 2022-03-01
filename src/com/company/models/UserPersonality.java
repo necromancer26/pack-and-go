@@ -1,8 +1,21 @@
 package com.company.services;
 
-public class PersonalityUser {
+public class UserPersonality {
+
+
+    private int userPersonalityId;
     private String personality;
     private int userId;
+
+    public UserPersonality(int userPersonalityId, String personality, int userId) {
+        this.userPersonalityId = userPersonalityId;
+        this.personality = personality;
+        this.userId = userId;
+    }
+
+    public void setUserPersonalityId(int userPersonalityId) {
+        this.userPersonalityId = userPersonalityId;
+    }
 
     @Override
     public String toString() {
@@ -12,9 +25,8 @@ public class PersonalityUser {
                 '}';
     }
 
-    public PersonalityUser(String personality, int userId) {
-        this.personality = personality;
-        this.userId = userId;
+    public int getUserPersonalityId() {
+        return userPersonalityId;
     }
 
     public String getPersonality() {
