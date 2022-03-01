@@ -1,28 +1,27 @@
 package com.company.test;
-import com.company.models.Personne;
+import com.company.models.User;
+import com.company.models.Roles;
 import com.company.services.PersonalityTest;
-import com.company.services.PersonalityUser;
-import com.company.services.ServicePersonne;
-import com.company.services.User;
-import com.company.utils.DataSource;
+import com.company.models.UserPersonality;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        ServicePersonne sp = new ServicePersonne();
-        User user = new User("walddha","ggggg","gaussian@g.com","wawwwlha06","123",1,"client");
-        sp.ajouter(user);
-        PersonalityTest personalityTest= new PersonalityTest();
-        List<PersonalityUser>personalityUsers= personalityTest.getAllPersonalityUsers();
-        System.out.println(personalityUsers);
-        //personalityTest.supprimerUserPersonality(user);
-        personalityTest.ajouterUserPersonality(user);
-        //personalityTest.modifierUserPersonality(user);
+        // write your code here
 
-        //System.out.println(sp.getAll());
+       User user = new User("khalil", "ch", "kh@gmail.com", "aesthetik", "1234", 55111222, Roles.CLIENT, LocalDateTime.of(1995, Month.JUNE, 26, 17, 45), LocalDateTime.now(), LocalDateTime.now());
+        PersonalityTest personalityTest= new PersonalityTest();
+        List<UserPersonality>personalityUsers= personalityTest.getAllPersonalityUsers();
+        System.out.println(personalityUsers);
+        personalityTest.ajouterUserPersonality(user);
+        personalityTest.modifierUserPersonality(user);
+        personalityTest.supprimerUserPersonality(user);
+        System.out.println(personalityUsers.size());
+        //personalityTest.supprimerUserPersonality(personalityUsers.get(personalityUsers.size()-1).getUserPersonalityId());
     }
 }

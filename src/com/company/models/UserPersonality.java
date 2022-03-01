@@ -1,4 +1,4 @@
-package com.company.services;
+package com.company.models;
 
 public class UserPersonality {
 
@@ -7,7 +7,7 @@ public class UserPersonality {
     private String personality;
     private int userId;
 
-    public UserPersonality(int userPersonalityId, String personality, int userId) {
+    public UserPersonality(int userPersonalityId, int userId,String personality ) {
         this.userPersonalityId = userPersonalityId;
         this.personality = personality;
         this.userId = userId;
@@ -19,9 +19,10 @@ public class UserPersonality {
 
     @Override
     public String toString() {
-        return "PersonalityUser{" +
-                "personality='" + personality + '\'' +
-                ", userId=" + userId +
+        return "UserPersonality{" +
+                "userPersonalityId=" + userPersonalityId +
+                ", userId=" + userId + '\'' +
+                ", personality='" + personality +
                 '}';
     }
 

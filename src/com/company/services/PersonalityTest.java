@@ -1,13 +1,14 @@
 package com.company.services;
-import com.company.models.Personne;
-import com.company.utils.DataSource;
+import com.company.models.User;
+import com.company.models.UserPersonality;
+import com.company.util.DataSource;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PersonalityTest {
+public class PersonalityTest implements IPersonalityTestService {
     Connection cnx = DataSource.getInstance().getCnx();
     private double score;
     public static String test(){
@@ -80,14 +81,25 @@ public class PersonalityTest {
             System.err.println(ex.getMessage());
         }
     }
-    public List<PersonalityUser> getAllPersonalityUsers(){
-            List<PersonalityUser> list = new ArrayList<>();
+    public void supprimerUserPersonality(int userPersonalityId){
+        try {
+            String req="DELETE FROM `user_personality` WHERE `user_personality`.`user_personality_id`=? LIMIT1;";
+            //String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?);";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, userPersonalityId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    public List<UserPersonality> getAllPersonalityUsers(){
+            List<UserPersonality> list = new ArrayList<>();
             try {
                 String req = "Select * from user_personality";
                 Statement st = cnx.createStatement();
                 ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                PersonalityUser user = new PersonalityUser(rs.getString(2),rs.getInt(1));
+                UserPersonality user = new UserPersonality(rs.getInt(1),rs.getInt(2),rs.getString(3));
                 list.add(user);
             }
             } catch (SQLException ex) {
