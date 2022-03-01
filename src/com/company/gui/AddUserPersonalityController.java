@@ -1,4 +1,4 @@
 package com.company.gui;
 
-public class AddForm {
+public class AddUserPersonalityController {
 }

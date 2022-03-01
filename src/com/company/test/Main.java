@@ -3,14 +3,13 @@ import com.company.models.User;
 import com.company.models.Roles;
 import com.company.services.PersonalityTest;
 import com.company.models.UserPersonality;
-
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
 
 
 public class Main {
-
+/*
     public static void main(String[] args) {
         // write your code here
 
@@ -23,5 +22,5 @@ public class Main {
         personalityTest.supprimerUserPersonality(user);
         System.out.println(personalityUsers.size());
         //personalityTest.supprimerUserPersonality(personalityUsers.get(personalityUsers.size()-1).getUserPersonalityId());
-    }
+    }*/
 }
