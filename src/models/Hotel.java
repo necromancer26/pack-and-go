@@ -5,11 +5,17 @@
  */
 package models;
 
+import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author dorsaf
  */
 public class Hotel {
+    public static String pathfile; 
+    public static String filename="";
     
     private int id_hotel;
     private String nom_hotel;
@@ -19,6 +25,32 @@ public class Hotel {
     private String pays;
     private int tel;
     private String email;
+    private String image;
+
+    Hotel() {
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public ImageView getImg() {
+        ImageView img = null;
+        try{
+            Image new_image = new Image("file:" +image);      
+            img = new ImageView();
+            img.setImage(new_image); 
+            img.setFitWidth(100);
+            img.setFitHeight(100);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return img;
+    }   
+    
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     
     public int getId_hotel() {
@@ -52,6 +84,7 @@ public class Hotel {
     public String getEmail() {
         return email;
     }
+    
 
     public void setNom_hotel(String nom_hotel) {
         this.nom_hotel = nom_hotel;
@@ -83,15 +116,15 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel{" + "id_hotel=" + id_hotel + ", nom_hotel=" + nom_hotel+ ", nbr_etoiles=" + nbr_etoiles + ", nbr_chambres=" + nbr_chambres + ", adresse=" + adresse + ", pays=" + pays + ", tel=" + tel + ", email=" + email + '}';
+        return "Hotel{" + "id_hotel=" + id_hotel + ", nom_hotel=" + nom_hotel+ ", nbr_etoiles=" + nbr_etoiles + ", nbr_chambres=" + nbr_chambres + ", adresse=" + adresse + ", pays=" + pays + ", tel=" + tel + ", email=" + email + ", image=" + image + '}';
     }
 
-    public Hotel(String nom_hotel) {
-        this.nom_hotel = nom_hotel;
+    public Hotel(int nom_hotel) {
+        this.id_hotel = id_hotel;
     }
     
 
-    public Hotel(String nom_hotel, int nbr_etoiles, int nbr_chambres, String adresse, String pays, int tel, String email) {
+    public Hotel(String nom_hotel, int nbr_etoiles, int nbr_chambres, String adresse, String pays, int tel, String email, String image) {
         this.nom_hotel = nom_hotel;
         this.nbr_etoiles = nbr_etoiles;
         this.nbr_chambres = nbr_chambres;
@@ -99,9 +132,10 @@ public class Hotel {
         this.pays = pays;
         this.tel = tel;
         this.email = email;
+        this.image = image;
     }
 
-    public Hotel(int id_hotel, String nom_hotel, int nbr_etoiles, int nbr_chambres, String adresse, String pays, int tel, String email) {
+    public Hotel(int id_hotel, String nom_hotel, int nbr_etoiles, int nbr_chambres, String adresse, String pays, int tel, String email, String image) {
         this.id_hotel = id_hotel;
         this.nom_hotel = nom_hotel;
         this.nbr_etoiles = nbr_etoiles;
@@ -110,6 +144,7 @@ public class Hotel {
         this.pays = pays;
         this.tel = tel;
         this.email = email;
+        this.image = image;
     }
 
 }

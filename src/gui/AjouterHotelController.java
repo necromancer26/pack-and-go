@@ -15,9 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import models.Hotel;
 import services.ServiceHotel;
 
@@ -60,8 +58,8 @@ public class AjouterHotelController implements Initializable {
 
     @FXML
     private void AjouterHotel(ActionEvent event) {
-        ServiceHotel sh = new ServiceHotel();
-        Hotel h = new Hotel(tfNomHotel.getText(), Integer.parseInt(tfNbrEtoiles.getText()) , Integer.parseInt(tfNbrChambres.getText()) , tfAdresse.getText() , tfPays.getText(), Integer.parseInt(tfTel.getText()), tfEmail.getText() );
+    /*    ServiceHotel sh = new ServiceHotel();
+     //   Hotel h = new Hotel(tfNomHotel.getText(), Integer.parseInt(tfNbrEtoiles.getText()) , Integer.parseInt(tfNbrChambres.getText()) , tfAdresse.getText() , tfPays.getText(), Integer.parseInt(tfTel.getText()), tfEmail.getText() );
         sh.ajouter(h);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succes");
@@ -69,7 +67,7 @@ public class AjouterHotelController implements Initializable {
         alert.setContentText("Hotel ajouté avec succès!");                
         alert.showAndWait();
         clean();
-        
+        */
     }
     
      private void clean() {

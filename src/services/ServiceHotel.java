@@ -22,6 +22,7 @@ import utils.DataSource;
  *
  * @author dorsaf
  */
+
 public class ServiceHotel implements IHotel<Hotel>{
     
     Connection cnx = DataSource.getInstance().getCnx();
@@ -29,7 +30,7 @@ public class ServiceHotel implements IHotel<Hotel>{
     public void ajouter(Hotel t) {
         try {
            // PreparedStatement ps = cnx.prepareStatement("INSERT INTO hotel(id_service, nom_service, nbr_etoiles, nbr_chambres, adresse, tel, email) VALUES('"+t.getId_service()+"', ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS); 
-          String req = "INSERT INTO `hotel`(`nom_hotel`, `nbr_etoiles`, `nbr_chambres`, `adresse`, `pays`, `tel`, `email`) VALUES (?,?,?,?,?,?,?)";
+          String req = "INSERT INTO `hotel`(`nom_hotel`, `nbr_etoiles`, `nbr_chambres`, `adresse`, `pays`, `tel`, `email`, `image`) VALUES (?,?,?,?,?,?,?,?)";
           PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, t.getNom_hotel());
             ps.setInt(2, t.getNbr_etoiles());
@@ -38,6 +39,7 @@ public class ServiceHotel implements IHotel<Hotel>{
             ps.setString(5, t.getPays()); 
             ps.setInt(6, t.getTel());
             ps.setString(7, t.getEmail());
+            ps.setString(8, t.getImage());
             ps.executeUpdate();
             System.out.println("hotel ajouté avec succès!");
             
@@ -54,7 +56,7 @@ public class ServiceHotel implements IHotel<Hotel>{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                Hotel h = new Hotel(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
+                Hotel h = new Hotel(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9));
                 list.add(h);
             }
         } catch (SQLException ex) {
@@ -66,7 +68,7 @@ public class ServiceHotel implements IHotel<Hotel>{
     @Override
     public void modifier(Hotel t) {
        try {
-           String req = "UPDATE hotel SET  nom_hotel=?, nbr_etoiles=?, nbr_chambres=?, adresse=? ,pays=? ,tel= ?, email=? WHERE id_hotel =?";
+           String req = "UPDATE hotel SET  nom_hotel=?, nbr_etoiles=?, nbr_chambres=?, adresse=? ,pays=? ,tel= ?, email=?, image=? WHERE id_hotel =?";
            PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, t.getNom_hotel());
             ps.setInt(2, t.getNbr_etoiles());
@@ -75,7 +77,8 @@ public class ServiceHotel implements IHotel<Hotel>{
             ps.setString(5, t.getPays()); 
             ps.setInt(6, t.getTel());
             ps.setString(7, t.getEmail());
-            ps.setInt(8, t.getId_hotel());
+            ps.setString(8, t.getEmail());
+            ps.setInt(9, t.getId_hotel());
             ps.executeUpdate(); 
             System.out.println("modification saretttt !");
         } catch (SQLException ex) {
@@ -103,7 +106,7 @@ public class ServiceHotel implements IHotel<Hotel>{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                Hotel h = new Hotel(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8));
+                Hotel h = new Hotel(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9));
                 HotelList.add(h);
             }
         } catch (SQLException ex) {
@@ -113,21 +116,24 @@ public class ServiceHotel implements IHotel<Hotel>{
     }
     
     
-    public ObservableList<Integer> getIds(){
-        ObservableList<Integer> ids = FXCollections.observableArrayList();
-        try {
-            String req = "Select id_hotel from hotel";
+
+   /* public List<Hotel> getIds(){
+       List<Hotel> hotels = new ArrayList();
+       try {
+            String req = "Select id_hotel, nom_hotel from hotel";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
                 ids.add(rs.getInt("id_hotel") );
+                names.add(rs.getString("nom_hotel"));
+                
             }
             st.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return ids; 
+        return c; 
     }
-
+*/
 
 }

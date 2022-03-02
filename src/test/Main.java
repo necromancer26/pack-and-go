@@ -33,11 +33,11 @@ public class Main {
 
         /***************TEST HOTEL*****************/
         ServiceHotel sh = new ServiceHotel();       
-        Hotel h = new Hotel("anantara", 5,60, "tozeur", "tunisie", 5412365,"anantara@gmail.fr");
-        Hotel h3 = new Hotel("africa jad",5,60, "tabarka","tunisie", 5412365,"africajad@gmail.fr");
-        Hotel h4 = new Hotel("4 seaons",5,60, "tunis","tunisie", 5412365,"russelior@gmail.fr");     
-        Hotel h5 = new Hotel("russelior",5,60, "hammemet","tunisie", 5412365,"anantara@gmail.fr");
-        Hotel h6 = new Hotel("anantara",5,60, "tozeur","tunisie", 5412365,"anantara@gmail.fr");
+     //   Hotel h = new Hotel("anantara", 5,60, "tozeur", "tunisie", 5412365,"anantara@gmail.fr");
+      //  Hotel h3 = new Hotel("africa jad",5,60, "tabarka","tunisie", 5412365,"africajad@gmail.fr");
+      //  Hotel h4 = new Hotel("4 seaons",5,60, "tunis","tunisie", 5412365,"russelior@gmail.fr");     
+     //   Hotel h5 = new Hotel("russelior",5,60, "hammemet","tunisie", 5412365,"anantara@gmail.fr");
+     //   Hotel h6 = new Hotel("anantara",5,60, "tozeur","tunisie", 5412365,"anantara@gmail.fr");
      //  sh.ajouter(h);
      //  sh.ajouter(h3);
       //  sh.ajouter(h4);
@@ -49,8 +49,8 @@ public class Main {
     
         /***************TEST CHAMBRE*****************/
         ServiceChambre sch = new ServiceChambre();
-        Chambre ch = new Chambre(201, "doubeeele",2,300,15);
-        Chambre ch2 = new Chambre(201, "doubeeele",2,300); // num chambre, type, etage, prix, id_hotel
+      //  Chambre ch = new Chambre(201, "doubeeele",2,300,15);
+    //    Chambre ch2 = new Chambre(201, "doubeeele",2,300); // num chambre, type, etage, prix, id_hotel
      //  Chambre ch2 = new Chambre(55,"triple",1,410);
       //  Chambre ch3 = new Chambre(54,"suite",3,680);
     //    Chambre ch4 = new Chambre(58,"double",3,320);

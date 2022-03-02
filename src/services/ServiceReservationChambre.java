@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import models.ReservationChambre;
 import utils.DataSource;
 
@@ -80,6 +82,22 @@ public class ServiceReservationChambre implements IHotel<ReservationChambre>{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public ObservableList<ReservationChambre> getListReservations() {
+        ObservableList<ReservationChambre> list = FXCollections.observableArrayList();
+        try {
+            String req = "Select * from reservationchambre";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                ReservationChambre h = new ReservationChambre(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getInt(4), rs.getInt(5));
+                list.add(h);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;  
     }
     
 }
