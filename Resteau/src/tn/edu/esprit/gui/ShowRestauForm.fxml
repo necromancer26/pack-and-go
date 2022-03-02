@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -32,6 +33,7 @@
       <FontAwesomeIcon />
       <Pane layoutX="621.0" layoutY="90.42857360839844" />
       <Button layoutX="12.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#AjoutRestau" style="-fx-background-color: #B0E0E6;" text="Ajouter +" textFill="#050014" />
+      <TextField fx:id="rechercheRestau" layoutX="293.0" layoutY="104.0" onKeyTyped="#rechercheRestau" />
     
       
    </children>

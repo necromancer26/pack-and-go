@@ -9,14 +9,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.services.ServiceResteau;
 /**
@@ -62,7 +66,22 @@ public class RestauAddFormController implements Initializable {
                alert.setTitle("succes");
                alert.setHeaderText("Ajouté");
                alert.setContentText("restau Ajouté avec succés !");
-            
+            Notifications notificationBuilder = Notifications.create()
+                        .title(" Restaurant  Ajoutée")
+                        .text("Saved in your DATABASE").darkStyle()
+             .graphic(null)
+   // .graphic(null)
+                        
+                        .hideAfter(Duration.seconds(15))
+                        .position(Pos.TOP_RIGHT)
+                        .onAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               System.out.println("Clicked on notification");
+            }
+        });
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
                alert.showAndWait();
     }
 

@@ -8,12 +8,19 @@ package tn.edu.esprit.gui;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.io.IOException;
 import java.net.URL;
+import static java.nio.file.Files.list;
+import static java.rmi.Naming.list;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +31,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -61,6 +69,8 @@ public class ShowRestauFormController implements Initializable {
    ObservableList<Resteau> ResteaulList = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Resteau, String> editcol;
+    @FXML
+    private TextField rechercheRestau;
 
 
     /**
@@ -72,6 +82,7 @@ public class ShowRestauFormController implements Initializable {
         loadDate();
         editTableView();
         modifier();
+        rechercheRestau();
                 ServiceResteau sp = new ServiceResteau();
                 ResteaulList =sp.getListResteau();
                 TableViewRestau.setItems(ResteaulList);
@@ -241,6 +252,51 @@ public void editTableView(){
                 loadDate();
             }
 
+    @FXML
+     public void rechercheRestau(){
+                ServiceResteau sp = new ServiceResteau();
+    List<Resteau>results = new ArrayList<>();
+    results = sp.getAll();
+     FilteredList<Resteau> filteredData = new FilteredList<>(ResteaulList , b -> true);
+		Resteau r = new Resteau();
+		// 2. Set the filter Predicate whenever the filter changes.
+		rechercheRestau.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Resteau -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Resteau.getnomR().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} else if (Resteau.getTypeR().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches last name.
+				} else if (Resteau.getAdressR().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches last name.
+				}
+                                
+				else if (String.valueOf(r.getIdR()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+                             
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+		
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<Resteau> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(TableViewRestau.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		TableViewRestau.setItems(sortedData);
+     }
 }
 
                   

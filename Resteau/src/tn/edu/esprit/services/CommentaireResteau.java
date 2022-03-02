@@ -124,9 +124,9 @@ public class CommentaireResteau implements ICom<Commentaire>  {
 
     @Override
     public List<Commentaire>  getCommentaireById(int idR) {
-               List<Commentaire> list = new ArrayList<>();
+              List<Commentaire> list = new ArrayList<>();
  
-        try {
+    /*    try {
             String req = "Select * from `commentaire`where idR= '"+idR+"'";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
@@ -138,10 +138,27 @@ public class CommentaireResteau implements ICom<Commentaire>  {
    }   catch (SQLException ex) {
                    System.err.println(ex.getMessage());
 
-   }
+   }*/
        
         return list;
  
        
 }
+    public ObservableList<Commentaire> getListCommentaireByID(int idR) {
+        ObservableList<Commentaire> list = FXCollections.observableArrayList();
+        try {
+         String req = "Select * from `commentaire`where idR= '"+idR+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                Commentaire C = new Commentaire(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4));
+                list.add(C);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;
+    }
+
+   
 }

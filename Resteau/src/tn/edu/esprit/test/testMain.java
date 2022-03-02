@@ -32,11 +32,12 @@ public class testMain {
        
         //sp.ajouter(R1);
             //sp.supprimerR(new Resteau(12));
-            System.out.println(sp.modifier(new Resteau("m","chez tout","ariena","tounes","86528965289",15)));
+            //System.out.println(sp.modifier(new Resteau("m","chez tout","ariena","tounes","86528965289",15)));
 
                   CommentaireResteau C = new CommentaireResteau();
     // System.out.println(C.modifierCommentaire(new Commentaire(5,6,1,"eya")));
            Commentaire C1=new Commentaire(30,1," sbdcj,kwxl<");
+         System.out.println(  C.getListCommentaireByID(15));
          //C.AjouterCommentaire(C1);
         //  System.out.println(C.modifierCommentaireR(new Commentaire(19,8,1,"je n aime pas")));
           // C.supprimerCommentaireR(new Commentaire(19));
@@ -50,9 +51,9 @@ public class testMain {
           // RE.supprimerReservationR(new reservationR(1));
          sp.TRIRestau();
          //System.out.println(C.getCommentaireById(15));
-        System.out.println(sp.getAll());
-         System.out.println(C.getAll());
-         System.out.println(RE.getAll());
+      //  System.out.println(sp.getAll());
+        // System.out.println(C.getAll());
+       //  System.out.println(RE.getAll());
 
 
         

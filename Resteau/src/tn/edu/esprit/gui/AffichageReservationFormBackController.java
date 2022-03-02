@@ -4,24 +4,38 @@
  * and open the template in the editor.
  */
 package tn.edu.esprit.gui;
-
+import javafx.scene.input.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
+import static java.nio.file.Files.list;
+import static java.rmi.Naming.list;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import static java.util.Collections.list;
+import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import static java.nio.file.Files.list;
+import static java.rmi.Naming.list;
+import static java.util.Collections.list;
+import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.models.reservationR;
@@ -51,6 +65,9 @@ public class AffichageReservationFormBackController implements Initializable {
     private TableColumn<reservationR, String>  coldateR;
     @FXML
     private TableColumn<reservationR, String>  editcol;
+                ObservableList<reservationR> ReservationlList ;
+    @FXML
+    private TextField searchInput;
 
     /**
      * Initializes the controller class.
@@ -58,6 +75,7 @@ public class AffichageReservationFormBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
                 loadDate();
     }    
 
@@ -113,6 +131,29 @@ public class AffichageReservationFormBackController implements Initializable {
           editcol.setCellFactory(cellFoctory);  
            TableViewReservation.setItems(ReservationlList);
 }
+
+    @FXML
+    private void filtretReservationR(KeyEvent event)throws SQLException {
+       cReservationR RE = new cReservationR();
+        List <reservationR> reservationR=new ArrayList<>();
+           List <reservationR>reservation=RE.getListResteau();
+        List<reservationR> filtereresrevation = new ArrayList<>();
+        if (!searchInput.getText().isEmpty()) {
+            filtereresrevation = reservationR.stream().filter(p -> p.getIdreservationR().startsWith((parseInt(searchInput.getText())).collect(Collectors.toList());
+        } else {
+            filtereresrevation = reservationR;
+        }
+        ReservationlList.clear();
+        ReservationlList = FXCollections.observableArrayList(filtereresrevation); ///conversion normal list to observable list
+        colidR.setCellValueFactory(new PropertyValueFactory<>("idR"));
+        colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+        colnbrPersonneR.setCellValueFactory(new PropertyValueFactory<>("nbrPersonneR"));
+        coltimeR.setCellValueFactory(new PropertyValueFactory<>("timeR"));
+        coldateR.setCellValueFactory(new PropertyValueFactory <>("dateR"));
+
+        TableViewReservation.setEditable(true); //clickable
+        TableViewReservation.setItems(ReservationlList); //remplir tableview with observablz list
+    }
     
 }
     

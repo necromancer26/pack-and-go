@@ -5,15 +5,20 @@
  */
 package tn.edu.esprit.gui;
 
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import tn.edu.esprit.models.reservationR;
 import tn.edu.esprit.services.cReservationR;
 
@@ -59,6 +64,22 @@ reservationR RE1= new reservationR();
                alert.setContentText("reservation  Ajouté avec succés !");
             
                alert.showAndWait();
+    }
+
+    @FXML
+    private void affichageReserv(MouseEvent event) {
+           try{
+            URL fxURL = getClass().getResource("../gui/ShowReservationForm.fxml");
+            Parent root = FXMLLoader.load(fxURL);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Ajout de Restau");
+            stage.show();
+
+        } catch (IOException ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
     }
