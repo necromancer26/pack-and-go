@@ -16,8 +16,18 @@ public class reservationR {
     private int id_user;
     private int idR;
     private int idreservationR;
+   
     // private utilisateur utilisateur;
     private Resteau Resteau;
+     private static int idres;
+
+    public static int getIdres() {
+        return idres;
+    }
+
+    public static void setIdres(int idres) {
+        reservationR.idres = idres;
+    }
     public reservationR() {
     //    utilisateur = new utilisateur(id_user);
         Resteau = new Resteau(idR);
@@ -69,6 +79,7 @@ public class reservationR {
 
     public void setIdR(int idR) {
         this.idR = idR;
+        System.out.println(idR);
     }
 
     public void setIdreservationR(int idreservationR) {

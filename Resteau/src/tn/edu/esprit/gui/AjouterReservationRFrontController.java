@@ -19,6 +19,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.models.reservationR;
 import tn.edu.esprit.services.cReservationR;
 
@@ -52,7 +53,9 @@ public class AjouterReservationRFrontController implements Initializable {
     private void ReserverRestau(MouseEvent event) {
                              cReservationR RE = new cReservationR();
 reservationR RE1= new reservationR();
-              RE1.setIdR(parseInt(lblidR.getText())); 
+             // RE1.setIdR(parseInt(lblidR.getText())); 
+             RE1.setIdR(Resteau.getIdd());
+             
                RE1.setId_user(parseInt(lbliduser.getText()));
                RE1.setNbrPersonneR(parseInt(lblnbpR.getText()));
               RE1.setTimeR(llbltimeR.getText()); 

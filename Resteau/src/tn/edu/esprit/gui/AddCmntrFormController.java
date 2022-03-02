@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import tn.edu.esprit.models.Commentaire;
+import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.services.CommentaireResteau;
 
 /**
@@ -35,7 +36,7 @@ public class AddCmntrFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TODO   
     }    
 
     @FXML
@@ -43,7 +44,8 @@ public class AddCmntrFormController implements Initializable {
         
                   CommentaireResteau C = new CommentaireResteau();
            Commentaire C1=new Commentaire();
-               C1.setIdR(parseInt(lblIdR.getText())); 
+               //C1.setIdR(parseInt(lblIdR.getText())); 
+               C1.setIdR(Resteau.getIdd());
                C1.setid_user(parseInt(lbliduser.getText()));
                C1.setContenuCommentaireR(lblcontenucmntr.getText());  
                C.AjouterCommentaire(C1);

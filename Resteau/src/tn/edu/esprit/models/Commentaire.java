@@ -18,8 +18,17 @@ public class Commentaire {
 
   //  private User User;
    // private Resteau Resteau;
-    
+         private static int idres;
+
+    public static int getIdres() {
+        return idres;
+    }
+
+    public static void setIdres(int idres) {
+        Commentaire.idres = idres;
+    }
     public Commentaire() {
+        
       // User = new User(id_user);
       //  Resteau = new Resteau(idR);
     }

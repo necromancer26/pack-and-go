@@ -11,10 +11,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="610.0" stylesheets="@StyleR.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.AjouterReservationRFrontController">
    <children>
-      <TextField fx:id="lblidR" layoutX="160.0" layoutY="176.0" styleClass="add-btn" />
+      <TextField fx:id="lblidR" layoutX="160.0" layoutY="176.0" styleClass="add-btn" visible="false" />
       <TextField fx:id="lbliduser" layoutX="160.0" layoutY="220.0" styleClass="add-btn" />
       <TextField fx:id="llbltimeR" layoutX="166.0" layoutY="315.0" prefHeight="25.0" prefWidth="68.0" styleClass="add-btn" />
-      <Label layoutX="15.0" layoutY="168.0" prefHeight="17.0" prefWidth="80.0" text="id resteaurant:">
+      <Label layoutX="15.0" layoutY="168.0" prefHeight="17.0" prefWidth="80.0" text="id resteaurant:" visible="false">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font></Label>
@@ -26,14 +26,14 @@
          <font>
             <Font name="Book Antiqua" size="13.0" />
          </font></Label>
-      <Label layoutX="39.0" layoutY="319.0" text="Time:">
+      <Label layoutX="19.0" layoutY="319.0" text="Time:">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font></Label>
       <TextField fx:id="lblnbpR" layoutX="166.0" layoutY="262.0" prefHeight="25.0" prefWidth="68.0" styleClass="add-btn" />
-      <Text layoutX="346.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" />
+      <Text layoutX="347.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" />
       <Button layoutX="445.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#ReserverRestau" prefHeight="25.0" prefWidth="87.0" styleClass="search-button" text="réserver" textFill="WHITE" />
-      <TextField fx:id="lblDateR" layoutX="403.0" layoutY="176.0" />
+      <TextField fx:id="lblDateR" layoutX="414.0" layoutY="212.0" />
       <HBox alignment="CENTER" layoutX="189.0" layoutY="6.0" prefHeight="53.0" prefWidth="200.0">
          <children>
             <Label text="Reservation" textFill="#83077b">

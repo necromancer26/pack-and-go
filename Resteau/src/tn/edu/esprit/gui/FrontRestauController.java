@@ -34,7 +34,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import tn.edu.esprit.models.Commentaire;
 import tn.edu.esprit.models.Resteau;
+import tn.edu.esprit.models.reservationR;
+import tn.edu.esprit.services.CommentaireResteau;
 import tn.edu.esprit.services.ServiceResteau;
 
 /**
@@ -44,6 +47,7 @@ import tn.edu.esprit.services.ServiceResteau;
  */
 public class FrontRestauController implements Initializable {
         public static int index = 0;
+        public static int idd=0; 
 
     @FXML
     private Button rechercherRestauFront;
@@ -79,10 +83,51 @@ public class FrontRestauController implements Initializable {
                 pane2.setPrefHeight(pane2.getHeight() + 150);
                 pane2.setStyle("-fx-background-radius: 50;");
                 pane2.setStyle(" -fx-border-radius: 10 10 10 10;-fx-border-color: #3f2b63;");
+                final Button btnCommenter = new Button("Commentez");     
+                btnCommenter.setStyle("-fx-alignment:right");
+                btnCommenter.setStyle("-fx-background-color: #B0E0E6;");
+                 btnCommenter.setLayoutX(650);
+                 btnCommenter.setOnAction(event -> {try{
+                Resteau.setIdd(p3.getIdR());
+                  CommentaireResteau C = new CommentaireResteau();
+             
+              //r.setIdR(Resteau.getIdd());
+              Commentaire.setIdres(Resteau.getIdd());
+
+            URL fxURL = getClass().getResource("../gui/AddCmntrForm.fxml");
+            Parent root = FXMLLoader.load(fxURL);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+           
+            stage.show();
+           Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+
+        } catch (IOException ex){
+            System.out.println(ex.getMessage());
+        }  
+                
+                              //CommentaireResteau C = new CommentaireResteau();
+
+                           // Commentaire C1 = getTableView().getItems().get(getIndex());
+                                                                 
+                                                           
+                       });
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
                 final Button btncommentaire = new Button("Voir commentaire disponibles");     
                 btncommentaire.setStyle("-fx-alignment:right");
                 btncommentaire.setStyle("-fx-background-color: #B0E0E6;");
-                 btncommentaire.setLayoutX(500);
+                 btncommentaire.setLayoutX(450);
                  btncommentaire.setOnAction(event -> {
                      index = p3.getIdR();
                     FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AfficherCommentaireFront.fxml"));
@@ -102,7 +147,12 @@ public class FrontRestauController implements Initializable {
                 btnreservation.setStyle("-fx-alignment:right");
                 btnreservation.setStyle("-fx-background-color: #B0E0E6;");
                 btnreservation.setLayoutX(750);
- btnreservation.setOnAction(event -> {try{
+                btnreservation.setOnAction(event -> {try{
+                Resteau.setIdd(p3.getIdR());
+                reservationR r =new reservationR ();
+             
+              //r.setIdR(Resteau.getIdd());
+              reservationR.setIdres(Resteau.getIdd());
 
             URL fxURL = getClass().getResource("../gui/AjouterReservationRFront.fxml");
             Parent root = FXMLLoader.load(fxURL);
@@ -111,19 +161,23 @@ public class FrontRestauController implements Initializable {
             stage.setScene(scene);
            
             stage.show();
+           Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
 
         } catch (IOException ex){
             System.out.println(ex.getMessage());
         }  
+                
                               //CommentaireResteau C = new CommentaireResteau();
 
                            // Commentaire C1 = getTableView().getItems().get(getIndex());
                                                                  
                                                            
                        });
+                
                 pane2.getChildren().add(btncommentaire);
                 pane2.getChildren().add(btnreservation);
-
+                pane2.getChildren().add(btnCommenter);
                // String A = p3.getImage();
               /*  A = Hotel.filename;
                 F1 = new  FileInputStream(A);

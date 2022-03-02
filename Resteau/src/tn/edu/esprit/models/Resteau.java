@@ -20,6 +20,15 @@ public class Resteau {
     private String paysR; 
     private String telR; 
     private int idR;
+    static int idd;
+
+     public static int getIdd() {
+        return idd;
+    }
+
+    public static void setIdd(int idd) {
+        Resteau.idd = idd;
+    }
     private List<Commentaire> Commentaire;
 
      public Resteau() {
