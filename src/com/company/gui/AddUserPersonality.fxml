@@ -5,10 +5,95 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<!--
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.gui.AddUserPersonalityController"
             prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+</AnchorPane> -->
+<?import javafx.scene.text.Font?>
+
+<?import javafx.geometry.Insets?>
+
+
+<BorderPane fx:controller="com.company.gui.AddUserPersonalityController"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <Label text="This label is in the top position" alignment="center"
+               BorderPane.alignment="center"
+               style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
+    </top>
+    <left>
+
+        <FlowPane orientation="VERTICAL" alignment="CENTER">
+            <padding>
+                <Insets left="30"/>
+            </padding>
+            <Label text="left" alignment="center"
+                   BorderPane.alignment="center"
+                   style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
+            <Label text="left" alignment="center"
+                   BorderPane.alignment="center"
+                   style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
+            <Label text="left" alignment="center"
+                   BorderPane.alignment="center"
+                   style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
+        </FlowPane>
+    </left>
+    <center>
+        <GridPane
+                xmlns:fx="http://javafx.com/fxml" alignment="top_center" hgap="10" vgap="10"
+                gridLinesVisible="true">
+            <padding>
+                <Insets top="30"/>
+            </padding>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="30.0"/>
+                <ColumnConstraints percentWidth="30.0"/>
+                <ColumnConstraints percentWidth="30.0"/>
+            </columnConstraints>
+            <Label text="first button" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                <font>
+                    <Font name="Times New Roman bold" size="20"/>
+                </font>
+            </Label>
+
+            <Button GridPane.rowIndex="2" GridPane.columnIndex="4" text="Click me">
+                <graphic>
+                    <ImageView>
+                        <Image url="@/toolbarButtonGraphics/general/TipOfTheDay24.gif"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Label GridPane.rowIndex="0" GridPane.columnIndex="4" text="This is a label">
+                <graphic>
+                    <ImageView>
+                        <Image url="@/toolbarButtonGraphics/general/Find16.gif"/>
+                        <Image url="@/toolbarButtonGraphics/general/Find16.gif"/>
+                    </ImageView>
+                </graphic>
+            </Label>
+            <Button text="Button Three" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Button text="Really Long Button " GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Button text="Button Five" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        </GridPane>
+    </center>
+    <right>
+        <Label text="right" alignment="center"
+               BorderPane.alignment="center"
+               style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
+    </right>
+    <bottom>
+        <HBox spacing="10" alignment="bottom_center">
+            <padding>
+                <Insets bottom="10" right="10"/>
+            </padding>
+            <Button text="Okay" prefWidth="90"/>
+            <Button text="Cancel" prefWidth="90"/>
+            <Button text="Help" prefWidth="90"/>
+        </HBox>
+    </bottom>
+</BorderPane>

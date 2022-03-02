@@ -26,9 +26,10 @@ public class FXMain extends Application {
         try {
             URL fxURL = getClass().getResource("../gui/AddUserPersonality.fxml");
             Parent root = FXMLLoader.load(fxURL);
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("3A22");
+            //Scene scene = new Scene(root);
+            //primaryStage.setScene(scene);
+            primaryStage.setScene(new Scene(root, 500, 275));
+            primaryStage.setTitle("Pack And Go!");
             primaryStage.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
