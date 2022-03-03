@@ -14,6 +14,8 @@ public class Question2Controller implements Initializable {
     @FXML
     private Button nextButton;
     @FXML
+    private Button previousButton;
+    @FXML
     private VBox pane = new VBox();
 
 
@@ -25,13 +27,20 @@ public class Question2Controller implements Initializable {
 
     public void onButtonClicked(javafx.event.ActionEvent actionEvent) {
         try {
-            //URL fxURL = getClass().getResource("../gui/AddUserPersonality.fxml");
-            //BorderPane borderPane = FXMLLoader.load(fxURL);
-            System.out.println("in button 3");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../gui/Question3.fxml"));
             VBox yourNewView = fxmlLoader.load();
             pane.getChildren().setAll(yourNewView);
             Question3Controller question3Controller = fxmlLoader.getController();
+        } catch (IOException ioException) {
+            System.out.println(ioException.getMessage());
+        }
+    }
+    public void onPreviousClicked(javafx.event.ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../gui/Question1.fxml"));
+            VBox yourNewView = fxmlLoader.load();
+            pane.getChildren().setAll(yourNewView);
+            Question1Controller question1Controller = fxmlLoader.getController();
         } catch (IOException ioException) {
             System.out.println(ioException.getMessage());
         }

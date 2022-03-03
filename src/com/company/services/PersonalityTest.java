@@ -4,9 +4,7 @@ import com.company.models.UserPersonality;
 import com.company.util.DataSource;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class PersonalityTest implements IPersonalityTestService {
     Connection cnx = DataSource.getInstance().getCnx();
@@ -107,5 +105,43 @@ public class PersonalityTest implements IPersonalityTestService {
             }
             return list;
 
+    }
+
+    @Override
+    public HashMap<String,String > getPersonalityReport(User user) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        List<String> queryList=new ArrayList<>();
+        //PreparedStatement preparedStatement;
+        queryList.add("SELECT `social_name`, `social_details` FROM `social_style` WHERE `social_id` LIKE ( SELECT `social` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE ( SELECT `id_user` FROM `user` WHERE (`user`.`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
+        queryList.add("SELECT `processing_name`, `processing_details` FROM `processing_style` WHERE `processing_id` LIKE ( SELECT `processing` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE ( SELECT `id_user` FROM `user` WHERE (`user`.`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
+        queryList.add("SELECT `decision_making_name`, `decision_making_details` FROM `decision_making_style` WHERE `decision_making_id` LIKE ( SELECT `decision_making` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE( SELECT `id_user` FROM `user` WHERE (`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
+        queryList.add("SELECT `interaction_name`, `interaction_details` FROM `interaction_style` WHERE `interaction_id` LIKE ( SELECT `interaction` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE( SELECT `id_user` FROM `user` WHERE (`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
+        queryList.forEach(request->{
+            try {
+                Statement statement=cnx.createStatement();
+                ResultSet resultSet= statement.executeQuery(request);
+                while(resultSet.next()){
+
+                    hashMap.put(resultSet.getString(1),resultSet.getString(2));
+                }
+            }catch (Exception exception){
+                System.err.println(exception.getMessage());
+            }
+        });
+/*        try {
+            String req1="SELECT `social_name`,`social_details` FROM `social_style` WHERE `social_id` LIKE (SELECT `social` FROM `personality` WHERE `personality_id` LIKE (SELECT `personality_id` FROM `user_personality` WHERE (`user_id` ="+n+") ));";
+            //String req1 ="SELECT `personality_id` FROM `user_personality` WHERE (`user_personality`.`user_id` = "+n+") ;";
+            //Statement st = cnx.createStatement();
+            PreparedStatement ps = cnx.prepareStatement(req1);
+            //ps.setInt(1, 6);
+            ResultSet rs = ps.executeQuery(req1);
+            while(rs.next()){
+                System.out.println(rs.getString(1));
+                System.out.println(rs.getString(2));
+            }
+        }catch (Exception exception){
+            System.err.println(exception.getMessage());
+        }*/
+        return hashMap;
     }
 }

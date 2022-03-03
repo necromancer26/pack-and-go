@@ -46,7 +46,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.ToggleGroup?>
+<VBox fx:controller="com.company.gui.Question4Controller" fx:id="pane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -105,8 +106,11 @@
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Judging" />
-                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Perceiving" />
+                         <fx:define>
+                             <ToggleGroup fx:id="q4ToggleGroup"/>
+                         </fx:define>
+                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Judging" toggleGroup="$q4ToggleGroup"/>
+                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Perceiving"  toggleGroup="$q4ToggleGroup"/>
                      </children>
                   </VBox>
                </center>
@@ -115,12 +119,12 @@
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Previous" textFill="WHITE" />
+                              <Button fx:id="previousButton" onAction="#onPreviousClicked" layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Previous" textFill="WHITE" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button alignment="CENTER" layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: teal;" text="Next" textFill="WHITE" />
+                              <Button fx:id="nextButton" onAction="#onButtonClicked" alignment="CENTER" layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: teal;" text="Next" textFill="WHITE" />
                            </children>
                         </Pane>
                      </children>

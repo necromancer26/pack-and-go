@@ -3,12 +3,20 @@ package com.company.services;
 import com.company.models.User;
 import com.company.models.UserPersonality;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface IPersonalityTestService {
-    public void ajouterUserPersonality(User user);
-    public void modifierUserPersonality(User user);
-    public void supprimerUserPersonality(User user);
-    public void supprimerUserPersonality(int userPersonalityId);
-    public List<UserPersonality> getAllPersonalityUsers();
+    void ajouterUserPersonality(User user);
+
+    void modifierUserPersonality(User user);
+
+    void supprimerUserPersonality(User user);
+
+    void supprimerUserPersonality(int userPersonalityId);
+
+    List<UserPersonality> getAllPersonalityUsers();
+
+    HashMap<String ,String> getPersonalityReport(User user);
+
 }

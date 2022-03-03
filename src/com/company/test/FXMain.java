@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +28,10 @@ public class FXMain extends Application {
             //primaryStage.setScene(scene);
             //root.getChildrenUnmodifiable().add(startButton);
             //setUserAgentStylesheet(STYLESHEET_CASPIAN);
-            primaryStage.setScene(new Scene(root, 640, 400));
+            ScrollPane sp = new ScrollPane();
+            sp.setContent(root);
+            //Scene scene = new Scene(sp, 300, 50);
+            primaryStage.setScene(new Scene(sp, 640, 640));
             primaryStage.setTitle("Pack And Go!");
             primaryStage.show();
 

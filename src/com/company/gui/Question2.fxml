@@ -119,7 +119,7 @@
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Previous" textFill="WHITE" />
+                              <Button fx:id="previousButton" onAction="#onPreviousClicked" layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Previous" textFill="WHITE" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
