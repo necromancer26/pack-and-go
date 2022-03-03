@@ -49,13 +49,15 @@ public class Main {
     
         /***************TEST CHAMBRE*****************/
         ServiceChambre sch = new ServiceChambre();
-      //  Chambre ch = new Chambre(201, "doubeeele",2,300,15);
+      //  Chambre ch = new Chambre(201, "doubeeele",2,300,"");
     //    Chambre ch2 = new Chambre(201, "doubeeele",2,300); // num chambre, type, etage, prix, id_hotel
      //  Chambre ch2 = new Chambre(55,"triple",1,410);
       //  Chambre ch3 = new Chambre(54,"suite",3,680);
     //    Chambre ch4 = new Chambre(58,"double",3,320);
     //    Chambre ch5 = new Chambre(52,"quadruple",1,500);
-      //  sch.ajouter(ch);
+     //    sch.ajouter(ch);
+       //  System.out.println(sch.getChambreByID(48));
+         System.out.println(sch.getNomByID(27));
        // sch.ajouter(ch2);
       //  sch.ajouter(ch3);
         //sch.ajouter(ch4);
@@ -63,8 +65,8 @@ public class Main {
      //   System.out.println(sch.getAll());
       //  sch.modifier(new Chambre(5, 201, "ok", 2, 1000,11)); // id_chambre, num_chambre, type, etage, prix, id_hotel
      // sch.supprimer(28); 
-      ServiceReservationChambre sreserv = new ServiceReservationChambre();      
-         ReservationChambre rch = new ReservationChambre( Date.valueOf("2022-03-30") , Date.valueOf("2022-04-30") ,1,27);
+     // ServiceReservationChambre sreserv = new ServiceReservationChambre();      
+      //   ReservationChambre rch = new ReservationChambre( Date.valueOf("2022-03-30") , Date.valueOf("2022-04-30") ,1,27);
        //  sreserv.ajouter(rch);
     //   System.out.println(sreserv.getAll());
      //   sreserv.modifier(new ReservationChambre(14, Date.valueOf("2003-03-03") ,Date.valueOf("2005-03-30"), 27));
@@ -77,10 +79,10 @@ public class Main {
        
        
        
-        ServiceUser serviceUser = new ServiceUser();
+       // ServiceUser serviceUser = new ServiceUser();
         //add user
-        User user = new User("dorsaf", "charfeddine", "wala@gmail.com", "wala123", "wala123", 55111222, Roles.CLIENT,LocalDateTime.of(1998, Month.MARCH, 3, 17, 45), LocalDateTime.now(), LocalDateTime.now());
-        serviceUser.ajouter(user);
+     //   User user = new User("dorsaf", "charfeddine", "wala@gmail.com", "wala123", "wala123", 55111222, Roles.CLIENT,LocalDateTime.of(1998, Month.MARCH, 3, 17, 45), LocalDateTime.now(), LocalDateTime.now());
+     //   serviceUser.ajouter(user);
         //modifier
         /*User user = new User("Wala", "Djobbi", "wala@gmail.com", "wala123", "wala123", 22222222, Roles.ADMIN,LocalDateTime.of(1998, Month.MARCH, 3, 17, 45), LocalDateTime.now(), LocalDateTime.now());
         serviceUser.modifier(2, user);*/

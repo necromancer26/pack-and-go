@@ -117,23 +117,36 @@ public class ServiceHotel implements IHotel<Hotel>{
     
     
 
-   /* public List<Hotel> getIds(){
-       List<Hotel> hotels = new ArrayList();
-       try {
-            String req = "Select id_hotel, nom_hotel from hotel";
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
+    public String getNomByIDHotel(int id_hotel) {
+        String nom  ="";
+        try {
+            String req = "Select nom_hotel from hotel  WHERE id_hotel ="+id_hotel;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                ids.add(rs.getInt("id_hotel") );
-                names.add(rs.getString("nom_hotel"));
-                
+                 nom = rs.getString("nom_hotel");
             }
-            st.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return c; 
+        return nom;
     }
-*/
+    
+    public String getImageByid(int id_hotel) {
+        String image  ="";
+        try {
+            String req = "Select image from hotel  WHERE id_hotel ="+id_hotel;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 image = rs.getString("image");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return image;
+    }
+    
+    
 
 }

@@ -27,7 +27,10 @@ public class Hotel {
     private String email;
     private String image;
 
-    Hotel() {
+
+
+    public Hotel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getImage() {

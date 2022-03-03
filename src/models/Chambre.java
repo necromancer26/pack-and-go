@@ -55,6 +55,14 @@ public class Chambre {
         this.image = image;
     }
 
+    public Chambre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Chambre(int index_ch) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     @Override
     public String toString() {
@@ -125,6 +133,10 @@ public class Chambre {
 
     public void setPrix(int prix) {
         this.prix = prix;
+    }
+
+    public void setId_chambre(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
     

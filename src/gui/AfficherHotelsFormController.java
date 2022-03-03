@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+import javafx.event.EventHandler;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
@@ -16,15 +17,26 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +44,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,6 +52,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
@@ -55,6 +69,7 @@ import services.ServiceHotel;
 import services.ServiceReservationChambre;
 import static models.Hotel.filename;
 import static models.Chambre.filenameCh;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 
 /**
@@ -124,7 +139,6 @@ public class AfficherHotelsFormController implements Initializable {
     private Button btnModif;
     @FXML
     private TextField tfNomHotel;
-    @FXML
     private TextField tfNbrEtoiles;
     @FXML
     private TextField tfNbrChambres;
@@ -161,8 +175,6 @@ public class AfficherHotelsFormController implements Initializable {
     ServiceChambre sch = new ServiceChambre();
     ServiceReservationChambre sres_ch = new ServiceReservationChambre();
     @FXML
-    private TableColumn<ReservationChambre, String> delColR;
-    @FXML
     private Button supprimerHotel;
     @FXML
     private Button editHotel;
@@ -177,31 +189,34 @@ public class AfficherHotelsFormController implements Initializable {
     @FXML
     private Rating nbrEtoiles;
     private List<Hotel> hotels;
+    @FXML
+    private TextField tfRechercheHotel;
     /**
      * Initializes the controller class.
      */
+    ObservableList<Chambre> ChambreList;
+    ObservableList<Hotel> HotelList;     
+    @FXML
+    private TableColumn<Chambre, Integer> id_user;
+    
+    ObservableList<String> ids ;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
-        
-        
-    }    
 
-  /*  public TableView<Hotel> getTblHotels() {
-        return tblHotels;
-    }*/
+        
+        
+    }  
    
     private void loadData() {
         this.hotels = sh.getAll();
-        ObservableList<String> ids = FillCombo();
+        ids= FillCombo();
         cbHotel.setItems(ids);
-        
         
         tblHotels.refresh();
        
-        ObservableList<Chambre> ChambreList;
         ChambreList = sch.getListchambres();
-        ObservableList<Hotel> HotelList;     
         HotelList = sh.getListHotels();  
         ObservableList<ReservationChambre> ReservationList;
         ReservationList = sres_ch.getListReservations();
@@ -221,13 +236,14 @@ public class AfficherHotelsFormController implements Initializable {
         tblType.setCellValueFactory(new PropertyValueFactory <>("type_chambre"));
         tblEtage.setCellValueFactory(new PropertyValueFactory <>("etage"));
         tblPrix.setCellValueFactory(new PropertyValueFactory <>("prix"));
-        tblHotelFK.setCellValueFactory(new PropertyValueFactory <>("nom"));  
+        tblHotelFK.setCellValueFactory(new PropertyValueFactory <>("id_hotel"));  
         
         tblImageChambre.setCellValueFactory(new PropertyValueFactory<>("img"));
 
         tblNumReserv.setCellValueFactory(new PropertyValueFactory <>("num_reservation"));
         tblCheckin.setCellValueFactory(new PropertyValueFactory<>("check_in"));
         tblCheckout.setCellValueFactory(new PropertyValueFactory<>("check_out"));
+        id_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         tblIdCh_fk.setCellValueFactory(new PropertyValueFactory<>("id_chambre"));
         
         tblHotels.setItems(HotelList);
@@ -237,7 +253,7 @@ public class AfficherHotelsFormController implements Initializable {
         editTableView();      
         
         
-        Callback<TableColumn<ReservationChambre, String>, TableCell<ReservationChambre, String>> cellFoctory = (TableColumn<ReservationChambre, String> param) -> {
+       /* Callback<TableColumn<ReservationChambre, String>, TableCell<ReservationChambre, String>> cellFoctory = (TableColumn<ReservationChambre, String> param) -> {
             final TableCell<ReservationChambre, String> cell = new TableCell<ReservationChambre, String>() {
                 @Override
                 public void updateItem(String item, boolean empty) {           
@@ -254,14 +270,17 @@ public class AfficherHotelsFormController implements Initializable {
                             Refresh();       
                         }catch (Exception e){
                             Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.show();
                             alert.setTitle("fail !");
                             alert.setContentText("erreur de suppression!");
+                            DialogPane dialogPane = alert.getDialogPane();
+                            dialogPane.getStylesheets().add(getClass().getResource("bootstrap.css").toExternalForm());
+                            dialogPane.getStyleClass().add("errDialog");
+                            alert.showAndWait();
                         }});
                       /*  final Button editButton = new Button("UPDATE");
                         editButton.setOnAction(event -> {
                            modifierHotel();                         
-                        });*/
+                        });
                         HBox managebtn = new HBox(deleteButton);
                         managebtn.setStyle("-fx-alignment:center");
                         setGraphic(managebtn);
@@ -272,8 +291,7 @@ public class AfficherHotelsFormController implements Initializable {
             return cell;
         };
         
-        delColR.setCellFactory(cellFoctory);
-        tblReservations.setItems(ReservationList);
+        delColR.setCellFactory(cellFoctory);*/
     }
     
     @FXML
@@ -308,13 +326,24 @@ public class AfficherHotelsFormController implements Initializable {
             int nbr= (int) nbrEtoiles.getRating();
             Hotel h = new Hotel(tfNomHotel.getText(),  nbr , Integer.parseInt(tfNbrChambres.getText()) , tfAdresse.getText() , tfPays.getText(), Integer.parseInt(tfTel.getText()), tfEmail.getText(), Hotel.filename );
             sh.ajouter(h);
+            
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succes");
             alert.setHeaderText("Ajouté");
             alert.setContentText("Hotel ajouté avec succès!");                
             alert.showAndWait();
             cleanHotel();
-            Refresh();         
+            Notifications notificationBuilder = Notifications.create()
+                    .title("Alert").text("Hotel ajouté avec succès").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
+                    .position(Pos.CENTER)
+                    .onAction(new EventHandler<ActionEvent>(){
+                        @Override
+                        public void handle(ActionEvent event) {
+                            System.out.println("clicked on");
+                        }
+                    });
+            notificationBuilder.darkStyle();
+            notificationBuilder.show();
         }      
     }
     
@@ -324,29 +353,22 @@ public class AfficherHotelsFormController implements Initializable {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("image", "*.jpeg","*.png" , "*.jpg"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
-            //System.out.println(fc.getName());
             String img = f.getAbsoluteFile().toURI().toString();
             Image image = new Image(img);
             imgviewHotel.setImage(image);
             String imagecomp = f.getAbsolutePath();
             System.out.println(imagecomp);
             Hotel.filename = filename + imagecomp;
-            //source = new File(pathimage);
-            //dest = new File(System.getProperty("user.dir") + "\\src\\com\\esprit\\img\\" + filename);
            // Hotel.filename = "C:\\Users\\dorsaf\\OneDrive\\Documents\\NetBeansProjects\\GestionsHotels\\uploads" + filename;
-            //se.sendphp(fc.getAbsolutePath());
         }
         imgviewHotel.setFitHeight(150);
         imgviewHotel.setFitWidth(250);
-        //..\img\google.png
-        //C:\Users\splin\Documents\NetBeansProjects\FanArt\\com\esprit\img
         Hotel.pathfile = f.getAbsolutePath();    
             
     }
          
     private void cleanHotel() {
         tfNomHotel.setText(null);
-        tfNbrEtoiles.setText(null);
         tfNbrChambres.setText(null);
         tfAdresse.setText(null);
         tfPays.setText(null);
@@ -509,9 +531,9 @@ public class AfficherHotelsFormController implements Initializable {
     private void AjouterChambre(ActionEvent event) {
         int index = cbHotel.getSelectionModel().getSelectedIndex();
         Hotel hotel = this.hotels.get(index);
-       Chambre ch = new Chambre(Integer.parseInt(tfNum.getText()) , tfType.getText() , Integer.parseInt(tfEtage.getText()) , Integer.parseInt(tfPrix.getText()), Chambre.filenameCh, hotel.getId_hotel());
-       ch.setId_hotel(ch.getId_hotel());
-       sch.ajouter(ch);
+        Chambre ch = new Chambre(Integer.parseInt(tfNum.getText()) , tfType.getText() , Integer.parseInt(tfEtage.getText()) , Integer.parseInt(tfPrix.getText()), Chambre.filenameCh, hotel.getId_hotel());
+        ch.setId_hotel(ch.getId_hotel());
+        sch.ajouter(ch);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succes");
         alert.setHeaderText("Ajouté");
@@ -558,17 +580,12 @@ public class AfficherHotelsFormController implements Initializable {
         
         
     }   
-     
-  /* public void setListHotel(ObservableList<Hotel> list){
-        sh.getListHotels();
-        tblHotels.setItems(list);
-    }*/
 
     @FXML
     private void refreshListChambres(MouseEvent event) {
         ObservableList<Chambre> ChambresList ;
         ChambresList = sch.getListchambres();
-        tblChambres.setItems(ChambresList);
+        tblChambres.setItems(ChambresList);        
     }
 
     @FXML
@@ -610,9 +627,12 @@ public class AfficherHotelsFormController implements Initializable {
                 Refresh();       
             }catch (Exception e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.show();
-                alert.setTitle("Erreur !");
+                alert.setTitle("Erreur de suppresion!");
                 alert.setContentText("Veuillez selectionnez une reservation!");
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(getClass().getResource("bootstrap.css").toExternalForm());
+                dialogPane.getStyleClass().add("errDialog");
+                alert.showAndWait();
             };
         }else{
             alert2.close();
@@ -635,6 +655,60 @@ public class AfficherHotelsFormController implements Initializable {
         }
         imgviewChambre.setFitHeight(150);
         imgviewChambre.setFitWidth(250);
+    }
+
+
+    @FXML
+    private void rechercherHotel(KeyEvent event) {
+        FilteredList<Hotel> filteredData = new FilteredList<>(HotelList , b -> true);
+        //  Set the filter Predicate whenever the filter changes.
+        tfRechercheHotel.textProperty().addListener(( observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Hotel -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Hotel.getNom_hotel().toLowerCase().contains(lowerCaseFilter) ) {
+                    return true;
+                } else if (String.valueOf(Hotel.getNbr_etoiles()).toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                    return true; // Filter matches last name.
+                } else if (Hotel.getAdresse().toLowerCase().indexOf(lowerCaseFilter)!= -1) {
+                    return true; 
+                } else if( Hotel.getPays().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches last name. )
+                }else if  (Hotel.getEmail().toLowerCase().indexOf(lowerCaseFilter)!= -1) {
+                    return true;
+                }else if  (String.valueOf(Hotel.getTel()).toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                    return true;
+                }else if(String.valueOf(Hotel.getNbr_chambres()).toLowerCase().indexOf(lowerCaseFilter) !=-1) {
+                    return true;
+                }else if (String.valueOf(Hotel.getId_hotel()).indexOf(lowerCaseFilter)!=-1)
+                     return true;
+                else
+                    return false; 
+            });
+        });
+
+        // Wrap the FilteredList in a SortedList. 
+        SortedList<Hotel> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(tblHotels.comparatorProperty());
+        tblHotels.setItems(sortedData);
+    }
+
+    @FXML
+    private void printListHotel(ActionEvent event) {
+        PrinterJob job = PrinterJob.createPrinterJob();
+        Node root= this.tblHotels;
+        if(job != null){
+            job.showPrintDialog(root.getScene().getWindow()); // Window must be your main Stage
+            Printer printer = job.getPrinter();
+            PageLayout pageLayout = printer.createPageLayout(Paper.A2, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+            boolean success = job.printPage(pageLayout, root);
+            if(success){
+               job.endJob();
+            }
+        }
     }
 
 

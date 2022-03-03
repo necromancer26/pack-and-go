@@ -121,4 +121,49 @@ public class ServiceChambre implements IHotel<Chambre>{
         }
         return list;
     }
+    
+    public Chambre getChambreByID(int id_chambre) {
+        Chambre ch = null;
+        try {
+            String req = "Select * from chambre WHERE id_chambre ="+id_chambre;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 ch = new Chambre(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getInt(7));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return ch;
+    }
+    
+    public int getPrixByID(int id_chambre) {
+        int p  = 0;
+        try {
+            String req = "Select prix from chambre WHERE id_chambre ="+id_chambre;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 p = rs.getInt("prix");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return p;
+    }
+    
+    public String getNomByID(int chambre) {
+        String nom  ="";
+        try {
+            String req = "Select nom_hotel from hotel  WHERE id_hotel = (select id_hotel from chambre where id_chambre ="+chambre + ")";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 nom = rs.getString("nom_hotel");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return nom;
+    }
 }

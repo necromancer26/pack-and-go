@@ -12,11 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/models/Hotel.java</file>
-            <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/services/ServiceChambre.java</file>
+            <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/gui/ReserverChambresFrontController.java</file>
             <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/test/FXMain.java</file>
-            <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/gui/AfficherHotelFrontController.java</file>
             <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/gui/AfficherChambresFrontController.java</file>
+            <file>file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/gui/AfficherHotelFrontController.java</file>
         </group>
     </open-files>
 </project-private>

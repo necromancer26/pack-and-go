@@ -34,7 +34,7 @@ public class FXMain extends Application {
             scene.getStylesheets().add(css);
              scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Gestion Hotels");
+            primaryStage.setTitle("Hotels");
             primaryStage.show();
             
         } catch (IOException ex) {
