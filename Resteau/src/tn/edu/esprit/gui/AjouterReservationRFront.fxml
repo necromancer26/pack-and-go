@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -31,18 +32,8 @@
             <Font name="Book Antiqua" size="12.0" />
          </font></Label>
       <TextField fx:id="lblnbpR" layoutX="166.0" layoutY="262.0" prefHeight="25.0" prefWidth="68.0" styleClass="add-btn" />
-      <Text layoutX="347.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" />
-      <Button layoutX="445.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#ReserverRestau" prefHeight="25.0" prefWidth="87.0" styleClass="search-button" text="réserver" textFill="WHITE" />
-      <TextField fx:id="lblDateR" layoutX="414.0" layoutY="212.0" />
-      <HBox alignment="CENTER" layoutX="189.0" layoutY="6.0" prefHeight="53.0" prefWidth="200.0">
-         <children>
-            <Label text="Reservation" textFill="#83077b">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="29.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <Text layoutX="316.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" />
+      <HBox alignment="CENTER" layoutX="189.0" layoutY="6.0" prefHeight="53.0" prefWidth="200.0" />
       <HBox alignment="TOP_RIGHT" layoutX="435.0" prefHeight="60.0" prefWidth="175.0">
          <children>
             <Label text="Pack&amp;Go" textFill="#c9c1c1">
@@ -52,6 +43,21 @@
             </Label>
          </children>
       </HBox>
-      <FontAwesomeIcon blendMode="DARKEN" fill="#261bf5" glyphName="REPEAT" layoutX="552.0" layoutY="348.0" onMouseClicked="#affichageReserv" size="2em" strokeMiterLimit="100.0" text="" wrappingWidth="55.00000303983688" />
+      <ImageView fitHeight="89.0" fitWidth="209.0" layoutX="362.0" layoutY="296.0" onMouseClicked="#ReserverRestau" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../image/reserve.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../image/dateheure.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="56.0" layoutX="540.0" layoutY="328.0" onMouseClicked="#affichageReserv" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../image/show.png" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="lblDateR" layoutX="365.0" layoutY="212.0" />
    </children>
 </AnchorPane>

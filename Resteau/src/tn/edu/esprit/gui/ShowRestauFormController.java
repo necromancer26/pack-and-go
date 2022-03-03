@@ -218,16 +218,17 @@ public void editTableView(){
         colPaysR.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setPaysR(e.getNewValue());
         });
+      
         coltelR.setCellFactory(TextFieldTableCell.forTableColumn());        
         coltelR.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setTelR(e.getNewValue());
         });
-        
+     /*   
         colIdR.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));        
         colIdR.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setIdR(e.getNewValue());
         });
-      
+      */
     }
     @FXML
     private void AjoutRestau(javafx.scene.input.MouseEvent event) {
@@ -297,7 +298,24 @@ public void editTableView(){
 		// 5. Add sorted (and filtered) data to the table.
 		TableViewRestau.setItems(sortedData);
      }
-}
+
+    @FXML
+    private void showList(MouseEvent event) {
+         try{
+            URL fxURL = getClass().getResource("../gui/AffichageReservationFormBack.fxml");
+            Parent root = FXMLLoader.load(fxURL);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Affichage Reservation");
+            stage.show();
+
+        } catch (IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+    }
+
 
                   
     

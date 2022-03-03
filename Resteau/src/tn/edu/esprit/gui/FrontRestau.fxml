@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.FrontRestauController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.FrontRestauController">
    <children>
       <BorderPane layoutX="6.0" layoutY="7.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="600.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../style/StyleR.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="834.0" prefWidth="344.0" styleClass="right-bar" stylesheets="@../style/StyleR.css" BorderPane.alignment="CENTER">
                <children>
                   <HBox prefHeight="110.0" prefWidth="200.0">
                      <children>
@@ -31,7 +31,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="85.0" prefWidth="455.0">
                      <children>
-                        <TextField fx:id="rechercheRestau" alignment="CENTER" prefHeight="53.0" prefWidth="292.0" promptText="Type here to search" styleClass="shadow">
+                        <TextField fx:id="rechercheRestau" alignment="CENTER" prefHeight="53.0" prefWidth="181.0" promptText="Type here to search" styleClass="shadow">
                            <font>
                               <Font name="Cambria" size="15.0" />
                            </font>
@@ -39,18 +39,19 @@
                         <Button fx:id="rechercherRestauFront" mnemonicParsing="false" prefHeight="37.0" prefWidth="80.0" styleClass="search-button" text="Search" textFill="WHITE" />
                      </children>
                   </HBox>
-                  <VBox alignment="CENTER" prefHeight="311.0" prefWidth="435.0">
+                  <VBox alignment="CENTER" prefHeight="311.0" prefWidth="395.0">
                      <children>
-                        <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="99.0" prefWidth="416.0" />
-                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="48.0" prefWidth="413.0" text="Pack&amp;Go" textFill="#51063c">
-                           <font>
-                              <Font name="Bell MT" size="40.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="99.0" prefWidth="416.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="48.0" prefWidth="413.0" text="Pack&amp;Go" textFill="#51063c">
+                                 <font>
+                                    <Font name="Bell MT" size="40.0" />
+                                 </font>
+                              </Label>
+                           </children></HBox>
                         <ImageView cache="true" fitHeight="188.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
-                           
                            <image>
-                              <Image url="@../../../../../imgR/img1.jpg" />
+                              <Image url="@../../../../image/img1.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -59,9 +60,9 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="831.0" prefWidth="998.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="63.0" prefWidth="819.0">
+                  <HBox prefHeight="69.0" prefWidth="569.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -69,25 +70,46 @@
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
-                        <Label alignment="CENTER" prefHeight="42.0" prefWidth="248.0" text="Bienvenue dans notre application" textFill="#750d5f">
-                           <font>
-                              <Font name="Bauhaus 93" size="13.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Notre Restaurant" textFill="#54034c">
-                           <font>
-                              <Font name="Caladea Italic" size="35.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" prefHeight="69.0" prefWidth="155.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="107.0" style="-fx-background-color: #26a69a;" text="Vols">
+                                 <font>
+                                    <Font name="Bell MT" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="69.0" prefWidth="157.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="107.0" style="-fx-background-color: #26a69a;" text="Nos pack">
+                                 <font>
+                                    <Font name="Bell MT" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="69.0" prefWidth="160.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="115.0" style="-fx-background-color: #26a69a;" text="Activittés">
+                                 <font>
+                                    <Font name="Bell MT" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="69.0" prefWidth="119.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="107.0" style="-fx-background-color: #26a69a;" text="Hotels">
+                                 <font>
+                                    <Font name="Bell MT" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
                   <JFXDrawer />
-                  <VBox alignment="BOTTOM_RIGHT" prefHeight="50.0" prefWidth="60.0" />
-                  <JFXListView fx:id="listViewRestau" />
+                  <JFXListView fx:id="listViewRestau" prefHeight="604.0" prefWidth="656.0" />
                </children>
             </VBox>
          </center>

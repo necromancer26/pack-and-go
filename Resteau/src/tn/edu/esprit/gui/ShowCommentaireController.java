@@ -168,6 +168,7 @@ public class ShowCommentaireController implements Initializable {
         colidcmntrR.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setIdcommentaireR(e.getNewValue());
         });
+        /*
         colidR.setCellFactory( TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colidR.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setIdR(e.getNewValue());
@@ -176,6 +177,7 @@ public class ShowCommentaireController implements Initializable {
         coliduser.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setid_user(e.getNewValue());
         });
+*/
         colcmntrR.setCellFactory(TextFieldTableCell.forTableColumn());        
         colcmntrR.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setContenuCommentaireR(e.getNewValue());

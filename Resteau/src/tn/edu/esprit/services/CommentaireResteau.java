@@ -99,7 +99,7 @@ public class CommentaireResteau implements ICom<Commentaire>  {
                 Commentaire C = new Commentaire(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4));
                 list.add(C);
             }
-                System.out.println("hay cv haw laffichage");
+                System.out.println("affichage");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }

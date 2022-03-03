@@ -77,8 +77,8 @@ public class FrontRestauController implements Initializable {
                 Pane pane = new Pane();
                 pane.setStyle(" -fx-background-color: white");
                 Pane pane2 = new Pane();
-                pane2.setLayoutX(150);
-                pane2.setLayoutY(150);
+                pane2.setLayoutX(300);
+                pane2.setLayoutY(300);
                 pane2.setPrefWidth(pane2.getWidth() + 250);
                 pane2.setPrefHeight(pane2.getHeight() + 150);
                 pane2.setStyle("-fx-background-radius: 50;");
@@ -86,7 +86,7 @@ public class FrontRestauController implements Initializable {
                 final Button btnCommenter = new Button("Commentez");     
                 btnCommenter.setStyle("-fx-alignment:right");
                 btnCommenter.setStyle("-fx-background-color: #B0E0E6;");
-                 btnCommenter.setLayoutX(650);
+                 btnCommenter.setLayoutX(520);
                  btnCommenter.setOnAction(event -> {try{
                 Resteau.setIdd(p3.getIdR());
                   CommentaireResteau C = new CommentaireResteau();
@@ -124,10 +124,10 @@ public class FrontRestauController implements Initializable {
                  
                  
                  
-                final Button btncommentaire = new Button("Voir commentaire disponibles");     
+                final Button btncommentaire = new Button("Voir commentaire");     
                 btncommentaire.setStyle("-fx-alignment:right");
                 btncommentaire.setStyle("-fx-background-color: #B0E0E6;");
-                 btncommentaire.setLayoutX(450);
+                 btncommentaire.setLayoutX(320);
                  btncommentaire.setOnAction(event -> {
                      index = p3.getIdR();
                     FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AfficherCommentaireFront.fxml"));
@@ -146,7 +146,7 @@ public class FrontRestauController implements Initializable {
                  final Button btnreservation = new Button("reserver");     
                 btnreservation.setStyle("-fx-alignment:right");
                 btnreservation.setStyle("-fx-background-color: #B0E0E6;");
-                btnreservation.setLayoutX(750);
+                btnreservation.setLayoutX(450);
                 btnreservation.setOnAction(event -> {try{
                 Resteau.setIdd(p3.getIdR());
                 reservationR r =new reservationR ();
@@ -197,12 +197,12 @@ public class FrontRestauController implements Initializable {
                 panequantitet.setPrefHeight(panequantitet.getHeight() + 30);
                 Text quan1 = new Text("Nom : ");
                 Label quant2 = new Label(String.valueOf(p3.getnomR() ));
-                quan1.setLayoutX(150);
-                quan1.setLayoutY(80);
-                quant2.setLayoutX(150);
-                quant2.setLayoutY(80);
-                quan1.setStyle("-fx-font-weight: bold;-fx-fill : #d82819;-fx-font-size:15px;");
-                quant2.setStyle("-fx-font-weight: bold;-fx-fill : #d82819;-fx-font-size:15px;");
+                quan1.setLayoutX(-5);
+                quan1.setLayoutY(-25);
+                quant2.setLayoutX(50);
+                quant2.setLayoutY(-40);
+                quan1.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a;-fx-font-size:15px;");
+                quant2.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a;-fx-font-size:15px;");
                 panequantitet.getChildren().addAll(quan1, quant2);
                 Text nomt = new Text("type: ");
                 Label nom = new Label(p3.getTypeR());   
@@ -215,30 +215,30 @@ public class FrontRestauController implements Initializable {
                  Text telT = new Text(" Tel : ");
                 Label tey = new Label(p3.getTelR());
                 nomt.setLayoutX(100);
-                nomt.setLayoutY(20);
+                nomt.setLayoutY(40);
                 nom.setLayoutX(150);
-                nom.setLayoutY(10);
+                nom.setLayoutY(30);
                 prixt.setLayoutX(100);
-                prixt.setLayoutY(35);
+                prixt.setLayoutY(60);
                 prix.setLayoutX(150);
-                prix.setLayoutY(25);
+                prix.setLayoutY(50);
                 AdressT.setLayoutX(100);
-                AdressT.setLayoutY(50);
+                AdressT.setLayoutY(80);
                 adress.setLayoutX(150);
-                adress.setLayoutY(35);
+                adress.setLayoutY(70);
                 payT.setLayoutX(100);
-                payT.setLayoutY(75);
+                payT.setLayoutY(95);
                 pay.setLayoutX(150);
-                pay.setLayoutY(65);
+                pay.setLayoutY(85);
                 telT.setLayoutX(100);
-                telT.setLayoutY(95);
+                telT.setLayoutY(120);
                 tey.setLayoutX(150);
-                tey.setLayoutY(85);
-                nomt.setStyle("-fx-font-weight: bold;-fx-fill : #ce3b67");
-                prixt.setStyle("-fx-font-weight: bold;-fx-fill : #ce3b67");
-                AdressT.setStyle("-fx-font-weight: bold;-fx-fill : #ce3b67");
-                payT.setStyle("-fx-font-weight: bold;-fx-fill : #ce3b67");
-                telT.setStyle("-fx-font-weight: bold;-fx-fill : #ce3b67");
+                tey.setLayoutY(110);
+                nomt.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
+                prixt.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
+                AdressT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
+                payT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
+                telT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
 
                 pane2.getChildren().addAll(nomt, prixt,AdressT, payT,telT,nom, prix,adress,pay,tey, panequantitet);
                 Panes.add(pane2);

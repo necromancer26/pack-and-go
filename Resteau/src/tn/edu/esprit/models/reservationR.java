@@ -79,7 +79,7 @@ public class reservationR {
 
     public void setIdR(int idR) {
         this.idR = idR;
-        System.out.println(idR);
+       // System.out.println(idR);
     }
 
     public void setIdreservationR(int idreservationR) {

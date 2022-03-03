@@ -37,7 +37,7 @@ public class AjouterReservationRFrontController implements Initializable {
     @FXML
     private TextField llbltimeR;
     @FXML
-    private TextField lblDateR;
+    private DatePicker lblDateR;
     @FXML
     private TextField lblnbpR;
 
@@ -59,7 +59,7 @@ reservationR RE1= new reservationR();
                RE1.setId_user(parseInt(lbliduser.getText()));
                RE1.setNbrPersonneR(parseInt(lblnbpR.getText()));
               RE1.setTimeR(llbltimeR.getText()); 
-              RE1.setDateR(lblDateR.getText());  
+              RE1.setDateR(String.valueOf(lblDateR.getValue()));  
                RE.AjouterReservationR(RE1);
                Alert alert =new Alert(Alert.AlertType.INFORMATION);
                alert.setTitle("succes");

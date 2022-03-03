@@ -15,6 +15,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -25,8 +26,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.models.reservationR;
+import tn.edu.esprit.services.ServiceResteau;
 import tn.edu.esprit.services.cReservationR;
+
 
 /**
  * FXML Controller class
@@ -52,8 +56,9 @@ public class ShowReservationFormController implements Initializable {
     @FXML
     private TableColumn<reservationR, String>  editcol;
                 ObservableList<reservationR> ReservationlList ;
-    @FXML
     private TextField searchInput;
+    @FXML
+    private TextField rechercheRestau;
 
     /**
      * Initializes the controller class.
@@ -77,7 +82,7 @@ public class ShowReservationFormController implements Initializable {
         ReservationlList = RE.getListResteau();
         coltidreservationR.setCellValueFactory(new PropertyValueFactory<>("idreservationR"));
         colidR.setCellValueFactory(new PropertyValueFactory<>("idR"));
-        colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+        //colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         colnbrPersonneR.setCellValueFactory(new PropertyValueFactory<>("nbrPersonneR"));
         coltimeR.setCellValueFactory(new PropertyValueFactory<>("timeR"));
         coldateR.setCellValueFactory(new PropertyValueFactory <>("dateR"));
@@ -117,8 +122,8 @@ public class ShowReservationFormController implements Initializable {
           editcol.setCellFactory(cellFoctory);  
            TableViewReservation.setItems(ReservationlList);
 }
+      
 
-    @FXML
     private void filtretReservationR(KeyEvent event)throws SQLException {
        cReservationR RE = new cReservationR();
         List <reservationR> reservationR=new ArrayList<>();
@@ -132,7 +137,7 @@ public class ShowReservationFormController implements Initializable {
         ReservationlList.clear();
         ReservationlList = FXCollections.observableArrayList(filtereresrevation); ///conversion normal list to observable list
         colidR.setCellValueFactory(new PropertyValueFactory<>("idR"));
-        colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+        //colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         colnbrPersonneR.setCellValueFactory(new PropertyValueFactory<>("nbrPersonneR"));
         coltimeR.setCellValueFactory(new PropertyValueFactory<>("timeR"));
         coldateR.setCellValueFactory(new PropertyValueFactory <>("dateR"));
