@@ -38,12 +38,15 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="pane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.MenuController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -84,26 +87,45 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="357.0" prefWidth="605.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <BorderPane layoutX="194.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0">
-               <center>
-                  <Button
-                          fx:id="menuButton"
-                          mnemonicParsing="false"
-                          prefHeight="37.0"
-                          prefWidth="130.0" style="-fx-background-color: teal;" text="START" textAlignment="CENTER"
-                          textFill="WHITE" BorderPane.alignment="CENTER"
-                          onAction="#onButtonClicked"
-                  />
-               </center>
+            <BorderPane layoutX="-1.0" prefHeight="373.0" prefWidth="640.0">
                <top>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="207.0" text="Start Personality Test" textAlignment="CENTER" textFill="#44a9c3" BorderPane.alignment="CENTER">
+                  <Label text="Personality Report" textAlignment="CENTER" textFill="#62cdc6" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </top>
+               <center>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Congratulations on finishing the test  🎉✨" textFill="#8dcdda">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Your Personality Type IS :" />
+                              <Label text="(PutPersonality From DB)" />
+                           </children>
+                        </HBox>
+                        <TextArea prefHeight="200.0" prefWidth="200.0" text="Here is the personality aspect from database" />
+                     </children>
+                  </VBox>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button alignment="CENTER" layoutX="48.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: teal;" text="Return To Menu" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+               </bottom>
             </BorderPane>
       </children>
     </AnchorPane>

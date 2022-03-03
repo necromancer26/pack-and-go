@@ -37,13 +37,17 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="pane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.MenuController">
+<?import javafx.scene.control.ToggleGroup?>
+<VBox fx:id="pane" fx:controller="com.company.gui.Question3Controller" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -84,26 +88,48 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="357.0" prefWidth="605.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <BorderPane layoutX="194.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0">
-               <center>
-                  <Button
-                          fx:id="menuButton"
-                          mnemonicParsing="false"
-                          prefHeight="37.0"
-                          prefWidth="130.0" style="-fx-background-color: teal;" text="START" textAlignment="CENTER"
-                          textFill="WHITE" BorderPane.alignment="CENTER"
-                          onAction="#onButtonClicked"
-                  />
-               </center>
+            <BorderPane layoutX="-1.0" prefHeight="373.0" prefWidth="640.0">
                <top>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="207.0" text="Start Personality Test" textAlignment="CENTER" textFill="#44a9c3" BorderPane.alignment="CENTER">
+                  <Label text="Question 3" textAlignment="CENTER" textFill="#62cdc6" BorderPane.alignment="CENTER">
                      <font>
-                        <Font size="19.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </top>
+               <center>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="More like Thinking or Feeling?" textFill="#8dcdda">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                         <fx:define>
+                             <ToggleGroup fx:id="q3ToggleGroup"/>
+                         </fx:define>
+                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Thinking" toggleGroup="$q3ToggleGroup"/>
+                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Feeling" toggleGroup="$q3ToggleGroup"/>
+                     </children>
+                  </VBox>
+               </center>
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button  layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Previous" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="nextButton" onAction="#onButtonClicked" alignment="CENTER" layoutX="73.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: teal;" text="Next" textFill="WHITE" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+               </bottom>
             </BorderPane>
       </children>
     </AnchorPane>
