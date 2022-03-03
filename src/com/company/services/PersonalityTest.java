@@ -128,20 +128,6 @@ public class PersonalityTest implements IPersonalityTestService {
                 System.err.println(exception.getMessage());
             }
         });
-/*        try {
-            String req1="SELECT `social_name`,`social_details` FROM `social_style` WHERE `social_id` LIKE (SELECT `social` FROM `personality` WHERE `personality_id` LIKE (SELECT `personality_id` FROM `user_personality` WHERE (`user_id` ="+n+") ));";
-            //String req1 ="SELECT `personality_id` FROM `user_personality` WHERE (`user_personality`.`user_id` = "+n+") ;";
-            //Statement st = cnx.createStatement();
-            PreparedStatement ps = cnx.prepareStatement(req1);
-            //ps.setInt(1, 6);
-            ResultSet rs = ps.executeQuery(req1);
-            while(rs.next()){
-                System.out.println(rs.getString(1));
-                System.out.println(rs.getString(2));
-            }
-        }catch (Exception exception){
-            System.err.println(exception.getMessage());
-        }*/
         return hashMap;
     }
 }

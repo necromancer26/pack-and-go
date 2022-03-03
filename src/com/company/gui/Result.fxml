@@ -57,55 +57,86 @@
                <center>
                   <VBox alignment="TOP_CENTER" prefHeight="306.0" prefWidth="640.0" style="-fx-padding: 30; -fx-max-width: 80; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 20; -fx-background-color: #edf2f4;" BorderPane.alignment="CENTER">
                      <children>
-                        <Label style="-fx-padding: 10;" text="Congratulations on finishing the test  🎉✨" textFill="#8dcdda">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label style="-fx-padding: 10;" text="Congratulations" textFill="#8dcdda">
+                                 <font>
+                                    <Font name="Ayuthaya" size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" style="-fx-alignment: CENTER;" text="🎉">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Label>
+                              <Label text="✨">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
                         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" style="-fx-padding: 10;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" text="Your Personality Type Is :" textFill="#62cdc6" />
-                              <Label fx:id="personalityResult" style="-fx-background-insets: 30; -fx-border-insets: 30;" text="(PutPersonality From DB)" textFill="#e9c46a" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Your Personality Type Is :" textFill="#62cdc6">
+                                 <font>
+                                    <Font name="Ayuthaya" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="personalityResult" style="-fx-padding: 0 10;" text="(PutPersonality From DB)" textFill="#e9c46a">
+                                 <font>
+                                    <Font name="Ayuthaya" size="15.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
                            <children>
                               <Label fx:id="socialStyle" style="-fx-padding: 10 5;" text="Component  1" textFill="#94d2bd">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Ayuthaya" size="26.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="socialStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0" />
+                              <Text fx:id="socialStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                                 <font>
+                                    <Font name="Ayuthaya" size="13.0" />
+                                 </font></Text>
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
                            <children>
                               <Label fx:id="processingStyle" style="-fx-padding: 10 5;" text="Component 2" textFill="#94d2bd">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Ayuthaya" size="26.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="processingStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0" />
+                              <Text fx:id="processingStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                                 <font>
+                                    <Font name="Ayuthaya" size="13.0" />
+                                 </font></Text>
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
                            <children>
                               <Label fx:id="decisionMakingStyle" style="-fx-padding: 10 0;" text="Component 3" textFill="#94d2bd">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Ayuthaya" size="26.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="decisionMakingStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0" />
+                              <Text fx:id="decisionMakingStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                                 <font>
+                                    <Font name="Ayuthaya" size="13.0" />
+                                 </font></Text>
                            </children>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
                            <children>
                               <Label fx:id="interactionStyle" style="-fx-padding: 10 0;" text="Component 4" textFill="#94d2bd">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Ayuthaya" size="26.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="interactionStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0" />
+                              <Text fx:id="interactionStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                                 <font>
+                                    <Font name="Ayuthaya" size="13.0" />
+                                 </font></Text>
                            </children>
                         </VBox>
                      </children>
