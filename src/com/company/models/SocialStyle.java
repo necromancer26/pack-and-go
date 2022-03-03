@@ -5,6 +5,15 @@ public class SocialStyle {
     private final String socialName;
     private final String socialDetails;
 
+    @Override
+    public String toString() {
+        return "SocialStyle{" +
+                "socialId='" + socialId + '\'' +
+                ", socialName='" + socialName + '\'' +
+                ", socialDetails='" + socialDetails + '\'' +
+                '}';
+    }
+
     public SocialStyle(String socialId, String socialName, String socialDetails) {
         this.socialId = socialId;
         this.socialName = socialName;

@@ -61,7 +61,6 @@ public class Question4Controller implements Initializable {
 
     public void onPreviousClicked(javafx.event.ActionEvent actionEvent) {
         try {
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../gui/Question3.fxml"));
             VBox yourNewView = fxmlLoader.load();
             pane.getChildren().setAll(yourNewView);

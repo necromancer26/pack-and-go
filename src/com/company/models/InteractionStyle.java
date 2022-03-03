@@ -3,12 +3,21 @@ package com.company.models;
 public class InteractionStyle {
     private final String interactionId;
     private final String interactionName;
-    private final String interactionMakingDetails;
+    private final String interactionDetails;
 
     public InteractionStyle(String interactionId, String interactionName, String interactionMakingDetails) {
         this.interactionId = interactionId;
         this.interactionName = interactionName;
-        this.interactionMakingDetails = interactionMakingDetails;
+        this.interactionDetails = interactionMakingDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "InteractionStyle{" +
+                "interactionId='" + interactionId + '\'' +
+                ", interactionName='" + interactionName + '\'' +
+                ", interactionMakingDetails='" + interactionDetails + '\'' +
+                '}';
     }
 
     public String getInteractionId() {
@@ -19,7 +28,7 @@ public class InteractionStyle {
         return interactionName;
     }
 
-    public String getInteractionMakingDetails() {
-        return interactionMakingDetails;
+    public String getInteractionDetails() {
+        return interactionDetails;
     }
 }

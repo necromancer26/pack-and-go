@@ -46,7 +46,8 @@ public class PersonalityTest implements IPersonalityTestService {
 
     public void ajouterUserPersonality(User user,String personalityResult) {
         try {
-            String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?);";
+            //String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?) ;";
+            String req="INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ( (SELECT `user`.`id_user` FROM `user` WHERE `username` LIKE ?), 'INTP' ) ON DUPLICATE KEY UPDATE `personality_id` = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, user.getUsername());
             ps.setString(2, personalityResult);

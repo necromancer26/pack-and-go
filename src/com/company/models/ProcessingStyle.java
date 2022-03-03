@@ -19,6 +19,15 @@ public class ProcessingStyle {
         return processingName;
     }
 
+    @Override
+    public String toString() {
+        return "ProcessingStyle{" +
+                "processingId='" + processingId + '\'' +
+                ", processingName='" + processingName + '\'' +
+                ", processingDetails='" + processingDetails + '\'' +
+                '}';
+    }
+
     public String getProcessingDetails() {
         return processingDetails;
     }

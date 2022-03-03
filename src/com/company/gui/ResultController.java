@@ -114,6 +114,7 @@ public class ResultController implements Initializable {
             VBox yourNewView = fxmlLoader.load();
             pane.getChildren().setAll(yourNewView);
             MenuController menuController = fxmlLoader.getController();
+           testResult="";
         } catch (Exception ioException) {
             System.err.println(ioException.getMessage());
         }

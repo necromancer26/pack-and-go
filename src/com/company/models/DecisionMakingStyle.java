@@ -17,6 +17,15 @@ public class DecisionMakingStyle {
         return decisionMakingDetails;
     }
 
+    @Override
+    public String toString() {
+        return "DecisionMakingStyle{" +
+                "decisionMakingId='" + decisionMakingId + '\'' +
+                ", decisionMakingName='" + decisionMakingName + '\'' +
+                ", decisionMakingDetails='" + decisionMakingDetails + '\'' +
+                '}';
+    }
+
     public DecisionMakingStyle(String decisionMakingId, String decisionMakingName, String decisionMakingDetails) {
         this.decisionMakingId = decisionMakingId;
         this.decisionMakingName = decisionMakingName;
