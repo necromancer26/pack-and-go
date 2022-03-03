@@ -36,7 +36,7 @@
             </Text>
             <FontAwesomeIcon blendMode="DARKEN" fill="#261bf5" glyphName="REPEAT" layoutX="613.0" layoutY="137.0" onMouseClicked="#refrechReservation" size="2em" strokeMiterLimit="100.0" text="" wrappingWidth="55.00000303983688" />
             <Pane layoutX="621.0" layoutY="90.42857360839844" />
-            <TextField fx:id="searchInput" layoutX="669.0" layoutY="116.0" onKeyTyped="#filtretReservationR" />
+            <TextField fx:id="searchInput" layoutX="669.0" layoutY="116.0" onKeyTyped="#filtretReservationR" visible="false" />
             <Pane layoutX="215.0" prefHeight="563.0" prefWidth="3.0" style="-fx-background-color: #4DB6AC;" />
             <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="206.0" prefHeight="357.0" prefWidth="195.0">
                <children>

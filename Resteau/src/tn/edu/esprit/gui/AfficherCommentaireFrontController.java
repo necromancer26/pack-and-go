@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -70,24 +71,29 @@ public void liteCommentaire(){
             FileInputStream F1 = null;
            
                 try{
-                Pane pane = new Pane();
+                       Pane pane = new Pane();
                 pane.setStyle(" -fx-background-color: white");
                 Pane pane2 = new Pane();
                 pane2.setLayoutX(150);
                 pane2.setLayoutY(150);
+                
                 Pane panequantitet = new Pane();
-                   pane2.setLayoutX(150);
+                pane2.setLayoutX(150);
                 pane2.setLayoutY(150);
                 pane2.setPrefWidth(pane2.getWidth() + 250);
                 pane2.setPrefHeight(pane2.getHeight() + 150);
                 pane2.setStyle("-fx-background-radius: 50;");
                 pane2.setStyle(" -fx-border-radius: 10 10 10 10;-fx-border-color: #3f2b63;");
 
+                
+                
                 panequantitet.setLayoutX(100);
                 panequantitet.setLayoutY(40);
                 panequantitet.setPrefWidth(panequantitet.getWidth() + 160);
                 panequantitet.setPrefHeight(panequantitet.getHeight() + 30);
-                Text quan1 = new Text("ID : ");
+                    
+  
+                Text quan1 = new Text("ID Restau : ");
                 Label quant2 = new Label(String.valueOf(p3.getIdR() ));
                 quan1.setLayoutX(150);
                 quan1.setLayoutY(80);
@@ -95,15 +101,26 @@ public void liteCommentaire(){
                 quant2.setLayoutY(80);
                 quan1.setStyle("-fx-font-weight: bold;-fx-fill : #d82819;-fx-font-size:15px;");
                 quant2.setStyle("-fx-font-weight: bold;-fx-fill : #d82819;-fx-font-size:15px;");
+                
                 panequantitet.getChildren().addAll(quan1, quant2);
-                Text nomt = new Text("type: ");
+                 Text idt = new Text("Id user: ");
+                 Label id = new Label(String.valueOf(p3.getid_user())); 
+                 idt.setLayoutX(100);
+                 idt.setLayoutY(20);
+                 id.setLayoutX(250);
+                 id.setLayoutY(5);
+                Text nomt = new Text("Contenu Commentaire: ");
                 Label nom = new Label(p3.getContenuCommentaireR()); 
                 nomt.setLayoutX(100);
-                nomt.setLayoutY(20);
-                nom.setLayoutX(150);
-                nom.setLayoutY(10);
-                pane2.getChildren().addAll(nomt,nom,panequantitet);
+                nomt.setLayoutY(40);
+                nom.setLayoutX(250);
+                nom.setLayoutY(30);
+              
+           
+
+                pane2.getChildren().addAll(idt,nomt,id,nom,panequantitet);
                 Panes.add(pane2);
+
      } catch (Exception ex) {
   } finally {
                 try {
@@ -117,7 +134,24 @@ public void liteCommentaire(){
            listcmntr.setItems(Panes);
                 
 } 
+
+    @FXML
+    private void getBack(MouseEvent event) {
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("FrontRestau.fxml"));
+        try {
+            Parent root = LOADER.load();
+            Scene sc = new Scene(root);
+            FrontRestauController cntr = LOADER.getController();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(sc);
+            window.show();
+        } catch (Exception ex) {
+
+        }
+   
+    }
 }
+    
 
     
 

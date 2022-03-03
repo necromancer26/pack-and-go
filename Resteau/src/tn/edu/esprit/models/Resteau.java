@@ -21,6 +21,8 @@ public class Resteau {
     private String telR; 
     private int idR;
     static int idd;
+    public static final String REGEX = "[a-zA-Z]";
+public static final String REGEXnumber = "[1-9]";
 
      public static int getIdd() {
         return idd;

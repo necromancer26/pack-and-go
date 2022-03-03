@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tn.edu.esprit.gui.AfficherCommentaireFrontController">
+<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.AfficherCommentaireFrontController">
    <children>
-      <ListView fx:id="listcmntr" layoutX="385.0" layoutY="114.0" prefHeight="368.0" prefWidth="396.0" />
+      <ListView fx:id="listcmntr" layoutX="39.0" layoutY="114.0" prefHeight="368.0" prefWidth="856.0" />
       <Label layoutX="255.0" layoutY="39.0" text="Les commentaires" textFill="#730d79">
          <font>
             <Font name="Bodoni MT Bold Italic" size="32.0" />
          </font>
       </Label>
+      <FontAwesomeIcon blendMode="DARKEN" fill="#261bf5" glyphName="REPEAT" layoutX="187.0" layoutY="86.0" onMouseClicked="#getBack" size="2em" strokeMiterLimit="100.0" text="" wrappingWidth="55.00000303983688" />
    </children>
 </AnchorPane>

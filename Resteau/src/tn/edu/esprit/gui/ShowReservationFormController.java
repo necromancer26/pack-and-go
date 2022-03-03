@@ -22,10 +22,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import javafx.util.converter.IntegerStringConverter;
 import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.models.reservationR;
 import tn.edu.esprit.services.ServiceResteau;
@@ -42,13 +44,13 @@ public class ShowReservationFormController implements Initializable {
      @FXML
     private TableView<reservationR> TableViewReservation;
     @FXML
-    private TableColumn<reservationR, String> coltidreservationR;
+    private TableColumn<reservationR, Integer> coltidreservationR;
     @FXML
-    private TableColumn<reservationR, String>  colidR;
+    private TableColumn<reservationR, Integer>  colidR;
     @FXML
-    private TableColumn<reservationR, String>  colid_user;
+    private TableColumn<reservationR, Integer>  colid_user;
     @FXML
-    private TableColumn<reservationR, String>  colnbrPersonneR;
+    private TableColumn<reservationR, Integer>  colnbrPersonneR;
     @FXML
     private TableColumn<reservationR, String>  coltimeR;
     @FXML
@@ -60,19 +62,22 @@ public class ShowReservationFormController implements Initializable {
     @FXML
     private TextField rechercheRestau;
 
-    /**
-     * Initializes the controller class.
-     */
+    
+    // Initializes the controller class.
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
                 loadDate();
+                 editTableView();
+                           modifier();
     }    
 
     @FXML
     private void refrechReservation(MouseEvent event) {
                         loadDate();
+                         
 
     }
 
@@ -104,7 +109,11 @@ public class ShowReservationFormController implements Initializable {
                             refrechReservation();
                                                               
                         });
-                             HBox managebtn = new HBox(deleteButton);
+                          final Button editButton = new Button("UPDATE");
+                        editButton.setOnAction(event -> {
+                            modifier();
+                      });
+                         HBox managebtn = new HBox(editButton, deleteButton);
                         managebtn.setStyle("-fx-alignment:center");
                         setGraphic(managebtn);
                         setText(null);
@@ -122,34 +131,58 @@ public class ShowReservationFormController implements Initializable {
           editcol.setCellFactory(cellFoctory);  
            TableViewReservation.setItems(ReservationlList);
 }
-      
+     private void modifier() {
+                  reservationR R1 =TableViewReservation.getSelectionModel().getSelectedItem();
 
-    private void filtretReservationR(KeyEvent event)throws SQLException {
-       cReservationR RE = new cReservationR();
-        List <reservationR> reservationR=new ArrayList<>();
-           List <reservationR>reservation=RE.getListResteau();
-        List<reservationR> filtereresrevation = new ArrayList<>();
-        if (!searchInput.getText().isEmpty()) {
-            filtereresrevation = reservationR.stream().filter(p -> p.getIdreservationR().startsWith((parseInt(searchInput.getText())).collect(Collectors.toList());
-        } else {
-            filtereresrevation = reservationR;
-        }
-        ReservationlList.clear();
-        ReservationlList = FXCollections.observableArrayList(filtereresrevation); ///conversion normal list to observable list
-        colidR.setCellValueFactory(new PropertyValueFactory<>("idR"));
-        //colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
-        colnbrPersonneR.setCellValueFactory(new PropertyValueFactory<>("nbrPersonneR"));
-        coltimeR.setCellValueFactory(new PropertyValueFactory<>("timeR"));
-        coldateR.setCellValueFactory(new PropertyValueFactory <>("dateR"));
+      cReservationR R = new cReservationR();
+       ObservableList<reservationR> ReservationlList ;
+                ReservationlList =R.getListResteau();
+                TableViewReservation.setItems(ReservationlList);
+         try{
+             R.modifierReservationR(new reservationR (R1.getIdreservationR(),R1.getIdR(),R1.getId_user(),R1.getNbrPersonneR(),R1.getTimeR(),R1.getDateR()));
+             Alert alert =new Alert(Alert.AlertType.INFORMATION);
+             alert.show();
+             alert.setTitle("updated");
+             alert.setContentText("updated succesfully ");
+         }catch (Exception e){
+          
 
-        TableViewReservation.setEditable(true); //clickable
-        TableViewReservation.setItems(ReservationlList); //remplir tableview with observablz list
+            System.out.println(e.getMessage());
+        }  
+         TableViewReservation.setItems(R.getListResteau());
     }
+        
+public void editTableView()
+{
     
-}
-    
+        TableViewReservation.setEditable(true);
+       // tblChambres.setEditable(true);
+        
+       colnbrPersonneR.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        colnbrPersonneR.setOnEditCommit(e -> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setNbrPersonneR(e.getNewValue());
+        });
+       
+        
+       coltimeR.setCellFactory(TextFieldTableCell.forTableColumn());   
+        coltimeR.setOnEditCommit(e -> {
+           e.getTableView().getItems().get(e.getTablePosition().getRow()).setTimeR(e.getNewValue());
+        });
+       
+
+        coldateR.setCellFactory(TextFieldTableCell.forTableColumn());        
+        coldateR.setOnEditCommit(e -> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setDateR(e.getNewValue());
+        });
+
+} 
+
    
     
+}
 
+    
+
+   
     
 
