@@ -20,6 +20,20 @@ import java.time.Month;
 import java.util.*;
 
 public class ResultController implements Initializable {
+
+    private static String testResult="";
+
+    public static void setTest(String test) {
+        ResultController.testResult += test;
+    }
+    public void submitReport(){
+        personalityTest.ajouterUserPersonality(user,testResult);
+    }
+
+    public static String getTestResult() {
+        return testResult;
+    }
+
     @FXML
     private Button returnToMenu;
     @FXML
@@ -52,18 +66,19 @@ public class ResultController implements Initializable {
     private PersonalityTest personalityTest = new PersonalityTest();
     private PersonalityController personalityController = new PersonalityController();
     private HashMap<String, String> hashMap = new HashMap<>();
-    private User user = new User("khalil", "ch", "kh@gmail.com", "aesthetik", "1234", 55111222, Roles.CLIENT, LocalDateTime.of(1995, Month.JUNE, 26, 17, 45), LocalDateTime.now(), LocalDateTime.now());
+    private User user = new User("khalil", "ch", "kh@gmail.com", "khalilch06", "1234", 55111222, Roles.CLIENT, LocalDateTime.of(1995, Month.JUNE, 26, 17, 45), LocalDateTime.now(), LocalDateTime.now());
 
     public void setPersonalityReport(Text personalityReport) {
         this.personalityReport.setText(personalityReport.getText());
     }
     public void getPersonality(){
-        personalityResult.setText(personalityController.getPersonality(user).getPersonalityId());
+        personalityResult.setText(personalityController.getPersonality(testResult).getPersonalityId());
     }
 
     public void getReport() {
 
         //this.personalityReport.setText(personalityTest.getAllPersonalityUsers().toString());
+        personalityTest.ajouterUserPersonality(user,testResult);
         hashMap = personalityTest.getPersonalityReport(user);
         hashMap.forEach((key, value) -> {
             if (key.equals("Extroverted")  || key.equals("Introverted")) {
@@ -100,7 +115,7 @@ public class ResultController implements Initializable {
             pane.getChildren().setAll(yourNewView);
             MenuController menuController = fxmlLoader.getController();
         } catch (Exception ioException) {
-            System.out.println(ioException.getMessage());
+            System.err.println(ioException.getMessage());
         }
     }
 }

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface IPersonalityTestService {
-    void ajouterUserPersonality(User user);
+    void ajouterUserPersonality(User user,String personalityResult);
 
     void modifierUserPersonality(User user);
 

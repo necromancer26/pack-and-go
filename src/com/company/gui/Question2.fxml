@@ -109,8 +109,8 @@
                          <fx:define>
                              <ToggleGroup fx:id="q2ToggleGroup"/>
                          </fx:define>
-                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Intuition" toggleGroup="$q2ToggleGroup"/>
-                        <RadioButton mnemonicParsing="false" style="-fx-padding: 10;" text="Sensing" toggleGroup="$q2ToggleGroup"/>
+                        <RadioButton fx:id="radioButton1" onAction="#onRadioButton1Clicked" mnemonicParsing="false" style="-fx-padding: 10;" text="Intuition" toggleGroup="$q2ToggleGroup"/>
+                        <RadioButton fx:id="radioButton2" onAction="#onRadioButton2Clicked" mnemonicParsing="false" style="-fx-padding: 10;" text="Sensing" toggleGroup="$q2ToggleGroup"/>
                      </children>
                   </VBox>
                </center>

@@ -1,18 +1,13 @@
 package com.company.gui;
-
-import com.company.models.Personality;
 import com.company.services.PersonalityController;
-import com.mysql.cj.xdevapi.FindStatementImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
@@ -32,7 +27,7 @@ public class MenuController implements Initializable {
     }
     public void init(){
         PersonalityController personalityController=new PersonalityController();
-        System.out.println(personalityController.getAllPersonality().toString());
+        //System.out.println(personalityController.getAllPersonality().toString());
     }
 
     public void onButtonClicked(javafx.event.ActionEvent actionEvent) {

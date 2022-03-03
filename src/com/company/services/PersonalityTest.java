@@ -44,12 +44,12 @@ public class PersonalityTest implements IPersonalityTestService {
         return result;
     }
 
-    public void ajouterUserPersonality(User user) {
+    public void ajouterUserPersonality(User user,String personalityResult) {
         try {
             String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?);";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, user.getUsername());
-            ps.setString(2, test());
+            ps.setString(2, personalityResult);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

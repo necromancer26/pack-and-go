@@ -46,4 +46,22 @@ public class PersonalityController implements IPersonalityService {
         }
         return personality;
     }
+    @Override
+    public Personality getPersonality(String personalityId) {
+        Personality personality = null;
+        try {
+
+            String req = "SELECT * FROM `personality` WHERE `personality`.`personality_id` LIKE ?  LIMIT 1 ;";
+            //Statement st = cnx.createStatement();
+            PreparedStatement preparedStatement = cnx.prepareStatement(req);
+            preparedStatement.setString(1, personalityId);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                personality = new Personality(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return personality;
+    }
 }
