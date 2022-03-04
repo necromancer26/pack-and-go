@@ -51,10 +51,13 @@
                         </TextField>
                         <Label layoutX="58.0" layoutY="170.0" prefHeight="0.0" prefWidth="127.0" />
                         <Label layoutX="-169.0" layoutY="221.0" prefHeight="0.0" prefWidth="127.0" />
-                        <Label fx:id="nomHotel" layoutX="349.0" layoutY="162.0" prefHeight="59.0" prefWidth="568.0" styleClass="fancytext" stylesheets="@bootstrap.css" textFill="#0f8070">
+                        <Label fx:id="nomHotel" layoutX="190.0" layoutY="162.0" prefHeight="59.0" prefWidth="572.0" styleClass="fancytext" stylesheets="@bootstrap.css" textFill="#0f8070">
                            <font>
                               <Font name="Constantia Bold Italic" size="40.0" />
                            </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
                         </Label>
                         <Button fx:id="annulerReserv" layoutX="532.0" layoutY="643.0" mnemonicParsing="false" onAction="#annulerReserv" prefHeight="57.0" prefWidth="145.0" style="-fx-background-color: #EF9A9A; -fx-text-fill: white;" text="Annuler">
                            <font>
@@ -68,11 +71,12 @@
                   </Group>
                </children>
             </HBox>
-            <ImageView fitHeight="97.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="98.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/img/logo.png" />
                </image>
             </ImageView>
+            <Pane layoutX="430.0" layoutY="14.0" prefHeight="123.0" prefWidth="361.0" style="-fx-background-color: #E0F2F1; -fx-background-radius: 55;" />
             <Label fx:id="nomHotel1" layoutX="507.0" layoutY="14.0" prefHeight="85.0" prefWidth="207.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="RESERVATION" textFill="#878787">
                <font>
                   <Font name="Cambria Bold" size="30.0" />

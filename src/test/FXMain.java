@@ -27,7 +27,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            URL fxURL = getClass().getResource("../gui/AfficherHotelsForm.fxml"); //AfficherHotelFront AfficherHotelsForm
+            URL fxURL = getClass().getResource("../gui/Menu.fxml"); //AfficherHotelFront AfficherHotelsForm
             Parent root = FXMLLoader.load(fxURL);
             Scene scene = new Scene(root);
             String css = this.getClass().getResource("../gui/bootstrap.css").toExternalForm();

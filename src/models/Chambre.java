@@ -83,8 +83,8 @@ public class Chambre {
             Image new_image = new Image("file:" +image);      
             img = new ImageView();
             img.setImage(new_image); 
-            img.setFitWidth(100);
-            img.setFitHeight(100);
+            img.setFitWidth(270);
+            img.setFitHeight(150);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -136,7 +136,6 @@ public class Chambre {
     }
 
     public void setId_chambre(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
     

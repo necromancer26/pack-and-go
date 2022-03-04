@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,10 +56,14 @@ public class AfficherChambresFrontController implements Initializable {
         listChambres();
         String c = sh.getNomByIDHotel(index);
         nomHotel.setText("Hotel \n" +c); 
+        nomHotel.setLayoutX(5);
+        nomHotel.setLayoutX(50);
         ImageView img = null;
         Image new_image = new Image("file:" + sh.getImageByid(index));   
         img = new ImageView();
         img.setImage(new_image); 
+        img.setLayoutX(20);
+        img.setLayoutY(50);
         img.setFitWidth(200);
         img.setFitHeight(200);
         imageHotel.getChildren().add(img);
@@ -86,9 +91,9 @@ public class AfficherChambresFrontController implements Initializable {
                 final Button btnreserver = new Button("Réserver");     
                 btnreserver.setStyle("-fx-font: 18px Serif;");
                 btnreserver.setStyle("-fx-padding: 20;");
-                btnreserver.setStyle("-fx-alignment:right;");
-                btnreserver.setLayoutX(500);
-                btnreserver.setLayoutY(50);
+                btnreserver.setAlignment(Pos.CENTER_RIGHT);
+                btnreserver.setLayoutX(700);
+                btnreserver.setLayoutY(60);
                 btnreserver.setStyle("-fx-background-color: #80CBC4;");
                 
                 btnreserver.setOnAction(event -> {
@@ -110,8 +115,8 @@ public class AfficherChambresFrontController implements Initializable {
                 image.setFitWidth(400);
                 image.setFitHeight(300);
                 image.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);");
-                image.setLayoutX(350);
-                image.setLayoutY(300);
+                image.setLayoutX(390);
+                image.setLayoutY(150);
                 pane2.getChildren().add(image);
                 
                 Text numt = new Text("Numéro de chambre ");
@@ -121,7 +126,7 @@ public class AfficherChambresFrontController implements Initializable {
                 numt.setLayoutX(70);
                 numt.setLayoutY(30);
                 num.setLayoutX(300);
-                num.setLayoutY(5);
+                num.setLayoutY(10);
               
                 Text typet = new Text("Chambre ");
                 Label type = new Label(p3.getType_chambre());
@@ -130,7 +135,7 @@ public class AfficherChambresFrontController implements Initializable {
                 typet.setLayoutX(70);
                 typet.setLayoutY(70);
                 type.setLayoutX(200);
-                type.setLayoutY(45);              
+                type.setLayoutY(50);              
                 
                 Text etaget = new Text("Se situe au " + p3.getEtage()+ " ème étage ");
                 Label etage = new Label(String.valueOf(p3.getEtage()));
@@ -147,8 +152,8 @@ public class AfficherChambresFrontController implements Initializable {
                 prix.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;-fx-fill : #80CBC4");;
                 prixt.setLayoutX(70);
                 prixt.setLayoutY(150);
-                prix.setLayoutX(300);
-                prix.setLayoutY(125);              
+                prix.setLayoutX(200);
+                prix.setLayoutY(130);              
               
                 pane2.getChildren().addAll(numt, typet, etaget, prixt, num, type, prix);
                 Panes.add(pane2);

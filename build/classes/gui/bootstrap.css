@@ -248,7 +248,7 @@
     -fx-background-color: #E0F2F1;
 }
 .myDialog > *.button-bar > *.container{
-    -fx-background-color: #00BCD4;
+    -fx-background-color: #26A69A;
 }
 .myDialog > *.label.content{
     -fx-font-size: 14px;
@@ -267,7 +267,6 @@
      -fx-background-color: #EF9A9A;
 }
 .errDialog > *.button-bar > *.container{
-    -fx-background-color: #FFCDD2;
 }
 .errDialog > *.label.content{
     -fx-font-size: 14px;

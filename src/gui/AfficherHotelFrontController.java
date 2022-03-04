@@ -7,9 +7,15 @@ package gui;
 
 import java.io.FileInputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,10 +25,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import models.Chambre;
 import models.Hotel;
 import org.controlsfx.control.Rating;
 import services.ServiceChambre;
@@ -40,6 +49,8 @@ public class AfficherHotelFrontController implements Initializable {
     private ListView<Pane> listViewHotels;
     
     ServiceChambre sch = new ServiceChambre();
+    ServiceHotel sh = new ServiceHotel();
+
 
     /**
      * Initializes the controller class.
@@ -53,7 +64,6 @@ public class AfficherHotelFrontController implements Initializable {
     public void listHotels(){
      //   ObservableList<Pane> refresh = FXCollections.observableArrayList();
       //  listViewHotels.setItems(refresh);
-        ServiceHotel sh = new ServiceHotel();
         ObservableList<Pane> Panes = FXCollections.observableArrayList();
         for (Hotel p3 : sh.getListHotels()){
             FileInputStream F1 = null; 
@@ -91,18 +101,18 @@ public class AfficherHotelFrontController implements Initializable {
                 
                 ImageView image = p3.getImg(); 
                 image.setFitWidth(400);
-                image.setFitHeight(270);
+                image.setFitHeight(350);
                 image.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);");
-                image.setLayoutX(400);
-                image.setLayoutY(180);
+                image.setLayoutX(470);
+                image.setLayoutY(120);
                 pane2.getChildren().add(image);
                 
                 Text nomt = new Text("HOTEL ");
                 Label nom = new Label(p3.getNom_hotel());
-                nomt.setLayoutX(125);
+                nomt.setLayoutX(140);
                 nomt.setLayoutY(30);
                 nomt.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-fill: #26A69A");
-                nom.setLayoutX(250);
+                nom.setLayoutX(225);
                 nom.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #00695C");
                 nom.setLayoutY(5);
               
@@ -124,7 +134,7 @@ public class AfficherHotelFrontController implements Initializable {
                 nbr_chambrest.setLayoutX(70);
                 nbr_chambrest.setLayoutY(110);
                 nbr_chambres.setLayoutX(300);
-                nbr_chambres.setLayoutY(85);
+                nbr_chambres.setLayoutY(87);
                 
                 Text adresset = new Text("Adresse :  ");
                 Label adresse = new Label(p3.getAdresse()); 
@@ -150,7 +160,7 @@ public class AfficherHotelFrontController implements Initializable {
                 tel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;-fx-text-fill : #263238");               
                 telt.setLayoutX(70);
                 telt.setLayoutY(230);
-                tel.setLayoutX(300);
+                tel.setLayoutX(280);
                 tel.setLayoutY(205);
               
                 Text emailt = new Text("Email:  ");
@@ -159,7 +169,7 @@ public class AfficherHotelFrontController implements Initializable {
                 email.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;-fx-text-fill : #263238");               
                 emailt.setLayoutX(70);
                 emailt.setLayoutY(270);
-                email.setLayoutX(300);
+                email.setLayoutX(260);
                 email.setLayoutY(245);        
               
                 pane2.getChildren().addAll(nomt, nbr_chambrest, adresset, payst, emailt, telt, nbr_etoiles, nom, nbr_chambres, adresse, pays,tel,email);
@@ -179,4 +189,5 @@ public class AfficherHotelFrontController implements Initializable {
             
         }
     }
+
 }

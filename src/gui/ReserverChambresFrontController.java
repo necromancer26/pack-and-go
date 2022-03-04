@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
@@ -61,40 +62,67 @@ public class ReserverChambresFrontController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         prix.setText(Integer.toString(sch.getPrixByID(index_ch))+" DT");
         prix.setDisable(true);
-        check_in.setValue(LocalDate.now());
-        String c = sch.getNomByID(index_ch);
-        nomHotel.setText("Hotel: " +c);   
         
-    }    
+        String c = sch.getNomByID(index_ch);
+        nomHotel.setText("Hotel: " +c);
+        
+        
+        check_in.setValue(LocalDate.now().plusDays(1));
+                
+        check_in.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 1 );
+            }
+        });
+        check_out.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                LocalDate check = check_in.getValue().plusDays(1);
+                setDisable(empty || date.isBefore(check));
+            }
+        });
+        check_in.valueProperty().addListener((ov, oldValue, newValue) -> {
+            check_out.setValue(newValue.plusDays(1));
+        });
+    }
 
     @FXML
     private void ReserverChambreHotel(ActionEvent event) {
-        Chambre c = sch.getChambreByID(index_ch);
-        ReservationChambre reservation = new ReservationChambre(Date.valueOf(check_in.getValue()), Date.valueOf(check_out.getValue()) , Integer.parseInt(id_user.getText()), c.getId_chambre() );
-        sreserv.ajouter(reservation);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Succes");
-        alert.setHeaderText("Réservation effectuée avec succès!");
-        alert.setContentText("Merci d'avoir choisir Pack&Go");  
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getResource("bootstrap.css").toExternalForm());
-        dialogPane.getStyleClass().add("myDialog");
-        alert.setOnCloseRequest((evt) ->{
-            try {
-                URL fxURL = getClass().getResource("AfficherHotelFront.fxml");
-                FXMLLoader LOADER = new FXMLLoader(fxURL);
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                AfficherHotelFrontController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
-        });
-        alert.showAndWait();
-
+        if(id_user.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fail");
+            alert.setHeaderText("Failed!");
+            alert.setContentText("Remplir tous les champs");              
+        }else{
+            Chambre c = sch.getChambreByID(index_ch);
+            ReservationChambre reservation = new ReservationChambre(Date.valueOf(check_in.getValue()), Date.valueOf(check_out.getValue()) , Integer.parseInt(id_user.getText()), c.getId_chambre() );
+            sreserv.ajouter(reservation);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succes");
+            alert.setHeaderText("Réservation effectuée avec succès!");
+            alert.setContentText("Merci d'avoir choisir Pack&Go");  
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("bootstrap.css").toExternalForm());
+            dialogPane.getStyleClass().add("myDialog");
+            alert.setOnCloseRequest((evt) ->{
+                try {
+                    URL fxURL = getClass().getResource("AfficherHotelFront.fxml");
+                    FXMLLoader LOADER = new FXMLLoader(fxURL);
+                    Parent root = LOADER.load();
+                    Scene sc = new Scene(root);
+                    AfficherHotelFrontController cntr = LOADER.getController();
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(sc);
+                    window.show();
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            });
+            alert.showAndWait();
+        }
     }
 
     @FXML
