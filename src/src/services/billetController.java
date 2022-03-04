@@ -4,6 +4,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sun.istack.internal.NotNull;
 import com.sun.media.jfxmedia.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +21,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
-import src.Billet;
+
+
 import src.models.modelBillet;
 //import src.models.modelBillet;
 
@@ -267,7 +269,8 @@ public class billetController implements Initializable {
     private class ButtonCell extends TableCell<Object, Boolean> {
         final Hyperlink cellButtonDelete = new Hyperlink("Delete");
         final Hyperlink cellButtonEdit = new Hyperlink("Edit");
-        final HBox hb = new HBox(cellButtonDelete, cellButtonEdit);
+        final Hyperlink cellButtonPrint = new Hyperlink("Print");
+        final HBox hb = new HBox(cellButtonDelete, cellButtonEdit, cellButtonPrint);
 
         ButtonCell(final TableView tableBillet) {
             hb.setSpacing(4);
@@ -288,6 +291,52 @@ public class billetController implements Initializable {
                 statusClick = "0";
                 statusCode = "0";
             });
+            //cell Print
+            cellButtonPrint.setOnAction((ActionEvent t) -> {
+                try {
+                    int row = getTableRow().getIndex();
+                    modelBillet m = (modelBillet) tableBillet.getItems().get(row);
+                     int a = m.getId();
+                    String nom =  m.get_nom();
+                   String prenom =  m.get_prenom();
+
+
+                    Document doc = new Document();
+
+
+                    String file_name = "C:\\Users\\emird\\Desktop//reclamation.pdf";
+                    try {
+                        PdfWriter.getInstance(doc, new FileOutputStream(file_name));
+                    } catch (DocumentException e) {
+                        e.printStackTrace();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    doc.open();
+                    doc.addTitle("Evenemet: " + a);
+                    try {
+                        doc.add(new Paragraph("nom user : '" + nom + "'"));
+                    } catch (DocumentException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        doc.add(new Paragraph("prenom user: '" + prenom + "'"));
+                    } catch (DocumentException e) {
+                        e.printStackTrace();
+                    }
+                    doc.close();
+                    try {
+                        Desktop.getDesktop().open(new File(file_name));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    doc.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            });
+
 
             //cell edit
             cellButtonEdit.setOnAction((ActionEvent event) -> {
@@ -299,6 +348,7 @@ public class billetController implements Initializable {
             });
         }
 
+
         @Override
         protected void updateItem(Boolean t, boolean empty) {
             super.updateItem(t, empty);
@@ -308,94 +358,8 @@ public class billetController implements Initializable {
                 setGraphic(null);
             }
         }
-
-        //*************************************pdf*****************************************************
-        TableColumn<modelBillet, Void> gotobtn = new TableColumn("PDF");
-        Callback<TableColumn<modelBillet, Void>, TableCell<modelBillet, Void>> cellFactory
-                = new Callback<TableColumn<modelBillet, Void>, TableCell<modelBillet, Void>>() {
-
-            @Override
-            public TableCell<modelBillet, Void> call(final TableColumn<modelBillet, Void> param) {
-                final TableCell<modelBillet, Void> cell = new TableCell<modelBillet, Void>() {
-
-                    private final Button btn = new Button("Pdf");
-
-                    {
-                        btn.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                try {
-                                    modelBillet data = getTableView().getItems().get(getIndex());
-                                    int a = data.getId();
-                                    System.out.println(a);
-                                    String nom = data.get_nom();
-                                    String prenom = data.get_prenom();
-
-
-                                    Document doc = new Document();
-
-
-                                    String file_name = "C:\\Users\\ASUS\\Desktop\\GYF_2\\GYF\\src\\GUI//reclamation.pdf";
-                                    try {
-                                        PdfWriter.getInstance(doc, new FileOutputStream(file_name));
-                                    } catch (DocumentException e) {
-                                        e.printStackTrace();
-                                    } catch (FileNotFoundException e) {
-                                        e.printStackTrace();
-                                    }
-                                    doc.open();
-                                    doc.addTitle("Evenemet: " + a);
-                                    try {
-                                        doc.add(new Paragraph("nom user : '" + nom + "'"));
-                                    } catch (DocumentException e) {
-                                        e.printStackTrace();
-                                    }
-                                    try {
-                                        doc.add(new Paragraph("prenom user: '" + prenom + "'"));
-                                    } catch (DocumentException e) {
-                                        e.printStackTrace();
-                                    }
-                                    doc.close();
-                                    try {
-                                        Desktop.getDesktop().open(new File(file_name));
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                    doc.close();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-
-                        });
-
-                    }
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(btn);
-                        }
-                    }
-                };
-                return cell;
-
-
-            }
-
-
-        };
-       // gotobtn.setCellFactory(cellFactory);
-
-      //  tableBillet.getColumns().add(gotobtn);
     }
-
 }
-
 
 
 
