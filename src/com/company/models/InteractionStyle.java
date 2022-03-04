@@ -1,9 +1,22 @@
 package com.company.models;
 
 public class InteractionStyle {
-    private final String interactionId;
-    private final String interactionName;
-    private final String interactionDetails;
+    private  String interactionId;
+    private  String interactionName;
+    private  String interactionDetails;
+
+
+    public void setInteractionId(String interactionId) {
+        this.interactionId = interactionId;
+    }
+
+    public void setInteractionName(String interactionName) {
+        this.interactionName = interactionName;
+    }
+
+    public void setInteractionDetails(String interactionDetails) {
+        this.interactionDetails = interactionDetails;
+    }
 
     public InteractionStyle(String interactionId, String interactionName, String interactionMakingDetails) {
         this.interactionId = interactionId;

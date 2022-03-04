@@ -1,6 +1,6 @@
 package com.company.models;
 
-public class UserPersonality {
+public class UserPersonality implements Comparable{
 
 
     private int userPersonalityId;
@@ -44,5 +44,10 @@ public class UserPersonality {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

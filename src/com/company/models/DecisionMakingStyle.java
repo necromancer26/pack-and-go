@@ -1,9 +1,21 @@
 package com.company.models;
 
 public class DecisionMakingStyle {
-    private final String decisionMakingId;
-    private final String decisionMakingName;
-    private final String decisionMakingDetails;
+    private  String decisionMakingId;
+    private  String decisionMakingName;
+    private  String decisionMakingDetails;
+
+    public void setDecisionMakingId(String decisionMakingId) {
+        this.decisionMakingId = decisionMakingId;
+    }
+
+    public void setDecisionMakingName(String decisionMakingName) {
+        this.decisionMakingName = decisionMakingName;
+    }
+
+    public void setDecisionMakingDetails(String decisionMakingDetails) {
+        this.decisionMakingDetails = decisionMakingDetails;
+    }
 
     public String getDecisionMakingId() {
         return decisionMakingId;

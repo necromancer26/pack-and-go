@@ -1,9 +1,22 @@
 package com.company.models;
 
 public class SocialStyle {
-    private final String socialId;
-    private final String socialName;
-    private final String socialDetails;
+    private  String socialId;
+    private  String socialName;
+
+    public void setSocialId(String socialId) {
+        this.socialId = socialId;
+    }
+
+    public void setSocialName(String socialName) {
+        this.socialName = socialName;
+    }
+
+    public void setSocialDetails(String socialDetails) {
+        this.socialDetails = socialDetails;
+    }
+
+    private  String socialDetails;
 
     @Override
     public String toString() {

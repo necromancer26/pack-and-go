@@ -67,7 +67,19 @@ public class PersonalityTest implements IPersonalityTestService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-
+    }
+    public void modifierUserPersonality(UserPersonality userPersonality) {
+        try {
+            String req="UPDATE `user_personality` SET `user_personality_id` = ? WHERE `user_personality`.`user_id` = ?;";
+            //String req="UPDATE `user_personality` SET `personality_id` = ? WHERE `user_personality`.`user_id` = ? ;";
+            //String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?);";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, userPersonality.getUserPersonalityId());
+            ps.setInt(2, userPersonality.getUserId());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
     public void supprimerUserPersonality(User user){
         try {
@@ -80,12 +92,18 @@ public class PersonalityTest implements IPersonalityTestService {
             System.err.println(ex.getMessage());
         }
     }
-    public void supprimerUserPersonality(int userPersonalityId){
+
+    @Override
+    public void supprimerUserPersonality(int userPersonalityId) {
+
+    }
+
+    public void supprimerUserPersonality(UserPersonality userPersonality){
         try {
-            String req="DELETE FROM `user_personality` WHERE `user_personality`.`user_personality_id`=? LIMIT1;";
+            String req="DELETE FROM `user_personality` WHERE `user_personality`.`user_personality_id`= ? ;";
             //String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?);";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, userPersonalityId);
+            ps.setInt(1, userPersonality.getUserPersonalityId());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

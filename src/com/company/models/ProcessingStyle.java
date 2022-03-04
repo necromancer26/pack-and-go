@@ -1,9 +1,21 @@
 package com.company.models;
 
 public class ProcessingStyle {
-    private final String processingId;
-    private final String processingName;
-    private final String processingDetails;
+    public void setProcessingId(String processingId) {
+        this.processingId = processingId;
+    }
+
+    public void setProcessingName(String processingName) {
+        this.processingName = processingName;
+    }
+
+    public void setProcessingDetails(String processingDetails) {
+        this.processingDetails = processingDetails;
+    }
+
+    private  String processingId;
+    private  String processingName;
+    private  String processingDetails;
 
     public ProcessingStyle(String processingId, String processingName, String processingDetails) {
         this.processingId = processingId;
