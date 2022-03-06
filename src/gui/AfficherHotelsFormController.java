@@ -19,6 +19,10 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -39,6 +43,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -48,6 +53,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import models.Chambre;
 import models.Hotel;
@@ -59,8 +65,10 @@ import static models.Hotel.filename;
 import static models.Hotel.pathfile;
 import static models.Chambre.filenameCh;
 import static models.Chambre.pathfileCh;
+import models.User;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
+import services.ServiceUser;
 
 /**
  * FXML Controller class
@@ -145,7 +153,7 @@ public class AfficherHotelsFormController implements Initializable {
     @FXML
     private TableColumn<ReservationChambre, String> tblCheckout;
     @FXML
-    private TableColumn<ReservationChambre, Integer> tblIdCh_fk;
+    private TableColumn<ReservationChambre, String> tblIdCh_fk;
     @FXML
     private Button btnDelReserv;
     @FXML
@@ -179,7 +187,7 @@ public class AfficherHotelsFormController implements Initializable {
     ObservableList<Chambre> ChambreList;
     ObservableList<Hotel> HotelList;     
     @FXML
-    private TableColumn<Chambre, Integer> id_user;
+    private TableColumn<ReservationChambre, String> id_user;
     
     ObservableList<String> ids ;
     @FXML
@@ -188,6 +196,8 @@ public class AfficherHotelsFormController implements Initializable {
     private Button tfSortHotels;
     @FXML
     private ComboBox<String> cbPays;
+    @FXML
+    private TableColumn<ReservationChambre, Integer> tblHotelReserv;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -217,19 +227,24 @@ public class AfficherHotelsFormController implements Initializable {
         tblEmail.setCellValueFactory(new PropertyValueFactory <>("email"));
         imgCol.setCellValueFactory(new PropertyValueFactory <>("img"));
         
+        tblHotelFK.setCellValueFactory(cellData -> 
+        new SimpleStringProperty(sh.getNomByIDHotel(cellData.getValue().getId_hotel())));
+ 
         tblNumChambre.setCellValueFactory(new PropertyValueFactory <>("num_chambre"));
         tblType.setCellValueFactory(new PropertyValueFactory <>("type_chambre"));
         tblEtage.setCellValueFactory(new PropertyValueFactory <>("etage"));
         tblPrix.setCellValueFactory(new PropertyValueFactory <>("prix"));
-        tblHotelFK.setCellValueFactory(new PropertyValueFactory <>("id_hotel"));  
         
         tblImageChambre.setCellValueFactory(new PropertyValueFactory<>("img"));
-
         tblNumReserv.setCellValueFactory(new PropertyValueFactory <>("num_reservation"));
         tblCheckin.setCellValueFactory(new PropertyValueFactory<>("check_in"));
         tblCheckout.setCellValueFactory(new PropertyValueFactory<>("check_out"));
-        id_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
-        tblIdCh_fk.setCellValueFactory(new PropertyValueFactory<>("id_chambre"));
+        
+        tblIdCh_fk.setCellValueFactory(cellData -> 
+        new SimpleStringProperty(sch.getNomByID(cellData.getValue().getId_chambre())));
+
+        tblHotelReserv.setCellValueFactory(cellData -> 
+        new SimpleIntegerProperty(sch.getChambreByID(cellData.getValue().getId_chambre()).getNum_chambre()).asObject());
         
         tblHotels.setItems(HotelList);
         tblChambres.setItems(ChambreList);

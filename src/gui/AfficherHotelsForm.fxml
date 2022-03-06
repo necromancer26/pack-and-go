@@ -242,13 +242,14 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tblReservations" layoutX="312.0" layoutY="110.0" prefHeight="442.0" prefWidth="659.0" stylesheets="@bootstrap.css">
+                        <TableView fx:id="tblReservations" layoutX="260.0" layoutY="112.0" prefHeight="437.0" prefWidth="867.0" stylesheets="@bootstrap.css">
                           <columns>
-                            <TableColumn fx:id="tblNumReserv" prefWidth="131.0" text="Num" />
-                            <TableColumn fx:id="tblCheckin" prefWidth="169.0" text="Check-in" />
+                            <TableColumn fx:id="tblNumReserv" prefWidth="93.0" text="Num" />
+                            <TableColumn fx:id="tblCheckin" prefWidth="207.0" text="Check-in" />
                               <TableColumn fx:id="tblCheckout" prefWidth="155.0" text="Check-out" />
                               <TableColumn fx:id="id_user" prefWidth="75.0" text="ID user" />
-                              <TableColumn fx:id="tblIdCh_fk" prefWidth="123.0" text="id_chambre" />
+                              <TableColumn fx:id="tblHotelReserv" prefWidth="145.0" text="Num chambre" />
+                              <TableColumn fx:id="tblIdCh_fk" prefWidth="188.0" text="Hotel" />
                           </columns>
                         </TableView>
                         <Button fx:id="btnDelReserv" layoutX="312.0" layoutY="565.0" mnemonicParsing="false" onAction="#deleteReserv" style="-fx-background-color: red; -fx-text-fill: white;" text="Supprimer">
