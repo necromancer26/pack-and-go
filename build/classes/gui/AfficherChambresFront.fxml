@@ -7,7 +7,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -21,10 +20,9 @@
       </Label>
       <ImageView fitHeight="68.0" fitWidth="163.0" layoutX="40.0" layoutY="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/img/logo.png" />
+            <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <Pane fx:id="imageHotel" layoutX="22.0" layoutY="438.0" prefHeight="265.0" prefWidth="248.0" />
       <FontAwesomeIcon fx:id="back" glyphName="BACKWARD" layoutX="14.0" layoutY="40.0" onMouseClicked="#getBack" size="30" wrappingWidth="51.928571701049805" />
       <VBox layoutX="157.0" layoutY="15.0" prefHeight="84.0" prefWidth="1117.0" style="-fx-border-radius: 30;" styleClass="vbox" stylesheets="@bootstrap.css" />
       <VBox layoutX="1087.0" layoutY="29.0" prefHeight="60.0" prefWidth="170.0" styleClass="user" stylesheets="@bootstrap.css">
@@ -97,13 +95,10 @@
             </FontAwesomeIcon>
          </children>
       </VBox>
-      <Label fx:id="nomHotel" layoutY="290.0" prefHeight="148.0" prefWidth="292.0" styleClass="fancytext" stylesheets="@bootstrap.css" textAlignment="CENTER" textFill="#20867e">
+      <Label fx:id="nomHotel" alignment="CENTER" layoutX="5.0" layoutY="310.0" prefHeight="131.0" prefWidth="292.0" styleClass="fancytext" stylesheets="@bootstrap.css" textAlignment="CENTER" textFill="#20867e">
          <font>
-            <Font name="Cambria Bold" size="31.0" />
+            <Font name="Cambria Bold" size="26.0" />
          </font>
-         <padding>
-            <Insets left="40.0" />
-         </padding>
       </Label>
       <VBox layoutX="168.0" layoutY="29.0" prefHeight="60.0" prefWidth="149.0" styleClass="user" stylesheets="@bootstrap.css">
          <children>
@@ -117,5 +112,6 @@
             </Label>
          </children>
       </VBox>
+      <ImageView fx:id="imgHotel" fitHeight="250.0" fitWidth="250.0" layoutX="25.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

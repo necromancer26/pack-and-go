@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+import MailingHotel.Mail;
 import static gui.AfficherChambresFrontController.index_ch;
 import java.net.URL;
 import java.sql.Date;
@@ -54,19 +55,21 @@ public class ReserverChambresFrontController implements Initializable {
     private Button annulerReserv;
     @FXML
     private Label nomHotel1;
+    @FXML
+    private TextField tfMail;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        prix.setText(Integer.toString(sch.getPrixByID(index_ch))+" DT");
+        
+       /* prix.setText(Integer.toString(sch.getPrixByID(index_ch))+" DT");*/
         prix.setDisable(true);
         
         String c = sch.getNomByID(index_ch);
         nomHotel.setText("Hotel: " +c);
-        
-        
+                
         check_in.setValue(LocalDate.now().plusDays(1));
                 
         check_in.setDayCellFactory(picker -> new DateCell() {
@@ -87,10 +90,11 @@ public class ReserverChambresFrontController implements Initializable {
         check_in.valueProperty().addListener((ov, oldValue, newValue) -> {
             check_out.setValue(newValue.plusDays(1));
         });
+        
     }
 
     @FXML
-    private void ReserverChambreHotel(ActionEvent event) {
+    private void ReserverChambreHotel(ActionEvent event) throws Exception {
         if(id_user.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fail");
@@ -122,6 +126,7 @@ public class ReserverChambresFrontController implements Initializable {
                 }
             });
             alert.showAndWait();
+            Mail.sendMail(tfMail.getText());
         }
     }
 
@@ -138,6 +143,12 @@ public class ReserverChambresFrontController implements Initializable {
         } catch (Exception ex) {
 
         }  
+    }
+
+    @FXML
+    private void calculerPrix(ActionEvent event) {
+        int nbr_nuit = (int)(check_out.getValue().getDayOfMonth() - check_in.getValue().getDayOfMonth());
+        prix.setText(Integer.toString(sch.getPrixByID(index_ch) * nbr_nuit )+" DT");
     }
     
 }

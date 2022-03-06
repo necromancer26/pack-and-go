@@ -22,7 +22,7 @@
                   <Group>
                      <children>
                         <DatePicker fx:id="check_in" layoutX="239.0" layoutY="355.0" style="-fx-border-radius: 30; -fx-border-color: #B2DFDB; -fx-background-color: green;" />
-                        <DatePicker fx:id="check_out" layoutX="240.0" layoutY="426.0" prefHeight="31.0" prefWidth="218.0" style="-fx-border-color: #B2DFDB; -fx-background-color: green;" />
+                        <DatePicker fx:id="check_out" layoutX="240.0" layoutY="426.0" onAction="#calculerPrix" prefHeight="31.0" prefWidth="218.0" style="-fx-border-color: #B2DFDB; -fx-background-color: green;" />
                         <Label layoutX="126.0" layoutY="355.0" prefHeight="33.0" prefWidth="119.0" text="CHECK-IN">
                            <font>
                               <Font name="Segoe UI Black Italic" size="16.0" />
@@ -64,6 +64,7 @@
                               <Font name="Eras Bold ITC" size="18.0" />
                            </font>
                         </Button>
+                        <TextField fx:id="tfMail" layoutX="490.0" layoutY="260.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="80.0" right="20.0" top="20.0" />
@@ -73,7 +74,7 @@
             </HBox>
             <ImageView fitHeight="98.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/img/logo.png" />
+                  <Image url="@../img/logo.png" />
                </image>
             </ImageView>
             <Pane layoutX="430.0" layoutY="14.0" prefHeight="123.0" prefWidth="361.0" style="-fx-background-color: #E0F2F1; -fx-background-radius: 55;" />

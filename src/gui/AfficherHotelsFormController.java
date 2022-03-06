@@ -10,9 +10,12 @@ import javafx.scene.image.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
@@ -52,6 +55,7 @@ import services.ServiceChambre;
 import services.ServiceHotel;
 import services.ServiceReservationChambre;
 import static models.Hotel.filename;
+import static models.Hotel.pathfile;
 import static models.Chambre.filenameCh;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
@@ -186,12 +190,13 @@ public class AfficherHotelsFormController implements Initializable {
     private TextField tfRechercheCh;
     @FXML
     private Button tfSortHotels;
+    @FXML
+    private ComboBox<String> countires;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
-
-        
+       
         
     }  
    
@@ -207,7 +212,6 @@ public class AfficherHotelsFormController implements Initializable {
         ObservableList<ReservationChambre> ReservationList;
         ReservationList = sres_ch.getListReservations();
         
-        tblIdHotel.setCellValueFactory(new PropertyValueFactory <>("id_hotel"));
         tblNomHotel.setCellValueFactory(new PropertyValueFactory <>("nom_hotel"));
         tblNbrEtoiles.setCellValueFactory(new PropertyValueFactory <>("nbr_etoiles"));
         tblNbrChambres.setCellValueFactory(new PropertyValueFactory <>("nbr_chambres"));
@@ -217,7 +221,6 @@ public class AfficherHotelsFormController implements Initializable {
         tblEmail.setCellValueFactory(new PropertyValueFactory <>("email"));
         imgCol.setCellValueFactory(new PropertyValueFactory <>("img"));
         
-        tblIdChambre.setCellValueFactory(new PropertyValueFactory <>("id_chambre"));
         tblNumChambre.setCellValueFactory(new PropertyValueFactory <>("num_chambre"));
         tblType.setCellValueFactory(new PropertyValueFactory <>("type_chambre"));
         tblEtage.setCellValueFactory(new PropertyValueFactory <>("etage"));
@@ -238,6 +241,26 @@ public class AfficherHotelsFormController implements Initializable {
 
         editTableView();      
         
+        ObservableList<String> cities = FXCollections.observableArrayList();
+        String[] locales1 = Locale.getISOCountries();
+        for (String countrylist : locales1) {
+            Locale obj = new Locale("", countrylist);
+            String[] city = { obj.getDisplayCountry() };
+            for (int x = 0; x < city.length; x++) {
+                cities.add(obj.getDisplayCountry());
+            }
+        }
+        countires.setItems(cities);
+        
+     /*  int size = (int) (Math.random() * 100);
+    Integer[] result = new Integer[size];
+
+    for (int i = 0; i < result.length; i++) {
+        result[i] = (int) (Math.random() * 50);
+
+    }
+            countires.getItems().addAll(result);*/
+
         
        /* Callback<TableColumn<ReservationChambre, String>, TableCell<ReservationChambre, String>> cellFoctory = (TableColumn<ReservationChambre, String> param) -> {
             final TableCell<ReservationChambre, String> cell = new TableCell<ReservationChambre, String>() {
@@ -277,11 +300,13 @@ public class AfficherHotelsFormController implements Initializable {
             return cell;
         };
         
-        delColR.setCellFactory(cellFoctory);*/
+        delColR.setCellFactory(cellFoctory);*/     
+    
     }
     
     @FXML
-    private void AjouterHotel(ActionEvent event) {     
+    private void AjouterHotel(ActionEvent event) {    
+        
         if((tfNomHotel.getText().isEmpty()) || (tfNbrChambres.getText().isEmpty()) || (tfAdresse.getText().isEmpty()) || (tfPays.getText().isEmpty()) || (tfTel.getText().isEmpty()) || (tfEmail.getText().isEmpty())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("fail !");
@@ -337,8 +362,7 @@ public class AfficherHotelsFormController implements Initializable {
                         public void handle(ActionEvent event) {
                             System.out.println("clicked on");
                         }
-                    });
-            
+                    });         
             notificationBuilder.show();
         }      
     }
@@ -352,14 +376,27 @@ public class AfficherHotelsFormController implements Initializable {
             String img = f.getAbsoluteFile().toURI().toString();
             Image image = new Image(img);
             imgviewHotel.setImage(image);
+            pathfile = f.getAbsolutePath();
+            filename = f.getAbsolutePath();
+            String path = "uploads\\";
+            File uploads = new File(path);
             String imagecomp = f.getAbsolutePath();
-            Hotel.filename = filename + imagecomp;
-            Hotel.pathfile = f.getAbsolutePath();
-        }
+            int index = imagecomp.lastIndexOf('\\');
+            if (index > 0) {
+                  pathfile = imagecomp.substring(index + 1);
+            }          
+            File sf = null;
+            sf = new File(filename);
+            File dest = null;
+            Random rand = new Random();
+            int n = rand.nextInt(50);
+            String newpath = path + n*125 + pathfile ;
+            dest = new File(newpath);
+            Files.copy(sf.toPath(), dest.toPath());
+            pathfile =  path + pathfile ;
+        }     
         imgviewHotel.setFitHeight(135);
         imgviewHotel.setFitWidth(270);    
-        Hotel.filename = null;
-        
     }
          
     private void cleanHotel() {
@@ -378,7 +415,7 @@ public class AfficherHotelsFormController implements Initializable {
      public void modifierHotel(){
         Hotel h = tblHotels.getSelectionModel().getSelectedItem();
         try{
-            sh.modifier(new Hotel(h.getId_hotel(), h.getNom_hotel(), h.getNbr_etoiles(), h.getNbr_chambres(), h.getAdresse(), h.getPays(), h.getTel(), h.getEmail(), Hotel.filename));
+            sh.modifier(new Hotel(h.getId_hotel(), h.getNom_hotel(), h.getNbr_etoiles(), h.getNbr_chambres(), h.getAdresse(), h.getPays(), h.getTel(), h.getEmail()));
             Notifications notificationBuilder = Notifications.create()
                     .title("Alert Succès").text("Modification effectuée!").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
                     .position(Pos.CENTER)
@@ -585,6 +622,7 @@ public class AfficherHotelsFormController implements Initializable {
                 notificationBuilder.show();         
             cleanCh();
             Refresh();
+            
         }
     }
 
@@ -593,6 +631,7 @@ public class AfficherHotelsFormController implements Initializable {
         tfType.setText(null);
         tfEtage.setText(null);
         tfPrix.setText(null);        
+        imgviewChambre.setImage(null);
     }
     
     @FXML
@@ -648,7 +687,7 @@ public class AfficherHotelsFormController implements Initializable {
     private void modifierChambre(ActionEvent event) {
         Chambre ch = tblChambres.getSelectionModel().getSelectedItem();
         try{
-            sch.modifier(new Chambre(ch.getId_chambre(), ch.getNum_chambre(), ch.getType_chambre(), ch.getEtage(), ch.getPrix(), ch.filenameCh, ch.getId_hotel()));
+            sch.modifier(new Chambre(ch.getId_chambre(), ch.getNum_chambre(), ch.getType_chambre(), ch.getEtage(), ch.getPrix(), ch.getId_hotel()));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             Notifications notificationBuilder = Notifications.create()
                     .title("Alert Succès").text("Modification effectuée!").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
@@ -758,8 +797,9 @@ public class AfficherHotelsFormController implements Initializable {
                     return true;
                 }else if(String.valueOf(Hotel.getNbr_chambres()).toLowerCase().startsWith(lowerCaseFilter)) {
                     return true;
-                }else if (String.valueOf(Hotel.getId_hotel()).startsWith(lowerCaseFilter))
-                     return true;
+                }else if(String.valueOf(Hotel.getNbr_etoiles()).toLowerCase().startsWith(lowerCaseFilter)) {
+                    return true;
+                }
                 else
                     return false; 
             });
@@ -768,6 +808,7 @@ public class AfficherHotelsFormController implements Initializable {
         SortedList<Hotel> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tblHotels.comparatorProperty());
         tblHotels.setItems(sortedData);
+        tblHotels.refresh();
     }
 
     private void printListHotel(ActionEvent event) {
@@ -820,7 +861,7 @@ public class AfficherHotelsFormController implements Initializable {
     private void sortHotels(ActionEvent event) {
         ObservableList<Hotel> list1;
         ObservableList<Hotel> list2= sh.getListHotels();
-        list1= list2.stream().sorted((o1,o2)->o1.getNbr_etoiles()-o2.getNbr_etoiles()).collect((Collectors.toCollection(FXCollections::observableArrayList)));
+        list1= list2.stream().sorted((o1,o2)->o2.getNbr_etoiles()-o1.getNbr_etoiles()).collect((Collectors.toCollection(FXCollections::observableArrayList)));
         tblHotels.setItems(list1);
     }
    

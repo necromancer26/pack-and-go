@@ -64,14 +64,13 @@ public class ServiceChambre implements IHotel<Chambre>{
     @Override
     public void modifier(Chambre t) {
        try {
-           String req = "UPDATE chambre SET  num_chambre=?, type_chambre=?, etage=?, prix=?, image=? WHERE id_chambre =?";
+           String req = "UPDATE chambre SET  num_chambre=?, type_chambre=?, etage=?, prix=? WHERE id_chambre =?";
            PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, t.getNum_chambre());           
             ps.setString(2, t.getType_chambre());
             ps.setInt(3, t.getEtage());
             ps.setInt(4, t.getPrix());
-            ps.setString(5, t.getImage());
-            ps.setInt(6, t.getId_chambre());
+            ps.setInt(5, t.getId_chambre());
             ps.executeUpdate(); 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

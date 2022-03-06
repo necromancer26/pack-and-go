@@ -68,7 +68,7 @@ public class ServiceHotel implements IHotel<Hotel>{
     @Override
     public void modifier(Hotel t) {
        try {
-           String req = "UPDATE hotel SET  nom_hotel=?, nbr_etoiles=?, nbr_chambres=?, adresse=? ,pays=? ,tel= ?, email=?, image=? WHERE id_hotel =?";
+           String req = "UPDATE hotel SET  nom_hotel=?, nbr_etoiles=?, nbr_chambres=?, adresse=? ,pays=? ,tel= ?, email=? WHERE id_hotel =?";
            PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, t.getNom_hotel());
             ps.setInt(2, t.getNbr_etoiles());
@@ -77,8 +77,7 @@ public class ServiceHotel implements IHotel<Hotel>{
             ps.setString(5, t.getPays()); 
             ps.setInt(6, t.getTel());
             ps.setString(7, t.getEmail());
-            ps.setString(8, t.getEmail());
-            ps.setInt(9, t.getId_hotel());
+            ps.setInt(8, t.getId_hotel());
             ps.executeUpdate(); 
             System.out.println("modification saretttt !");
         } catch (SQLException ex) {

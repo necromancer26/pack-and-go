@@ -148,5 +148,15 @@ public class Hotel {
         this.email = email;
         this.image = image;
     }
+    public Hotel(int id_hotel, String nom_hotel, int nbr_etoiles, int nbr_chambres, String adresse, String pays, int tel, String email) {
+        this.id_hotel = id_hotel;
+        this.nom_hotel = nom_hotel;
+        this.nbr_etoiles = nbr_etoiles;
+        this.nbr_chambres = nbr_chambres;
+        this.adresse = adresse;
+        this.pays = pays;
+        this.tel = tel;
+        this.email = email;
+    }
 
 }

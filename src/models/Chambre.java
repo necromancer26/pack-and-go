@@ -36,6 +36,15 @@ public class Chambre {
         this.id_hotel = id_hotel;
         
     }
+    public Chambre(int id_chambre, int num_chambre, String type_chambre, int etage, int prix, int id_hotel) {
+        this.id_chambre = id_chambre;
+        this.num_chambre = num_chambre;
+        this.type_chambre = type_chambre;
+        this.etage = etage;
+        this.prix = prix;
+        this.id_hotel = id_hotel;
+        
+    }
 
     public Chambre(int num_chambre, String type_chambre, int etage, int prix, String image, int id_hotel) {
         this.num_chambre = num_chambre;
@@ -56,11 +65,9 @@ public class Chambre {
     }
 
     public Chambre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Chambre(int index_ch) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

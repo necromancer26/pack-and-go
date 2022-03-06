@@ -45,9 +45,9 @@ public class AfficherChambresFrontController implements Initializable {
     private Label nomHotel;
     ServiceHotel sh = new ServiceHotel();
     @FXML
-    private Pane imageHotel;
-    @FXML
     private FontAwesomeIcon back;
+    @FXML
+    private ImageView imgHotel;
     /**
      * Initializes the controller class.
      */
@@ -56,17 +56,8 @@ public class AfficherChambresFrontController implements Initializable {
         listChambres();
         String c = sh.getNomByIDHotel(index);
         nomHotel.setText("Hotel \n" +c); 
-        nomHotel.setLayoutX(5);
-        nomHotel.setLayoutX(50);
-        ImageView img = null;
         Image new_image = new Image("file:" + sh.getImageByid(index));   
-        img = new ImageView();
-        img.setImage(new_image); 
-        img.setLayoutX(20);
-        img.setLayoutY(50);
-        img.setFitWidth(200);
-        img.setFitHeight(200);
-        imageHotel.getChildren().add(img);
+        imgHotel.setImage(new_image); 
     }
 
     public void listChambres(){
@@ -168,7 +159,6 @@ public class AfficherChambresFrontController implements Initializable {
             listViewChambres.setPrefHeight(listViewChambres.getHeight() + 800);
             listViewChambres.setPrefHeight(listViewChambres.getWidth() + 800);
             listViewChambres.setItems(Panes);
-
         }
     }
 
