@@ -160,5 +160,9 @@ public class CommentaireResteau implements ICom<Commentaire>  {
         return list;
     }
 
+    public void supprimerCommentaireR(int inde) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 }

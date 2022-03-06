@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,6 +26,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -46,7 +49,12 @@ import static tn.edu.esprit.gui.FrontRestauController.index;
 public class AfficherCommentaireFrontController implements Initializable {
     @FXML
     private ListView<Pane> listcmntr;
-
+ private int selectedIndex=-1;
+        public static int inde = 0;
+    @FXML
+    private TextField rechercheRestau;
+    @FXML
+    private Button rechercherRestauFront;
 
     /**
      * Initializes the controller class.
@@ -58,13 +66,11 @@ public class AfficherCommentaireFrontController implements Initializable {
           CommentaireResteau C = new CommentaireResteau();
        ObservableList<Commentaire> commentairelList ;
        // commentairelList = C.getListcommentaire();
-
        liteCommentaire();
     }    
 
 public void liteCommentaire(){
           CommentaireResteau C = new CommentaireResteau();
-
      ObservableList<Pane> Panes = FXCollections.observableArrayList();
         for (Commentaire p3 :  C.getListCommentaireByID(index))  {
            //System.out.println(p3);
@@ -77,7 +83,7 @@ public void liteCommentaire(){
                 pane2.setLayoutX(150);
                 pane2.setLayoutY(150);
                 
-                Pane panequantitet = new Pane();
+                //Pane panequantitet = new Pane();
                 pane2.setLayoutX(150);
                 pane2.setLayoutY(150);
                 pane2.setPrefWidth(pane2.getWidth() + 250);
@@ -85,8 +91,8 @@ public void liteCommentaire(){
                 pane2.setStyle("-fx-background-radius: 50;");
                 pane2.setStyle(" -fx-border-radius: 10 10 10 10;-fx-border-color: #3f2b63;");
 
-                
-                
+
+                Pane panequantitet = new Pane();
                 panequantitet.setLayoutX(100);
                 panequantitet.setLayoutY(40);
                 panequantitet.setPrefWidth(panequantitet.getWidth() + 160);
@@ -120,6 +126,59 @@ public void liteCommentaire(){
 
                 pane2.getChildren().addAll(idt,nomt,id,nom,panequantitet);
                 Panes.add(pane2);
+                final Button btnreservation = new Button("supprimer");     
+                btnreservation.setStyle("-fx-alignment:right");
+                btnreservation.setStyle("-fx-background-color: #B0E0E6;");
+                btnreservation.setLayoutX(350);
+                btnreservation.setOnAction(event -> {
+                
+         inde=p3.getIdCommentaireR();
+         C.supprimerCommentaireR(p3);
+           
+
+                
+                                                                 
+                                                           
+                       });
+                                pane2.getChildren().add(btnreservation);
+
+                      final Button btnmodifier = new Button("modifier");     
+                btnmodifier.setStyle("-fx-alignment:right");
+                btnmodifier.setStyle("-fx-background-color: #B0E0E6;");
+                btnmodifier.setLayoutX(450);
+                btnmodifier.setOnAction(event -> {
+                      inde=p3.getIdCommentaireR();
+             
+           URL fxURL = getClass().getResource("../gui/modifierCommentaireFront.fxml");
+            Parent root;
+                           try {
+                               root = FXMLLoader.load(fxURL);
+                          
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+           
+            stage.show();
+           Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+ } catch (IOException ex) {
+                               Logger.getLogger(AfficherCommentaireFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                           }
+
+         //  Panes.remove(pane2);
+       //  inde=p3.getIdCommentaireR();
+       //  C.supprimerCommentaireR(p3);
+           
+
+                
+                              //CommentaireResteau C = new CommentaireResteau();
+
+                           // Commentaire C1 = getTableView().getItems().get(getIndex());
+                                                                 
+                                                           
+                       });
+                
+                pane2.getChildren().add(btnmodifier);
+
 
      } catch (Exception ex) {
   } finally {

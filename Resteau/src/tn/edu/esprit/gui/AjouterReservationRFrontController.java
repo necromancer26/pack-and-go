@@ -103,7 +103,7 @@ reservationR RE1= new reservationR();
     @FXML
     private void affichageReserv(MouseEvent event) {
            try{
-            URL fxURL = getClass().getResource("../gui/ShowReservationForm.fxml");
+            URL fxURL = getClass().getResource("../gui/FrontReserv.fxml");
             Parent root = FXMLLoader.load(fxURL);
             Scene scene = new Scene(root);
             Stage stage = new Stage();

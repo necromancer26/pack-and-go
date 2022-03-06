@@ -10,18 +10,25 @@ package tn.edu.esprit.models;
  * @author hp
  */
 public class Commentaire {
+
     			
     private int idCommentaireR;
     private int idR;
     private int id_user;
     private String contenuCommentaireR;
-
+  static int idr;
   //  private User User;
    // private Resteau Resteau;
          private static int idres;
 
     public static int getIdres() {
         return idres;
+    }
+         public static int getIdr() {
+        return idr;
+    }
+       public static void setIdr(int idr) {
+        Commentaire.idr = idr;
     }
 
     public static void setIdres(int idres) {
