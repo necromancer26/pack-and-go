@@ -16,10 +16,28 @@ public class reservationR {
     private int id_user;
     private int idR;
     private int idreservationR;
-   
+           static int idusr;
+           static int idRESERV;
+
+    public static int getIdRESERV() {
+        return idRESERV;
+    }
+
+    public static void setIdRESERV(int idRESERV) {
+        reservationR.idRESERV = idRESERV;
+    }
+
     // private utilisateur utilisateur;
     private Resteau Resteau;
-     private static int idres;
+     static int idres;
+
+    public static int getIdusr() {
+        return idusr;
+    }
+
+    public static void setIdusr(int idusr) {
+        reservationR.idusr = idusr;
+    }
 
     public static int getIdres() {
         return idres;

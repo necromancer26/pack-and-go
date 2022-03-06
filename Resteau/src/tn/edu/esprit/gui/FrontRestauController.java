@@ -34,6 +34,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import static tn.edu.esprit.gui.AfficherCommentaireFrontController.inde;
 import tn.edu.esprit.models.Commentaire;
 import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.models.reservationR;
@@ -48,6 +49,8 @@ import tn.edu.esprit.services.ServiceResteau;
 public class FrontRestauController implements Initializable {
         public static int index = 0;
         public static int idd=0; 
+       public static int inde=0; 
+
 
     @FXML
     private Button rechercherRestauFront;

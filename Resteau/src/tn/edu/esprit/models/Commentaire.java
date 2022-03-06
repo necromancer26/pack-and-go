@@ -19,7 +19,34 @@ public class Commentaire {
   static int idr;
   //  private User User;
    // private Resteau Resteau;
-         private static int idres;
+      static int idres;
+        static int idusr;
+      static int idCOMMENT;
+
+    public static int getIdCOMMENT() {
+        return idCOMMENT;
+    }
+
+    public static void setIdCOMMENT(int idCOMMENT) {
+        Commentaire.idCOMMENT = idCOMMENT;
+    }
+
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public static int getIdusr() {
+        return idusr;
+    }
+
+    public static void setIdusr(int idusr) {
+        Commentaire.idusr = idusr;
+    }
 
     public static int getIdres() {
         return idres;

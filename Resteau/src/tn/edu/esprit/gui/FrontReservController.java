@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import static tn.edu.esprit.gui.FrontRestauController.index;
 import tn.edu.esprit.models.Commentaire;
 import tn.edu.esprit.models.Resteau;
 import tn.edu.esprit.models.reservationR;
@@ -38,6 +41,9 @@ import tn.edu.esprit.services.cReservationR;
  */
 public class FrontReservController implements Initializable {
  public static int index = 0;
+  public static int idusr = 0;
+    public static int idRESERV = 0;
+
     @FXML
     private JFXListView<Pane> listeReserve;
     @FXML
@@ -76,10 +82,55 @@ public class FrontReservController implements Initializable {
                  btnCommenter.setLayoutX(520);
                  btnCommenter.setOnAction(event -> {
                      index=p3.getIdreservationR();
+
                  RE.supprimerReservationR(p3);  
     });
                                  pane2.getChildren().add(btnCommenter);
+  final Button btnmodifier = new Button("modifier");     
+                btnmodifier.setStyle("-fx-alignment:right");
+                btnmodifier.setStyle("-fx-background-color: #B0E0E6;");
+                btnmodifier.setLayoutX(450);
+                btnmodifier.setOnAction(event -> {
+                     Resteau.setIdd(p3.getIdR());
+                  reservationR.setIdres(Resteau.getIdd());
+                  
+                  reservationR.setIdusr(p3.getId_user());
+                  reservationR.setIdRESERV(p3.getIdreservationR());
 
+                      index = p3.getIdR();
+                      idusr=p3.getId_user();
+                      idRESERV=p3.getIdreservationR();
+                      
+
+           URL fxURL = getClass().getResource("../gui/ModifReserv.fxml");
+            Parent root;
+                           try {
+                               root = FXMLLoader.load(fxURL);
+                          
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+           
+            stage.show();
+           Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+ } catch (IOException ex) {
+                               Logger.getLogger(AfficherCommentaireFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                           }
+
+         //  Panes.remove(pane2);
+       //  inde=p3.getIdCommentaireR();
+       //  C.supprimerCommentaireR(p3);
+           
+
+                
+                              //CommentaireResteau C = new CommentaireResteau();
+
+                           // Commentaire C1 = getTableView().getItems().get(getIndex());
+                                                                 
+                                                           
+                       });
+                
+                pane2.getChildren().add(btnmodifier);
     Pane panequantitet = new Pane();
                 panequantitet.setLayoutX(100);
                 panequantitet.setLayoutY(40);

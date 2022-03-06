@@ -51,6 +51,9 @@ public class AfficherCommentaireFrontController implements Initializable {
     private ListView<Pane> listcmntr;
  private int selectedIndex=-1;
         public static int inde = 0;
+        public static int idusr=0;
+        public static int idCOMMENT=0;
+
     @FXML
     private TextField rechercheRestau;
     @FXML
@@ -121,6 +124,7 @@ public void liteCommentaire(){
                 nomt.setLayoutY(40);
                 nom.setLayoutX(250);
                 nom.setLayoutY(30);
+                 
               
            
 
@@ -147,8 +151,16 @@ public void liteCommentaire(){
                 btnmodifier.setStyle("-fx-background-color: #B0E0E6;");
                 btnmodifier.setLayoutX(450);
                 btnmodifier.setOnAction(event -> {
+                     Resteau.setIdd(p3.getIdR());
+                  Commentaire.setIdres(Resteau.getIdd());
+                  Commentaire.setIdCOMMENT(p3.getIdCommentaireR());
+                  Commentaire.setIdusr(p3.getId_user());
                       inde=p3.getIdCommentaireR();
-             
+                      index = p3.getIdR();
+                      idusr=p3.getId_user();
+
+                      
+
            URL fxURL = getClass().getResource("../gui/modifierCommentaireFront.fxml");
             Parent root;
                            try {
@@ -205,6 +217,8 @@ public void liteCommentaire(){
             window.setScene(sc);
             window.show();
         } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+
 
         }
    
