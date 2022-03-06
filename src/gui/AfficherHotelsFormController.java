@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Locale;
@@ -57,6 +58,7 @@ import services.ServiceReservationChambre;
 import static models.Hotel.filename;
 import static models.Hotel.pathfile;
 import static models.Chambre.filenameCh;
+import static models.Chambre.pathfileCh;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.Rating;
 
@@ -68,8 +70,6 @@ import org.controlsfx.control.Rating;
 public class AfficherHotelsFormController implements Initializable {
     @FXML
     private TableView<Hotel> tblHotels;
-    @FXML
-    private TableColumn<Hotel, Integer> tblIdHotel;
     @FXML
     private TableColumn<Hotel, String> tblNomHotel;
     @FXML
@@ -104,8 +104,6 @@ public class AfficherHotelsFormController implements Initializable {
     @FXML
     private Button btnAjouterChambre;
     @FXML
-    private TableColumn<Chambre, Integer> tblIdChambre;
-    @FXML
     private TableColumn<Chambre, Integer> tblNumChambre;
     @FXML
     private TableColumn<Chambre, String> tblType;
@@ -130,8 +128,6 @@ public class AfficherHotelsFormController implements Initializable {
     private TextField tfNbrChambres;
     @FXML
     private TextField tfAdresse;
-    @FXML
-    private TextField tfPays;
     @FXML
     private TextField tfTel;
     @FXML
@@ -191,7 +187,7 @@ public class AfficherHotelsFormController implements Initializable {
     @FXML
     private Button tfSortHotels;
     @FXML
-    private ComboBox<String> countires;
+    private ComboBox<String> cbPays;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -250,7 +246,7 @@ public class AfficherHotelsFormController implements Initializable {
                 cities.add(obj.getDisplayCountry());
             }
         }
-        countires.setItems(cities);
+        cbPays.setItems(cities);
         
      /*  int size = (int) (Math.random() * 100);
     Integer[] result = new Integer[size];
@@ -307,7 +303,7 @@ public class AfficherHotelsFormController implements Initializable {
     @FXML
     private void AjouterHotel(ActionEvent event) {    
         
-        if((tfNomHotel.getText().isEmpty()) || (tfNbrChambres.getText().isEmpty()) || (tfAdresse.getText().isEmpty()) || (tfPays.getText().isEmpty()) || (tfTel.getText().isEmpty()) || (tfEmail.getText().isEmpty())){
+        if((tfNomHotel.getText().isEmpty()) || (tfNbrChambres.getText().isEmpty()) || (tfAdresse.getText().isEmpty()) || (cbPays.getValue().isEmpty()) || (tfTel.getText().isEmpty()) || (tfEmail.getText().isEmpty())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("fail !");
             alert.setContentText("Veuillez remplir tous les champs !");
@@ -339,18 +335,10 @@ public class AfficherHotelsFormController implements Initializable {
             dialogPane.getStylesheets().add(getClass().getResource("bootstrap.css").toExternalForm());
             dialogPane.getStyleClass().add("errDialog");
             alert.showAndWait();
-        }else if (!tfPays.getText().matches("^[A-Za-z]+$") || (tfPays.getText().length() < 3)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("fail !");
-            alert.setContentText("Veuillez insérer un pays valide!");
-            DialogPane dialogPane = alert.getDialogPane();
-            dialogPane.getStylesheets().add(getClass().getResource("bootstrap.css").toExternalForm());
-            dialogPane.getStyleClass().add("errDialog");
-            alert.showAndWait();
         }
         else{
             int nbr= (int) nbrEtoiles.getRating();
-            Hotel h = new Hotel(tfNomHotel.getText(),  nbr , Integer.parseInt(tfNbrChambres.getText()) , tfAdresse.getText() , tfPays.getText(), Integer.parseInt(tfTel.getText()), tfEmail.getText(), Hotel.pathfile );
+            Hotel h = new Hotel(tfNomHotel.getText(),  nbr , Integer.parseInt(tfNbrChambres.getText()) , tfAdresse.getText() , cbPays.getValue(), Integer.parseInt(tfTel.getText()), tfEmail.getText(), Hotel.pathfile );
             sh.ajouter(h);
             cleanHotel();
             Refresh();
@@ -390,10 +378,11 @@ public class AfficherHotelsFormController implements Initializable {
             File dest = null;
             Random rand = new Random();
             int n = rand.nextInt(50);
-            String newpath = path + n*125 + pathfile ;
+            String newpath =  path + pathfile ;
             dest = new File(newpath);
-            Files.copy(sf.toPath(), dest.toPath());
-            pathfile =  path + pathfile ;
+            Files.copy(sf.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            pathfile =  newpath ;
+            System.out.println(pathfile);
         }     
         imgviewHotel.setFitHeight(135);
         imgviewHotel.setFitWidth(270);    
@@ -403,7 +392,6 @@ public class AfficherHotelsFormController implements Initializable {
         tfNomHotel.setText(null);
         tfNbrChambres.setText(null);
         tfAdresse.setText(null);
-        tfPays.setText(null);
         tfTel.setText(null);
         tfEmail.setText(null);
         imgviewHotel.setImage(null);
@@ -755,21 +743,34 @@ public class AfficherHotelsFormController implements Initializable {
     }
 
     @FXML
-    private void uploadImageChambre(ActionEvent event) {
-       FileChooser fc = new FileChooser();
+    private void uploadImageChambre(ActionEvent event) throws IOException {
+        FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("image", "*.jpeg","*.png" , "*.jpg"));
         File f = fc.showOpenDialog(null);
         if (f != null) {
             String img = f.getAbsoluteFile().toURI().toString();
             Image image = new Image(img);
             imgviewChambre.setImage(image);
+            pathfileCh = f.getAbsolutePath();
+            filenameCh = f.getAbsolutePath();
+            String path = "uploads\\";
+            File uploads = new File(path);
             String imagecomp = f.getAbsolutePath();
-            System.out.println(imagecomp);
-            Chambre.filenameCh = filenameCh + imagecomp;
-            Chambre.pathfileCh = f.getAbsolutePath();
-        }
-        imgviewChambre.setFitHeight(150);
-        imgviewChambre.setFitWidth(250);
+            int index = imagecomp.lastIndexOf('\\');
+            if (index > 0) {
+                  pathfileCh = imagecomp.substring(index + 1);
+            }          
+            File sf = null;
+            sf = new File(filenameCh);
+            File dest = null;
+            Random rand = new Random();
+            int n = rand.nextInt(50);
+            String newpath =  path + pathfileCh ;
+            dest = new File(newpath);
+            Files.copy(sf.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            pathfileCh =  newpath ;
+            System.out.println(pathfileCh);
+        }  
     }
 
 

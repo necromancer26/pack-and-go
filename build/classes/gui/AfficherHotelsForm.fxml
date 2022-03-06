@@ -97,7 +97,7 @@
                               <TextField fx:id="tfEmail" layoutX="179.0" layoutY="275.0" prefHeight="37.0" prefWidth="210.0" promptText="email.." style="-fx-border-color: #64FFDA; -fx-background-radius: 5;" />
                               <Button fx:id="uploadImgHotel" layoutX="179.0" layoutY="318.0" mnemonicParsing="false" onAction="#uploadImageHotel" prefHeight="31.0" prefWidth="210.0" style="-fx-border-color: #64FFDA; -fx-background-radius: 5;" text="Upload image" />
                               <Rating fx:id="nbrEtoiles" layoutX="194.0" layoutY="44.0" />
-                              <ComboBox fx:id="countires" layoutX="179.0" layoutY="187.0" prefHeight="31.0" prefWidth="210.0" />
+                              <ComboBox fx:id="cbPays" layoutX="179.0" layoutY="187.0" prefHeight="31.0" prefWidth="210.0" />
                            </children>
                         </Group>
                         <HBox layoutX="413.0" layoutY="48.0" prefHeight="30.0" prefWidth="164.0" style="-fx-background-color: #B2DFDB; -fx-background-radius: 5;">
@@ -280,7 +280,7 @@
       <Pane layoutX="296.0" layoutY="-3.0" prefHeight="827.0" prefWidth="7.0" style="-fx-background-color: #4DB6AC;" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="47.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/dorsaf/OneDrive/Documents/NetBeansProjects/GestionsHotels/src/img/logo.png" />
+            <Image url="@../img/logo.png" />
          </image>
       </ImageView>
       <FontAwesomeIcon fill="#229774" glyphName="USER" layoutX="85.0" layoutY="285.0" size="30" wrappingWidth="11.785714149475098" />
@@ -315,6 +315,5 @@
             <Font name="Cambria Bold" size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="tfPays" layoutX="18.0" layoutY="571.0" prefHeight="31.0" prefWidth="210.0" promptText="pays.." style="-fx-border-color: #64FFDA; -fx-background-radius: 5;" />
    </children>
 </AnchorPane>
