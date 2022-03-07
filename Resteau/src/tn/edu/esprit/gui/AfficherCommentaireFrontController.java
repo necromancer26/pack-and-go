@@ -101,7 +101,7 @@ public void liteCommentaire(){
                 panequantitet.setPrefWidth(panequantitet.getWidth() + 160);
                 panequantitet.setPrefHeight(panequantitet.getHeight() + 30);
                     
-  
+  /*
                 Text quan1 = new Text("ID Restau : ");
                 Label quant2 = new Label(String.valueOf(p3.getIdR() ));
                 quan1.setLayoutX(150);
@@ -112,6 +112,7 @@ public void liteCommentaire(){
                 quant2.setStyle("-fx-font-weight: bold;-fx-fill : #d82819;-fx-font-size:15px;");
                 
                 panequantitet.getChildren().addAll(quan1, quant2);
+*/
                  Text idt = new Text("Id user: ");
                  Label id = new Label(String.valueOf(p3.getid_user())); 
                  idt.setLayoutX(100);
@@ -128,7 +129,7 @@ public void liteCommentaire(){
               
            
 
-                pane2.getChildren().addAll(idt,nomt,id,nom,panequantitet);
+                pane2.getChildren().addAll(idt,nomt,id,nom);
                 Panes.add(pane2);
                 final Button btnreservation = new Button("supprimer");     
                 btnreservation.setStyle("-fx-alignment:right");

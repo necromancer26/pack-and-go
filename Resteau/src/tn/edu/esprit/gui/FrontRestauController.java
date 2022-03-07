@@ -209,8 +209,8 @@ public class FrontRestauController implements Initializable {
                 panequantitet.getChildren().addAll(quan1, quant2);
                 Text nomt = new Text("type: ");
                 Label nom = new Label(p3.getTypeR());   
-                Text prixt = new Text("id : ");
-                Label prix = new Label(String.valueOf(p3.getIdR()));
+               // Text prixt = new Text("id : ");
+               // Label prix = new Label(String.valueOf(p3.getIdR()));
                 Text AdressT = new Text("adress : ");
                 Label adress = new Label(p3.getAdressR());   
                 Text payT = new Text("Pays : ");
@@ -221,29 +221,25 @@ public class FrontRestauController implements Initializable {
                 nomt.setLayoutY(40);
                 nom.setLayoutX(150);
                 nom.setLayoutY(30);
-                prixt.setLayoutX(100);
-                prixt.setLayoutY(60);
-                prix.setLayoutX(150);
-                prix.setLayoutY(50);
+               
                 AdressT.setLayoutX(100);
-                AdressT.setLayoutY(80);
+                AdressT.setLayoutY(60);
                 adress.setLayoutX(150);
-                adress.setLayoutY(70);
+                adress.setLayoutY(50);
                 payT.setLayoutX(100);
-                payT.setLayoutY(95);
+                payT.setLayoutY(80);
                 pay.setLayoutX(150);
-                pay.setLayoutY(85);
+                pay.setLayoutY(70);
                 telT.setLayoutX(100);
-                telT.setLayoutY(120);
+                telT.setLayoutY(100);
                 tey.setLayoutX(150);
-                tey.setLayoutY(110);
+                tey.setLayoutY(90);
                 nomt.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
-                prixt.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
                 AdressT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
                 payT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
                 telT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
 
-                pane2.getChildren().addAll(nomt, prixt,AdressT, payT,telT,nom, prix,adress,pay,tey, panequantitet);
+                pane2.getChildren().addAll(nomt,AdressT, payT,telT,nom,adress,pay,tey, panequantitet);
                 Panes.add(pane2);
                  } catch (Exception ex) {
                 }

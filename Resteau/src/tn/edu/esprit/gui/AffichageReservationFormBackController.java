@@ -123,8 +123,11 @@ public class AffichageReservationFormBackController implements Initializable {
                          final Button editButton = new Button("UPDATE");
                         editButton.setOnAction(event -> {
                             modifier();
+                            
                               });
-                             HBox managebtn = new HBox(editButton,deleteButton);
+                   
+                            
+                        HBox managebtn = new HBox(editButton,deleteButton);
                         managebtn.setStyle("-fx-alignment:center");
                         setGraphic(managebtn);
                         setText(null);

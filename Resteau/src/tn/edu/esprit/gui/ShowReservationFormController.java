@@ -113,6 +113,9 @@ public class ShowReservationFormController implements Initializable {
                         editButton.setOnAction(event -> {
                             modifier();
                       });
+                        
+                        
+                        
                          HBox managebtn = new HBox(editButton, deleteButton);
                         managebtn.setStyle("-fx-alignment:center");
                         setGraphic(managebtn);

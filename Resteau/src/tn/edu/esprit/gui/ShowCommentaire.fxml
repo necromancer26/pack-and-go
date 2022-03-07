@@ -18,8 +18,8 @@
       <Pane layoutX="242.0" layoutY="80.0" prefHeight="3.0" prefWidth="636.0" style="-fx-background-color: #4DB6AC;" />
       <TableView fx:id="TableViewCommentaireR" layoutX="244.0" layoutY="182.0" prefHeight="263.0" prefWidth="547.0" stylesheets="@bootstrap.css">
         <columns>
-          <TableColumn fx:id="colidcmntrR" prefWidth="75.0" text="ID cmntr" />
-          <TableColumn fx:id="colidR" prefWidth="75.0" text="ID restau" />
+          <TableColumn fx:id="colidcmntrR" prefWidth="75.0" text="ID cmntr" visible="false" />
+          <TableColumn fx:id="colidR" prefWidth="75.0" text="ID restau" visible="false" />
             <TableColumn fx:id="coliduser" prefWidth="75.0" text="id user" />
             <TableColumn fx:id="colcmntrR" prefWidth="186.0" text="Commentaire" />
             <TableColumn fx:id="collllC" prefWidth="186.0" />

@@ -64,8 +64,6 @@ public class ShowRestauFormController implements Initializable {
     private TableColumn<Resteau, String> colPaysR;
     @FXML
     private TableColumn<Resteau, String> coltelR;
-    @FXML
-    private TableColumn<Resteau, Integer> colIdR;
    ObservableList<Resteau> ResteaulList = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Resteau, String> editcol;
@@ -99,7 +97,7 @@ public class ShowRestauFormController implements Initializable {
         coladresseR.setCellValueFactory(new PropertyValueFactory<>("adressR"));
         colPaysR.setCellValueFactory(new PropertyValueFactory<>("paysR"));
         coltelR.setCellValueFactory(new PropertyValueFactory<>("telR"));
-        colIdR.setCellValueFactory(new PropertyValueFactory <>("idR"));
+       // colIdR.setCellValueFactory(new PropertyValueFactory <>("idR"));
         Callback<TableColumn<Resteau, String>, TableCell<Resteau, String>> cellFoctory = (TableColumn<Resteau, String> param) -> {
             final TableCell<Resteau, String> cell = new TableCell<Resteau, String>() {
                 @Override
@@ -186,7 +184,7 @@ public class ShowRestauFormController implements Initializable {
                 ResteaulList =sp.getListResteau();
                 TableViewRestau.setItems(ResteaulList);
          try{
-             sp.modifier(new Resteau (R.getTypeR(),R.getNomR(),R.getAdressR(),R.getPaysR(),R.getTelR(),R.getIdR()));
+             sp.modifier(new Resteau (R.getTypeR(),R.getNomR(),R.getAdressR(),R.getPaysR(),R.getTelR()));
              Alert alert =new Alert(Alert.AlertType.INFORMATION);
              alert.show();
              alert.setTitle("updated");
@@ -280,8 +278,7 @@ public void editTableView(){
 					return true; // Filter matches last name.
 				}
                                 
-				else if (String.valueOf(r.getIdR()).indexOf(lowerCaseFilter)!=-1)
-				     return true;
+				
                              
 				     else  
 				    	 return false; // Does not match.

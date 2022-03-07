@@ -23,7 +23,6 @@
             <TableColumn fx:id="coladresseR" prefWidth="97.0" text="Adresss " />
             <TableColumn fx:id="colPaysR" prefWidth="84.0" text="Pays" />
             <TableColumn fx:id="coltelR" prefWidth="82.0" text="Tel" />
-            <TableColumn fx:id="colIdR" minWidth="0.0" prefWidth="99.0" text="ID" />
             <TableColumn fx:id="editcol" minWidth="0.0" prefWidth="285.0" />
         </columns>
       </TableView>
