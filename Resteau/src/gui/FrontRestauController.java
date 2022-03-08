@@ -201,7 +201,7 @@ public class FrontRestauController implements Initializable {
                 panequantitet.setPrefHeight(panequantitet.getHeight() + 30);
              
                 Text quan1 = new Text("Nom : ");
-                Label quant2 = new Label(String.valueOf(p3.getnomR() ));
+                Label quant2 = new Label(String.valueOf(p3.getNomR() ));
                 quan1.setLayoutX(50);
                 quan1.setLayoutY(-25);
                 quant2.setLayoutX(100);

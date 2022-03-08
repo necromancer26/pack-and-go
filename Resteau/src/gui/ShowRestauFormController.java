@@ -80,7 +80,9 @@ ObservableList<String> cities = FXCollections.observableArrayList();
      ObservableList<String> Type = FXCollections.observableArrayList("cafe resto"," fast food"," resto bar"); 
     @FXML
     private TableColumn<Resteau, ImageView> colimg;
-                    ServiceResteau sp = new ServiceResteau();
+   
+    ServiceResteau sp = new ServiceResteau();
+              
 
         
     /**
@@ -93,7 +95,6 @@ ObservableList<String> cities = FXCollections.observableArrayList();
         editTableView();
         modifier();
         rechercheRestau();
-                ServiceResteau sp = new ServiceResteau();
                 ResteaulList =sp.getListResteau();
                 TableViewRestau.setItems(ResteaulList); 
                 
@@ -194,9 +195,10 @@ ObservableList<String> cities = FXCollections.observableArrayList();
     }
      private void modifier() {
          Resteau R =TableViewRestau.getSelectionModel().getSelectedItem();
-          
+             
+                
          try{
-             sp.modifier(new Resteau (R.getTypeR(),R.getNomR(),R.getAdressR(),R.getPaysR(),R.getTelR(),R.getImgR()));
+             sp.modifier(new Resteau (R.getTypeR(),R.getNomR(),R.getAdressR(),R.getPaysR(),R.getTelR(),R.getIdR()));
              Alert alert =new Alert(Alert.AlertType.INFORMATION);
              alert.show();
              alert.setTitle("updated");
@@ -218,7 +220,7 @@ public void editTableView(){
         });
         colnomR.setCellFactory( TextFieldTableCell.forTableColumn());
         colnomR.setOnEditCommit(e -> {
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setnomR(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setNomR(e.getNewValue());
         });
         coladresseR.setCellFactory(TextFieldTableCell.forTableColumn());        
         coladresseR.setOnEditCommit(e -> {
@@ -282,7 +284,7 @@ public void editTableView(){
 				// Compare first name and last name of every person with filter text.
 				String lowerCaseFilter = newValue.toLowerCase();
 				
-				if (Resteau.getnomR().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+				if (Resteau.getNomR().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
 					return true; // Filter matches first name.
 				} else if (Resteau.getTypeR().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true; // Filter matches last name.

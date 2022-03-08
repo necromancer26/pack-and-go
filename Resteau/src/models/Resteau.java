@@ -28,6 +28,16 @@ public class Resteau {
     public static String filename="";
     public static final String REGEX = "[a-zA-Z]";
 public static final String REGEXnumber = "[1-9]";
+
+    public Resteau(String typeR, String nomR, String adressR, String paysR, String telR,int idR) {
+        
+        this.idR = idR;
+        this.adressR = adressR;
+        this.paysR = paysR;
+        this.telR = telR;
+        this.typeR = typeR;
+        this.nomR = nomR;
+    }
  
 public ImageView getImg() {
         ImageView img = null;
@@ -130,14 +140,14 @@ public ImageView getImg() {
     public void setAdressR(String adressR) {
         this.adressR = adressR;
     }
-       public String getnomR() {
+     /*  public String getnomR() {
         return nomR;
     }
 
     public void setnomR(String nomR) {
         this.nomR = nomR;
     }
-
+*/
     public String getTypeR() {
         return typeR;
     }

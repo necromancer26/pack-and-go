@@ -30,7 +30,7 @@ public class ServiceResteau   implements Iresteau<Resteau> {
       
     
           try {
-            String req = "INSERT INTO resteau( typeR,nomR,adressR,paysR,telR,imgR,idR) VALUES ('" + t.getTypeR()+ "' , '" + t.getnomR()+ "' , '" + t.getAdressR()+ "'  , '" +t.getPaysR()+ "' , '" +t.getTelR()+ "','" +t.getImgR()+ "',NULL)";
+            String req = "INSERT INTO resteau( typeR,nomR,adressR,paysR,telR,imgR,idR) VALUES ('" + t.getTypeR()+ "' , '" + t.getNomR()+ "' , '" + t.getAdressR()+ "'  , '" +t.getPaysR()+ "' , '" +t.getTelR()+ "','" +t.getImgR()+ "',NULL)";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("resteau  ajoutée !");
@@ -69,7 +69,7 @@ public class ServiceResteau   implements Iresteau<Resteau> {
            PreparedStatement ps = cnx.prepareStatement(req);
          //  super.modifier(t);
             ps.setString(1, t.getTypeR());
-            ps.setString(2, t.getnomR());
+            ps.setString(2, t.getNomR());
             ps.setString(3, t.getAdressR());
             ps.setString(4, t.getPaysR());
             ps.setString(5, t.getTelR());

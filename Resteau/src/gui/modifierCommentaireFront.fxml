@@ -16,12 +16,12 @@
             <Text layoutX="14.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id restaurant:" visible="false" wrappingWidth="76.498046875" />
             <ImageView fitHeight="83.0" fitWidth="191.0" layoutX="441.0" layoutY="166.0" onMouseClicked="#modifiercmntrR" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../image/cmnt.jpg" />
+                  <Image url="@image/cmnt.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../image/user.png" />
+                  <Image url="@image/user.png" />
                </image>
             </ImageView>
          </children>
