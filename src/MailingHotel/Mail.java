@@ -8,9 +8,7 @@ package MailingHotel;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Properties;
-import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import utils.DataSource;
 import javax.mail.Session;
@@ -34,9 +32,7 @@ public class Mail {
     }
 
      public static void sendMail(String recepient) throws Exception {
-        System.out.println("Preparing to send email");
         Properties properties = new Properties();
-
         //Enable authentication
         properties.put("mail.smtp.auth", "true");
         //Set TLS encryption enabled
@@ -51,7 +47,7 @@ public class Mail {
         String myAccountEmail = "packandgomail@gmail.com";
         //Your gmail password
         String password = "packandgo2022";
-//dorsaf.charfeddine@gmail.com
+        //dorsaf.charfeddine@gmail.com
         //Create a session with accosunt credentials
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             @Override
@@ -59,14 +55,11 @@ public class Mail {
                 return new PasswordAuthentication(myAccountEmail, password);
             }
         });
-
         //Prepare email message
         Message message = prepareMessage(session, myAccountEmail, recepient);
 
         //Send mail
-        Transport.send(message);
-        System.out.println("Message sent successfully");
-        
+        Transport.send(message);        
     }
 
     private static Message prepareMessage(Session session, String myAccountEmail, String recepient) {
@@ -74,8 +67,9 @@ public class Mail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("My First Email from Java App");
-            String htmlCode = "<h1 style='color: red;'> WE HATE JAVA </h1> <br/> <h2><b>Next Line </b></h2>";
+            message.setSubject("PACK AND GO");
+            String htmlCode = "<h1 style='color: green;'> Voucher Client </h1> <br/> <h2><b> Cher(e) Mr/Mme </b></h2> <h3><b> Nous vous remercions d'avoir choisir PACK AND GO pour la "
+                    + "réservation de votre séjour, ci joint votre Voucher. </b> </h3> Merci pour votre confiance. <b><h3> Réservation </h3><b>";
             message.setContent(htmlCode, "text/html");
             return message;
         } catch (Exception ex) {

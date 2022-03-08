@@ -70,7 +70,6 @@ public class AfficherChambresFrontController implements Initializable {
         for (Chambre p3 : sch.getListchambresByID(index) ) {
             FileInputStream F1 = null;                    
             try {            
-              //  pane.setStyle(" -fx-background-color: white");
                 Pane pane2 = new Pane();
                 pane2.setLayoutX(400);
                 pane2.setLayoutY(400);

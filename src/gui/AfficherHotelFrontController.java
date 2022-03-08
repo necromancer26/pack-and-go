@@ -7,15 +7,9 @@ package gui;
 
 import java.io.FileInputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,17 +19,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import models.Chambre;
 import models.Hotel;
 import org.controlsfx.control.Rating;
 import services.ServiceChambre;
 import services.ServiceHotel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 
 /**
  * FXML Controller class
@@ -58,6 +53,7 @@ public class AfficherHotelFrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listHotels();
+     
 
     }    
 

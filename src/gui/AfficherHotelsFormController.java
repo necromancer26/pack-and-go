@@ -784,7 +784,6 @@ public class AfficherHotelsFormController implements Initializable {
             dest = new File(newpath);
             Files.copy(sf.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
             pathfileCh =  newpath ;
-            System.out.println(pathfileCh);
         }  
     }
 
