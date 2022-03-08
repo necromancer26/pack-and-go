@@ -26,6 +26,7 @@
                   <TableColumn fx:id="colnbrPersonneR" prefWidth="84.0" text="nbrPersonneR" />
                   <TableColumn fx:id="coltimeR" prefWidth="82.0" text="timeR" />
                   <TableColumn fx:id="coldateR" minWidth="0.0" prefWidth="99.0" text="dateR" />
+                  <TableColumn fx:id="colNomR" minWidth="0.0" prefWidth="99.0" text="Nom R" />
                   <TableColumn fx:id="editcol" minWidth="0.0" prefWidth="285.0" />
                </columns>
             </TableView>

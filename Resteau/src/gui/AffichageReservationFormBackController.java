@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -34,6 +35,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import models.reservationR;
+import services.ServiceResteau;
 import services.cReservationR;
 
 /**
@@ -62,6 +64,8 @@ public class AffichageReservationFormBackController implements Initializable {
                 ObservableList<reservationR> ReservationlList ;
     @FXML
     private TextField searchInput;
+    @FXML
+    private TableColumn<reservationR, String> colNomR;
 
     /**
      * Initializes the controller class.
@@ -85,6 +89,7 @@ public class AffichageReservationFormBackController implements Initializable {
                 TableViewReservation.setItems(ReservationlList);*/
 
     }    
+    ServiceResteau sp = new ServiceResteau();
 
     @FXML
     private void refrechReservation(MouseEvent event) {
@@ -102,7 +107,8 @@ public class AffichageReservationFormBackController implements Initializable {
         colnbrPersonneR.setCellValueFactory(new PropertyValueFactory<>("nbrPersonneR"));
         coltimeR.setCellValueFactory(new PropertyValueFactory<>("timeR"));
         coldateR.setCellValueFactory(new PropertyValueFactory <>("dateR"));
-
+  colNomR.setCellValueFactory(cellData -> 
+       new SimpleStringProperty(sp.getNomByIDResteau(cellData.getValue().getIdR())));
 
   Callback<TableColumn<reservationR, String>, TableCell<reservationR, String>> cellFoctory = (TableColumn<reservationR, String> param) -> {
             final TableCell<reservationR, String> cell = new TableCell<reservationR, String>() {

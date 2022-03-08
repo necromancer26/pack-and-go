@@ -133,5 +133,19 @@ public class ServiceResteau   implements Iresteau<Resteau> {
         }
         return ResteaulList; 
     }
+    public String getNomByIDResteau(int idR) {
+        String nom  ="";
+        try {
+            String req = "Select nomR from resteau  WHERE idR ="+idR;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 nom = rs.getString("nomR");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return nom;
+    }
 
 }

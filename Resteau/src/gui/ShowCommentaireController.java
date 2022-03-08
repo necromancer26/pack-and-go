@@ -8,6 +8,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,10 +52,14 @@ public class ShowCommentaireController implements Initializable {
         @FXML
 
     private TableColumn<Commentaire, String>collllC;
+    @FXML
+    private TableColumn<Commentaire, String> colNomR;
 
     /**
      * Initializes the controller class.
      */
+        ServiceResteau sp = new ServiceResteau();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -78,6 +83,9 @@ public class ShowCommentaireController implements Initializable {
         colidR.setCellValueFactory(new PropertyValueFactory<>("idR"));
         coliduser.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         colcmntrR.setCellValueFactory(new PropertyValueFactory<>("contenuCommentaireR"));
+        
+        colNomR.setCellValueFactory(cellData -> 
+       new SimpleStringProperty(sp.getNomByIDResteau(cellData.getValue().getIdR())));
            Callback<TableColumn<Commentaire, String>, TableCell<Commentaire, String>> cellFoctory = (TableColumn<Commentaire, String> param) -> {
             final TableCell<Commentaire, String> cell = new TableCell<Commentaire, String>() {
                 @Override
