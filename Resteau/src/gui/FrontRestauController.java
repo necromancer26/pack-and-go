@@ -35,6 +35,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import static gui.AfficherCommentaireFrontController.inde;
+import javafx.scene.image.ImageView;
 import models.Commentaire;
 import models.Resteau;
 import models.reservationR;
@@ -198,15 +199,26 @@ public class FrontRestauController implements Initializable {
                 panequantitet.setLayoutY(40);
                 panequantitet.setPrefWidth(panequantitet.getWidth() + 160);
                 panequantitet.setPrefHeight(panequantitet.getHeight() + 30);
+             
                 Text quan1 = new Text("Nom : ");
                 Label quant2 = new Label(String.valueOf(p3.getnomR() ));
-                quan1.setLayoutX(-5);
+                quan1.setLayoutX(50);
                 quan1.setLayoutY(-25);
-                quant2.setLayoutX(50);
+                quant2.setLayoutX(100);
                 quant2.setLayoutY(-40);
                 quan1.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a;-fx-font-size:15px;");
                 quant2.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a;-fx-font-size:15px;");
                 panequantitet.getChildren().addAll(quan1, quant2);
+                
+                
+                ImageView imgR = p3.getImg(); 
+                imgR.setFitWidth(110);
+                imgR.setFitHeight(110);
+                imgR.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8, 0, 0, 0);");
+                imgR.setLayoutX(10);
+                imgR.setLayoutY(30);
+                pane2.getChildren().add(imgR);
+                
                 Text nomt = new Text("type: ");
                 Label nom = new Label(p3.getTypeR());   
                // Text prixt = new Text("id : ");
@@ -217,28 +229,29 @@ public class FrontRestauController implements Initializable {
                 Label pay = new Label(p3.getPaysR());
                  Text telT = new Text(" Tel : ");
                 Label tey = new Label(p3.getTelR());
-                nomt.setLayoutX(100);
+                nomt.setLayoutX(150);
                 nomt.setLayoutY(40);
-                nom.setLayoutX(150);
+                nom.setLayoutX(200);
                 nom.setLayoutY(30);
                
-                AdressT.setLayoutX(100);
+                AdressT.setLayoutX(150);
                 AdressT.setLayoutY(60);
-                adress.setLayoutX(150);
+                adress.setLayoutX(200);
                 adress.setLayoutY(50);
-                payT.setLayoutX(100);
+                payT.setLayoutX(150);
                 payT.setLayoutY(80);
-                pay.setLayoutX(150);
+                pay.setLayoutX(200);
                 pay.setLayoutY(70);
-                telT.setLayoutX(100);
+                telT.setLayoutX(150);
                 telT.setLayoutY(100);
-                tey.setLayoutX(150);
+                tey.setLayoutX(200);
                 tey.setLayoutY(90);
                 nomt.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
                 AdressT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
                 payT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
                 telT.setStyle("-fx-font-weight: bold;-fx-fill : #26a69a");
-
+                
+             
                 pane2.getChildren().addAll(nomt,AdressT, payT,telT,nom,adress,pay,tey, panequantitet);
                 Panes.add(pane2);
                  } catch (Exception ex) {

@@ -5,11 +5,18 @@
  */
 package gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.Locale;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,12 +26,18 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import models.Resteau;
+import static models.Resteau.filename;
+import static models.Resteau.pathfile;
 import services.ServiceResteau;
 /**
  * FXML Controller class
@@ -80,8 +93,17 @@ public class RestauAddFormController implements Initializable {
     private ImageView adresscroix;
     @FXML
     private ImageView adresstick;
+    @FXML
+    private ComboBox<String> cbPays;
+    @FXML
+    private ComboBox<String> cbTYPE;
+    @FXML
+    private ImageView imgR;
+           private ImageView imgviewRestau;
 
 
+
+ 
     /**
      * Initializes the controller class.
      */
@@ -97,8 +119,21 @@ public class RestauAddFormController implements Initializable {
         paystick.setVisible(false);
         adresscroix.setVisible(false);
         adresstick.setVisible(false);
-            // TODO
            
+ObservableList<String> cities = FXCollections.observableArrayList();
+        String[] locales1 = Locale.getISOCountries();
+        for (String countrylist : locales1) {
+            Locale obj = new Locale("", countrylist);
+            String[] city = { obj.getDisplayCountry() };
+            for (int x = 0; x < city.length; x++) {
+                cities.add(obj.getDisplayCountry());
+            }
+        }
+        cbPays.setItems(cities);
+            // TODO
+     ObservableList<String> Type = FXCollections.observableArrayList("cafe resto"," fast food"," resto bar"); 
+        cbTYPE.setItems(Type);
+     
     }  
       boolean verifiervide()
            
@@ -116,19 +151,19 @@ public class RestauAddFormController implements Initializable {
          
             //usernameTick.setVisible(true);
         }
-                else if(tfType.getText().equals("")) {
+            /*   else if(tfType.getText().equals("")) {
            labeltyp.setText("il faut remplir les champs");
            return true;
          
             //usernameTick.setVisible(true);
-        }
-           else if(tfPays.getText().equals("")) {
+        }*/
+        /*   else if(tfPays.getText().equals("")) {
            labelpays.setText("il faut remplir les champs");
            return true;
          
             //usernameTick.setVisible(true);
         }
-                
+            */    
         else if(tfTel.getText().equals("")){
              labeltel.setText("il faut remplir les champs");
        
@@ -170,7 +205,7 @@ public class RestauAddFormController implements Initializable {
    
    
     }
-    boolean verifiertype()
+  /*  boolean verifiertype()
     {
         Pattern regexPattern = Pattern.compile(Resteau.REGEX);
        Matcher matcher;
@@ -196,7 +231,8 @@ public class RestauAddFormController implements Initializable {
    
    
     }
-    }
+    }*/
+    /*
      boolean verifierpays()
     {
         Pattern regexPattern = Pattern.compile(Resteau.REGEX);
@@ -223,7 +259,7 @@ public class RestauAddFormController implements Initializable {
    
    
     }
-    }
+    }*/
     boolean verifiertel()
     {
         Pattern regexPattern = Pattern.compile(Resteau.REGEXnumber);
@@ -254,17 +290,19 @@ public class RestauAddFormController implements Initializable {
     }
     @FXML
     private void AjouterResteau(ActionEvent event) {
-       if((verifiervide()==false )&&(verifiernom()==false)&&(verifiertype()==false)&&(verifierpays()==false)&&(verifiertel()==false))
+       if((verifiervide()==false )&&(verifiernom()==false)&&(verifiertel()==false))
        {        
     
  
          ServiceResteau sp = new ServiceResteau();
                Resteau R1 = new Resteau();
                R1.setNomR(tfNomR.getText()); 
-               R1.setTypeR(tfType.getText()); 
+
+               R1.setTypeR(cbTYPE.getValue()); 
                R1.setAdressR(tfAdR.getText()); 
-               R1.setPaysR(tfPays.getText()); 
+               R1.setPaysR(cbPays.getValue()); 
                R1.setTelR(tfTel.getText()); 
+               R1.setImgR(Resteau.pathfile);
                sp.ajouter(R1);
                Alert alert =new Alert(Alert.AlertType.INFORMATION);
                alert.setTitle("succes");
@@ -288,6 +326,42 @@ public class RestauAddFormController implements Initializable {
                 notificationBuilder.show();
                alert.showAndWait();
     }
+    }
+
+  
+
+    @FXML
+    private void uploadImage(ActionEvent event) throws IOException {
+    
+  FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("imgR", "*.jpeg","*.png" , "*.jpg"));
+        File f = fc.showOpenDialog(null);
+        if (f != null) {
+            String img = f.getAbsoluteFile().toURI().toString();
+            Image imgR = new Image(img);
+            //imgviewRestau.setImage(imgR);
+            pathfile = f.getAbsolutePath();
+            filename = f.getAbsolutePath();
+            String path = "uploads//";
+            File uploads = new File(path);
+            String imagecomp = f.getAbsolutePath();
+            int index = imagecomp.lastIndexOf('\\');
+            if (index > 0) {
+                  pathfile = imagecomp.substring(index + 1);
+            }          
+            File sf = null;
+            sf = new File(filename);
+            File dest = null;
+            Random rand = new Random();
+            int n = rand.nextInt(50);
+            String newpath =  path + pathfile ;
+            dest = new File(newpath);
+            Files.copy(sf.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            pathfile =  newpath ;
+            System.out.println(pathfile);
+        }     
+       //imgviewRestau.setFitHeight(135);
+      // imgviewRestau.setFitWidth(270);    
     }
 
     }

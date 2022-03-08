@@ -7,6 +7,8 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -19,10 +21,34 @@ public class Resteau {
     private String nomR; 
     private String paysR; 
     private String telR; 
+    private String imgR;
     private int idR;
     static int idd;
+     public static String pathfile; 
+    public static String filename="";
     public static final String REGEX = "[a-zA-Z]";
 public static final String REGEXnumber = "[1-9]";
+ 
+public ImageView getImg() {
+        ImageView img = null;
+        try{
+            Image new_image = new Image("file:" +imgR);      
+            img = new ImageView();
+            img.setImage(new_image); 
+            img.setFitWidth(150);
+            img.setFitHeight(150);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return img;
+    }   
+    public String getImgR() {
+        return imgR;
+    }
+
+    public void setImgR(String imgR) {
+        this.imgR = imgR;
+    }
 
      public static int getIdd() {
         return idd;
@@ -37,22 +63,25 @@ public static final String REGEXnumber = "[1-9]";
          
     }
      
-    public Resteau( String typeR,String nomR, String adressR,String paysR,String telR,  int idR) {
+    public Resteau( String typeR,String nomR, String adressR,String paysR,String telR,String imgR,  int idR) {
         this.idR = idR;
         this.adressR = adressR;
         this.paysR = paysR;
         this.telR = telR;
         this.typeR = typeR;
         this.nomR = nomR;
+        this.imgR=imgR;
+
                 Commentaire = new ArrayList<>();
 
     }
-  public Resteau( String typeR,String nomR, String adressR,String paysR,String telR) {
+  public Resteau( String typeR,String nomR, String adressR,String paysR,String telR,String imgR) {
         this.adressR = adressR;
         this.typeR = typeR;
         this.nomR = nomR;
         this.paysR = paysR;
-        this.telR = telR; 
+        this.telR = telR;
+        this.imgR=imgR;
     }
   
     public Resteau(int idR){
@@ -125,8 +154,10 @@ public static final String REGEXnumber = "[1-9]";
 
     @Override
     public String toString() {
-        return "Resteau{" + " typeR=" + typeR + ", nomR=" + nomR + ",adressR=" + adressR + ", paysR=" + paysR + ", telR=" + telR + ", idR=" + idR + '}';
+        return "Resteau{" + "adressR=" + adressR + ", typeR=" + typeR + ", nomR=" + nomR + ", paysR=" + paysR + ", telR=" + telR + ", imgR=" + imgR + ", idR=" + idR + ", Commentaire=" + Commentaire + '}';
     }
+
+  
 
   
     

@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -69,8 +71,18 @@ public class ShowRestauFormController implements Initializable {
     private TableColumn<Resteau, String> editcol;
     @FXML
     private TextField rechercheRestau;
+        private ImageView imgviewRestau;
+       
+       
+ObservableList<String> cities = FXCollections.observableArrayList();
+    
+            // TODO
+     ObservableList<String> Type = FXCollections.observableArrayList("cafe resto"," fast food"," resto bar"); 
+    @FXML
+    private TableColumn<Resteau, ImageView> colimg;
+                    ServiceResteau sp = new ServiceResteau();
 
-
+        
     /**
      * Initializes the controller class.
      */
@@ -83,7 +95,7 @@ public class ShowRestauFormController implements Initializable {
         rechercheRestau();
                 ServiceResteau sp = new ServiceResteau();
                 ResteaulList =sp.getListResteau();
-                TableViewRestau.setItems(ResteaulList);
+                TableViewRestau.setItems(ResteaulList); 
                 
     }    
 
@@ -97,6 +109,8 @@ public class ShowRestauFormController implements Initializable {
         coladresseR.setCellValueFactory(new PropertyValueFactory<>("adressR"));
         colPaysR.setCellValueFactory(new PropertyValueFactory<>("paysR"));
         coltelR.setCellValueFactory(new PropertyValueFactory<>("telR"));
+        colimg.setCellValueFactory(new PropertyValueFactory <>("img"));
+
        // colIdR.setCellValueFactory(new PropertyValueFactory <>("idR"));
         Callback<TableColumn<Resteau, String>, TableCell<Resteau, String>> cellFoctory = (TableColumn<Resteau, String> param) -> {
             final TableCell<Resteau, String> cell = new TableCell<Resteau, String>() {
@@ -121,7 +135,7 @@ public class ShowRestauFormController implements Initializable {
                             
  try{
 
-            URL fxURL = getClass().getResource("../gui/ShowCommentaire.fxml");
+            URL fxURL = getClass().getResource("ShowCommentaire.fxml");
             Parent root = FXMLLoader.load(fxURL);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -180,11 +194,9 @@ public class ShowRestauFormController implements Initializable {
     }
      private void modifier() {
          Resteau R =TableViewRestau.getSelectionModel().getSelectedItem();
-           ServiceResteau sp = new ServiceResteau();
-                ResteaulList =sp.getListResteau();
-                TableViewRestau.setItems(ResteaulList);
+          
          try{
-             sp.modifier(new Resteau (R.getTypeR(),R.getNomR(),R.getAdressR(),R.getPaysR(),R.getTelR()));
+             sp.modifier(new Resteau (R.getTypeR(),R.getNomR(),R.getAdressR(),R.getPaysR(),R.getTelR(),R.getImgR()));
              Alert alert =new Alert(Alert.AlertType.INFORMATION);
              alert.show();
              alert.setTitle("updated");
@@ -276,8 +288,8 @@ public void editTableView(){
 					return true; // Filter matches last name.
 				} else if (Resteau.getAdressR().toLowerCase().indexOf(lowerCaseFilter) != -1) {
 					return true; // Filter matches last name.
-				}
-                                
+				
+                                }
 				
                              
 				     else  

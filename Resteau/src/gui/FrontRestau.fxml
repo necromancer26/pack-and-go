@@ -60,7 +60,7 @@
             </VBox>
          </left>
          <center>
-            <VBox prefHeight="831.0" prefWidth="998.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="700.0" prefWidth="741.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox prefHeight="69.0" prefWidth="569.0">
                      <opaqueInsets>
@@ -109,7 +109,7 @@
                      </children>
                   </HBox>
                   <JFXDrawer />
-                  <JFXListView fx:id="listViewRestau" prefHeight="604.0" prefWidth="656.0" />
+                  <JFXListView fx:id="listViewRestau" prefHeight="604.0" prefWidth="868.0" />
                </children>
             </VBox>
          </center>
