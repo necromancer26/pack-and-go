@@ -23,7 +23,7 @@ public class Pidev extends Application {
         
         try{
             
-            Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/menu.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
