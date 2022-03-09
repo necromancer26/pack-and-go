@@ -31,6 +31,11 @@ import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class FXMLGSTuserController implements Initializable {
 
@@ -258,6 +263,35 @@ public class FXMLGSTuserController implements Initializable {
             su.modifier(user.getId_user(), user);
         } catch (SQLException ex) {
             Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void hotelBack(MouseEvent event) {
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AfficherHotelsForm.fxml"));
+            try {
+                Parent root = LOADER.load();
+                Scene sc = new Scene(root);
+                AfficherHotelsFormController cntr = LOADER.getController();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(sc);
+                window.show();
+            } catch (Exception ex) {
+
+        }
+    }
+
+    @FXML
+    private void restauBack(MouseEvent event) {
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("ShowRestauForm.fxml"));
+            try {
+                Parent root = LOADER.load();
+                Scene sc = new Scene(root);
+                AfficherHotelsFormController cntr = LOADER.getController();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(sc);
+                window.show();
+            } catch (Exception ex) {
         }
     }
 

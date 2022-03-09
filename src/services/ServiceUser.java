@@ -8,6 +8,7 @@ package services;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -211,5 +212,20 @@ public class ServiceUser implements services.IService<User> {
         String generatedPassword = sb.toString();
 
         return generatedPassword;
+    }
+    
+    public User getUserById(long id_user) {
+        User user = null;
+        try {
+            String req = "Select * from user WHERE id_user ="+id_user;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                 user = new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), Roles.valueOf(rs.getString(8)), rs.getTimestamp(9).toLocalDateTime(), rs.getTimestamp(10).toLocalDateTime(), rs.getTimestamp(11).toLocalDateTime());
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return user;
     }
 }
