@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.utils;
+package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class DataSource {
     
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql://127.0.0.1:3306/pidev";
+    private String url = "jdbc:mysql://127.0.0.1:3306/pack_and_go";
 
     private static DataSource instance;
     

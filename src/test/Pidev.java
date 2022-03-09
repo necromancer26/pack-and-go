@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev;
+package test;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,7 @@ public class Pidev extends Application {
         
         try{
             
-            Parent root = FXMLLoader.load(getClass().getResource("/pidev/GUI/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/Login.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.GUI;
+package gui;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +23,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import pidev.models.Roles;
-import pidev.services.ServiceUser;
+import models.Roles;
+import services.ServiceUser;
 
 /**
  * FXML Controller class
@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
         Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stageclose.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/pidev/GUI/Signup.fxml"));
+        loader.setLocation(getClass().getResource("Signup.fxml"));
         try {
             loader.load();
         } catch (IOException ex) {
@@ -98,7 +98,7 @@ public class LoginController implements Initializable {
                 stageclose.close();
                 if (su.SearchByUsername(username_login.getText()).getRole() == Roles.ADMIN) {
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("/pidev/GUI/FXMLGSTuser.fxml"));
+                    loader.setLocation(getClass().getResource("FXMLGSTuser.fxml"));
                     try {
                         loader.load();
                     } catch (IOException ex) {

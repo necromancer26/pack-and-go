@@ -1,8 +1,8 @@
-package pidev.GUI;
+package gui;
 
-import pidev.models.Roles;
-import pidev.models.User;
-import pidev.services.ServiceUser;
+import models.Roles;
+import models.User;
+import services.ServiceUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

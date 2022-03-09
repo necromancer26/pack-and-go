@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.services;
+package services;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -16,15 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pidev.models.Roles;
-import pidev.models.User;
-import pidev.utils.DataSource;
+import models.Roles;
+import models.User;
+import utils.DataSource;
 
 /**
  *
  * @author Wala
  */
-public class ServiceUser implements pidev.services.IService<User> {
+public class ServiceUser implements services.IService<User> {
 
     Connection cnx;
 

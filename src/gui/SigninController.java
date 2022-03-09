@@ -1,8 +1,8 @@
-package pidev.GUI;
+package gui;
 
-import pidev.models.Roles;
-import pidev.models.User;
-import pidev.services.ServiceUser;
+import models.Roles;
+import models.User;
+import services.ServiceUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,8 +13,8 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import pidev.utils.Mailer;
-import pidev.utils.SMS;
+import utils.Mailer;
+import utils.SMS;
 
 
 public class SigninController implements Initializable {
