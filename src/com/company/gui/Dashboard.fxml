@@ -32,13 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
@@ -49,49 +47,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #bde0fe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.DashboardController">
+<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #bde0fe;" stylesheets="@Bootstrap.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.DashboardController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <BorderPane layoutX="-1.0" prefHeight="413.0" prefWidth="647.0">
@@ -108,16 +65,16 @@
                                              <children>
                                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8ecae6;">
                                                    <children>
-                                                      <Label style="-fx-padding: 0 20;" text="Label" textFill="#227c9d">
+                                                      <Label prefHeight="15.0" prefWidth="117.0" style="-fx-padding: 0 20;" text="Search" textFill="#227c9d">
                                                          <font>
                                                             <Font name="Andale Mono" size="13.0" />
                                                          </font></Label>
                                                       <TextField fx:id="searchFieldPersonality" onKeyReleased="#handleSearchPersonality" style="-fx-background-color: #dfe7fd;" />
-                                                      <Label style="-fx-padding: 0 20;" text="Label" textFill="#227c9d">
+                                                      <Label prefHeight="15.0" prefWidth="91.0" style="-fx-padding: 0 20;" text="Sort" textFill="#227c9d">
                                                          <font>
                                                             <Font name="Andale Mono" size="13.0" />
                                                          </font></Label>
-                                                      <ComboBox fx:id="comboBoxSortPersonality" onAction="#handleComboBoxPersonality" prefWidth="150.0" style="-fx-background-color: #dfe7fd;" >
+                                                      <ComboBox fx:id="comboBoxSortPersonality" onAction="#handleComboBoxPersonality" prefWidth="150.0" style="-fx-background-color: #dfe7fd;">
                                                           <items>
                                                               <FXCollections fx:factory="observableArrayList">
                                                                   <String fx:value="Sort reverse by ID" />
@@ -128,12 +85,12 @@
 
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Button   mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: fc8b8b;" text="Delete" textFill="WHITE" />
+                                                            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: fc8b8b;" text="Delete" textFill="WHITE" />
                                                          </children>
                                                       </HBox>
                                                    </children>
                                                 </HBox>
-                                                <TableView fx:id="personalityTableView" editable="true" prefHeight="289.0" prefWidth="646.0" style="-fx-background-color: #fff1e6;" />
+                                                <TableView fx:id="personalityTableView" editable="true" prefHeight="289.0" prefWidth="646.0" stylesheets="@Bootstrap.css" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -160,12 +117,12 @@
                                                       <ComboBox prefWidth="150.0" style="-fx-background-color: #dfe7fd #dfe7fd;" />
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Button fx:id="deleteUserPersonality" onAction="#onDeleteUserPersonalityClicked" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: fc8b8b;" text="DELETE" textFill="WHITE" />
+                                                            <Button fx:id="deleteUserPersonality" mnemonicParsing="false" onAction="#onDeleteUserPersonalityClicked" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: fc8b8b;" text="DELETE" textFill="WHITE" />
                                                          </children>
                                                       </HBox>
                                                    </children>
                                                 </HBox>
-                                                <TableView fx:id="userPersonalityTableView" prefHeight="280.0" prefWidth="646.0" style="-fx-background-color: #fff1e6 #fff1e6;" />
+                                                <TableView fx:id="userPersonalityTableView" prefHeight="280.0" prefWidth="646.0" stylesheets="@Bootstrap.css" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -199,7 +156,7 @@
                                                       </HBox>
                                                    </children>
                                                 </HBox>
-                                                <TableView fx:id="socialStyleTableView" prefHeight="271.0" prefWidth="647.0" style="-fx-background-color: #fff1e6 #fff1e6;" />
+                                                <TableView fx:id="socialStyleTableView" prefHeight="271.0" prefWidth="647.0" stylesheets="@Bootstrap.css" />
                                              </children>
                                           </VBox>
                                        </children>
