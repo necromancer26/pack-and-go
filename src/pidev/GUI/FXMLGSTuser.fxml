@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="960.0" prefWidth="1256.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.FXMLGSTuserController">
+   <children>
+      <TextField fx:id="TFforum_FN" layoutX="32.0" layoutY="147.0" prefHeight="41.0" prefWidth="232.0" promptText="First Name">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TFforum_LN" layoutX="32.0" layoutY="223.0" prefHeight="41.0" prefWidth="232.0" promptText="Last Name">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TFforum_E" layoutX="32.0" layoutY="303.0" prefHeight="41.0" prefWidth="232.0" promptText="Email">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TFforum_UN" layoutX="32.0" layoutY="384.0" prefHeight="41.0" prefWidth="232.0" promptText="Username">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="PFforum_PWD" layoutX="32.0" layoutY="464.0" prefHeight="41.0" prefWidth="232.0" promptText="Password">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="TFforum_Num" layoutX="32.0" layoutY="534.0" prefHeight="41.0" prefWidth="232.0" promptText="Number">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="DPforum_B" layoutX="32.0" layoutY="604.0" prefHeight="41.0" prefWidth="232.0" promptText="Birthday" />
+      <ComboBox fx:id="ComboRoles" layoutX="32.0" layoutY="670.0" prefHeight="41.0" prefWidth="232.0" promptText="Role" />
+      <TableView fx:id="TableUserView" layoutX="311.0" layoutY="147.0" onMouseClicked="#fillforum" prefHeight="564.0" prefWidth="883.0" style="-fx-background-color: #121212;">
+        <columns>
+          <TableColumn fx:id="id_userc" prefWidth="57.0" text="Id" />
+          <TableColumn fx:id="FN_userc" onEditCommit="#edit_firstname" prefWidth="93.0" text="First Name" />
+            <TableColumn fx:id="LN_userc" prefWidth="75.0" text="Last Name" />
+            <TableColumn fx:id="Email_userc" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="Num_userc" prefWidth="75.0" text="Number" />
+            <TableColumn fx:id="UN_userc" prefWidth="88.0" text="Username" />
+            <TableColumn fx:id="pwd_userc" prefWidth="113.0" text="Password" />
+            <TableColumn fx:id="Role_userc" prefWidth="65.0" text="Role" />
+            <TableColumn fx:id="Birthday_userc" prefWidth="81.0" text="Birthday" />
+            <TableColumn fx:id="ACD_userc" prefWidth="162.0" text="Created date" />
+            <TableColumn fx:id="AUD_userc" minWidth="0.0" prefWidth="154.0" text="Updated Date" />
+        </columns>
+      </TableView>
+      <Button layoutX="148.0" layoutY="814.0" mnemonicParsing="false" onAction="#Save_user" prefHeight="41.0" prefWidth="118.0" text="Save">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="520.0" layoutY="814.0" mnemonicParsing="false" onAction="#Delete_user" prefHeight="41.0" prefWidth="118.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="918.0" layoutY="814.0" mnemonicParsing="false" onAction="#Update_User" prefHeight="41.0" prefWidth="118.0" text="Update">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <TextField fx:id="TFSearch" layoutX="321.0" layoutY="53.0" prefHeight="41.0" prefWidth="232.0" promptText="Search">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></TextField>
+   </children>
+</AnchorPane>
