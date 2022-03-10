@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Wala
  */
-public class Pidev extends Application {
+public class testFX extends Application {
     
     @Override
     public void start(Stage stage) {
