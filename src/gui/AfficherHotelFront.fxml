@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="834.0" prefWidth="1270.0" styleClass="text" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherHotelFrontController">
+   <children>
+      <ListView fx:id="listViewHotels" layoutX="291.0" layoutY="105.0" prefHeight="726.0" prefWidth="1003.0" style="-fx-border-color: #BAEAC3;" stylesheets="@bootstrap.css" />
+      <Label layoutX="57.0" layoutY="120.0" prefHeight="101.0" prefWidth="171.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Hotels" textFill="#878787">
+         <font>
+            <Font name="Cambria Bold" size="48.0" />
+         </font>
+      </Label>
+      <VBox layoutX="114.0" layoutY="9.0" prefHeight="92.0" prefWidth="1165.0" style="-fx-border-radius: 30;" styleClass="vbox" stylesheets="@bootstrap.css" />
+      <ImageView fitHeight="68.0" fitWidth="163.0" layoutX="40.0" layoutY="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="194.0" fitWidth="255.0" layoutX="17.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/hotels.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="1066.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <FontAwesomeIcon glyphName="USER" size="30" styleClass="user" text="" wrappingWidth="29.785714149475098">
+               <VBox.margin>
+                  <Insets left="20.0" right="10.0" top="12.0" />
+               </VBox.margin>
+            </FontAwesomeIcon>
+            <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="My account" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="-40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="879.0" layoutY="25.0" onMouseClicked="#restauFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Restaurants" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="689.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="505.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Nos packs" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="35.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="309.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="70.0" top="7.0" />
+               </VBox.margin>
+            </Label>
+            <FontAwesomeIcon glyphName="PLANE" size="35" wrappingWidth="36.7857141494751">
+               <VBox.margin>
+                  <Insets left="25.0" top="-45.0" />
+               </VBox.margin>
+            </FontAwesomeIcon>
+         </children>
+      </VBox>
+      <VBox layoutX="144.0" layoutY="26.0" prefHeight="60.0" prefWidth="149.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="65.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="HOME" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" right="20.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <Label layoutX="42.0" layoutY="197.0" prefHeight="68.0" prefWidth="218.0" text="The best holidays start here!" textFill="#07805d">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
