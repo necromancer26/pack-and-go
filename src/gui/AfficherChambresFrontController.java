@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 import models.Chambre;
 import services.ServiceChambre;
 import services.ServiceHotel;
+import utils.UserSession;
 
 /**
  * FXML Controller class
@@ -53,6 +54,9 @@ public class AfficherChambresFrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(UserSession.getInstace() != null) {
+              Long  userId = UserSession.getInstace().getUserId();
+        }
         listChambres();
         String c = sh.getNomByIDHotel(index);
         nomHotel.setText("Hotel \n" +c); 
@@ -61,6 +65,10 @@ public class AfficherChambresFrontController implements Initializable {
     }
 
     public void listChambres(){
+        if(UserSession.getInstace() != null){
+            Long userId = UserSession.getInstace().getUserId();
+        }
+
         ObservableList<Pane> refresh = FXCollections.observableArrayList();
         listViewChambres.setItems(refresh);
         

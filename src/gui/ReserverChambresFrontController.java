@@ -29,6 +29,7 @@ import models.Chambre;
 import models.ReservationChambre;
 import services.ServiceChambre;
 import services.ServiceReservationChambre;
+import utils.UserSession;
 
 /**
  * FXML Controller class
@@ -57,7 +58,6 @@ public class ReserverChambresFrontController implements Initializable {
     private Label nomHotel1;
     @FXML
     private TextField tfMail;
-
     /**
      * Initializes the controller class.
      */
@@ -73,6 +73,7 @@ public class ReserverChambresFrontController implements Initializable {
         check_in.setValue(LocalDate.now().plusDays(1));
                 
         check_in.setDayCellFactory(picker -> new DateCell() {
+            @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
@@ -80,6 +81,7 @@ public class ReserverChambresFrontController implements Initializable {
             }
         });
         check_out.setDayCellFactory(picker -> new DateCell() {
+            @Override
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
@@ -95,6 +97,8 @@ public class ReserverChambresFrontController implements Initializable {
 
     @FXML
     private void ReserverChambreHotel(ActionEvent event) throws Exception {
+        int userId = UserSession.getInstace().getUserId().intValue();
+        System.out.println(userId);
         if(id_user.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fail");
@@ -102,8 +106,9 @@ public class ReserverChambresFrontController implements Initializable {
             alert.setContentText("Remplir tous les champs");              
         }else{
             Chambre c = sch.getChambreByID(index_ch);
-            ReservationChambre reservation = new ReservationChambre(Date.valueOf(check_in.getValue()), Date.valueOf(check_out.getValue()) , Integer.parseInt(id_user.getText()), c.getId_chambre() );
+            ReservationChambre reservation = new ReservationChambre(Date.valueOf(check_in.getValue()), Date.valueOf(check_out.getValue()), userId, c.getId_chambre() );
             sreserv.ajouter(reservation);
+            System.out.println(reservation.getId_user());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succes");
             alert.setHeaderText("Réservation effectuée avec succès!");

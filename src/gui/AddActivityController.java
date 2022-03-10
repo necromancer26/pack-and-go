@@ -1,6 +1,5 @@
 package gui;
 
-import com.sun.org.apache.xml.internal.security.Init;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -139,10 +138,10 @@ public class AddActivityController implements Initializable {
         ajouterPhoto.setOnAction(e ->{
             FileChooser fc= new FileChooser();
             File file =fc.showOpenDialog(stage);
-            String path = "img/";
+            String path = "img\\";
             String imagecomp = file.getAbsolutePath();
             System.out.println("1 "+imagecomp);
-            int index = imagecomp.lastIndexOf('/');
+            int index = imagecomp.lastIndexOf('\\');
             if (index > 0) {
                 pathfile = path +imagecomp.substring(index + 1);
 

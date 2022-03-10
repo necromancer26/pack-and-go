@@ -34,7 +34,6 @@ public class ServiceReservationChambre implements IHotel<ReservationChambre>{
             ps.setInt(3, t.getId_user());
             ps.setInt(4, t.getId_chambre());
             ps.executeUpdate();
-            System.out.println("réservation effectuée avec succès");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }     

@@ -30,8 +30,6 @@ public class testFX extends Application {
 
         
         try{
-
-
             
             Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
             StackPane stackPane = new StackPane();

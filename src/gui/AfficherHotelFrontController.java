@@ -33,6 +33,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import utils.UserSession;
 
 /**
  * FXML Controller class
@@ -55,11 +56,14 @@ public class AfficherHotelFrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listHotels();
+        if(UserSession.getInstace() != null){
+            Long userId = UserSession.getInstace().getUserId();
+        }
      
-
     }
 
     public void listHotels(){
+       
      //   ObservableList<Pane> refresh = FXCollections.observableArrayList();
       //  listViewHotels.setItems(refresh);
         ObservableList<Pane> Panes = FXCollections.observableArrayList();

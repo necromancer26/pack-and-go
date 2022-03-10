@@ -23,6 +23,11 @@ public class ReservationChambre {
         this.id_user = id_user;
         this.id_chambre = id_chambre;
     }
+    public ReservationChambre(Date check_in, Date check_out, int id_chambre) {
+        this.check_in = check_in;
+        this.check_out = check_out;
+        this.id_chambre = id_chambre;
+    }
 
     public ReservationChambre(int num_reservation, Date check_in, Date check_out, int id_user, int id_chambre) {
         this.num_reservation = num_reservation;
@@ -39,6 +44,7 @@ public class ReservationChambre {
         this.id_chambre = id_chambre;
         
     }
+
 
     public int getNum_reservation() {
         return num_reservation;

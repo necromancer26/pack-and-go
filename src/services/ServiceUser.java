@@ -187,7 +187,9 @@ public class ServiceUser implements services.IService<User> {
         String query = "SELECT * FROM user WHERE (email='" + email_username + "'OR username='" + email_username + "') AND password ='" + hashedPassword + "'";
         ResultSet rs = stm.executeQuery(query);
         User user = new User();
+        boolean exist = false;
         while (rs.next()) {
+            exist = true;
             System.out.println("user exist");
             user.setId_user(rs.getInt("id_user"));
             user.setFirst_name(rs.getString("first_name"));
@@ -201,7 +203,10 @@ public class ServiceUser implements services.IService<User> {
             user.setDate_created_user(rs.getTimestamp(10).toLocalDateTime());
             user.setLast_updated_user(rs.getTimestamp(11).toLocalDateTime());
         }
-        return user;
+        if(exist == true){
+            return user;
+        }
+        return null;
     }
 
     private String hashPassword(String password) {

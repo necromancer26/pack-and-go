@@ -15,10 +15,13 @@ public final class UserSession {
 
     private static UserSession instance;
 
+    public static void getInstace(long id_user) {
+    }
+
     private Long userId;
     private Roles role;
 
-    private UserSession(Long userId, Roles role) {
+    public UserSession(Long userId, Roles role) {
         this.userId = userId;
         this.role = role;
     }

@@ -83,51 +83,50 @@ public class LoginController implements Initializable {
             alert.setTitle("Warning");
             alert.setHeaderText("Required Fields Empty");
             alert.setContentText(errors.toString());
-
             alert.showAndWait();
         } else {
             try {
                 try {
                     User user = su.checkLogin(username_login.getText(), password_login.getText());
                     if (user != null) {
-                        UserSession.getInstace(user.getId_user(), user.getRole());
-
+                        UserSession.getInstace(user.getId_user(), user.getRole()); 
                         System.out.println("Your loged in");
+                        Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stageclose.close();
+                        if (su.SearchByUsername(username_login.getText()).getRole() == Roles.ADMIN) {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("FXMLGSTuser.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException ex) {
+                                System.out.println(ex.getMessage());
+                            }
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.show();
+                        }
+                        if (su.SearchByUsername(username_login.getText()).getRole() == Roles.CLIENT) {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("AfficherHotelFront.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException ex) {
+                                System.out.println(ex.getMessage());
+                            }
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.show();
+                        }
+
                     } else {
                         System.out.println("Check ur username or password!");
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stageclose.close();
-                if (su.SearchByUsername(username_login.getText()).getRole() == Roles.ADMIN) {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("FXMLGSTuser.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                    }
-                    Parent parent = loader.getRoot();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(parent));
-                    stage.show();
-                }
-                if (su.SearchByUsername(username_login.getText()).getRole() == Roles.CLIENT) {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("AfficherHotelFront.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                    }
-                    Parent parent = loader.getRoot();
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(parent));
-                    stage.show();
-                }
-
+                
             } catch (Exception ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }

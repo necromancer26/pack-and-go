@@ -21,6 +21,7 @@ import models.User;
 import services.ServiceUser;
 //import utils.Mailer;
 import utils.SMS;
+import utils.UserSession;
 
 
 public class SigninController implements Initializable {
@@ -72,7 +73,7 @@ public class SigninController implements Initializable {
         if(DPbirthday.getValue() == null){
             errors.append("- Please enter a Birthday.\n");
         }
-        if(!isNumeric(TFnumber.getText()) || TFnumber.getText().length() == 8){
+        if(!isNumeric(TFnumber.getText()) || TFnumber.getText().length() != 8){
             errors.append("- Please enter a Valid Number.\n");
         }
         if (errors.length() > 0) {
@@ -104,7 +105,7 @@ public class SigninController implements Initializable {
                 stageclose.close();
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/pidev/GUI/Login.fxml"));
+                loader.setLocation(getClass().getResource("Login.fxml"));
                 try {
                     loader.load();
                 } catch (IOException ex) {
