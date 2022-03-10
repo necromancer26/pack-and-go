@@ -2,16 +2,21 @@ package com.company.gui;
 
 import com.company.api.BarChart;
 import com.company.api.Chart;
+import com.company.models.Package;
 import com.company.models.Roles;
 import com.company.models.User;
+import com.company.services.PackageController;
 import com.company.services.PersonalityController;
 import com.company.services.PersonalityTest;
 import com.company.services.Test;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
@@ -70,6 +75,8 @@ public class ResultController implements Initializable {
     private WebView webView2;
     @FXML
     private Label personalityResult;
+    @FXML
+    private VBox packagesContainer;
 
 
     private PersonalityTest personalityTest = new PersonalityTest();
@@ -86,6 +93,7 @@ public class ResultController implements Initializable {
         getReport();
         getPersonality();
         showReportOnConsole();
+        showPackages();
         //String fullName = (String) webView.getEngine().executeScript("dashboard.draw("+data+");");
         String script="if (1===1){console.log(\" hello\")}";
         //webView.getEngine().executeScript("google.charts.setOnLoadCallback(drawDashboard);");
@@ -94,6 +102,18 @@ public class ResultController implements Initializable {
         //System.out.println(transformToJavascriptArray(Question1Controller.extrovertVsIntrovertAnswersStorage));
 
        // System.out.println(fullName);
+    }
+
+    public void showPackages(){
+        List<Package> packageList= PackageController.getAllPackages();
+        packageList.forEach(aPackage -> {
+            HBox packageContainer=new HBox();
+            packageContainer.setPadding(new Insets(30));
+            packageContainer.setAlignment(Pos.CENTER);
+            Label packageName=new Label(aPackage.getPackageName());
+            packageContainer.getChildren().add(packageName);
+            packagesContainer.getChildren().add(packageContainer);
+        });
     }
 
     public void setPersonalityReport(Text personalityReport) {

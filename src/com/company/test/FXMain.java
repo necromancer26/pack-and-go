@@ -1,5 +1,7 @@
 package com.company.test;
 
+import com.company.models.Package;
+import com.company.services.PackageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 
 public class FXMain extends Application {
@@ -26,48 +29,35 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-
-           URL fxURL = getClass().getResource("../gui/Menu.fxml");
+            URL fxURL = getClass().getResource("../gui/Menu.fxml");
             Parent root = FXMLLoader.load(fxURL);
-            //Group root =new Group();
-            //Parent root = new GridPane();
-            //Scene scene = new Scene(root);
-            //primaryStage.setScene(scene);
-            //root.getChildrenUnmodifiable().add(startButton);
             setUserAgentStylesheet(STYLESHEET_CASPIAN);
-            try {
             StackPane stackPane = new StackPane();
-                stackPane.getChildren().add(root);
-                stackPane.setAlignment(Pos.CENTER);
-                stackPane.setMaxWidth(1999);
-                stackPane.setMaxHeight(1999);
-                //stackPane.setStyle("-fx-border-color:yellow;-fx-background-color:blue;");
-                stackPane.getChildren().setAll(root);
+            stackPane.getChildren().add(root);
+            stackPane.setAlignment(Pos.CENTER);
+            stackPane.setMaxWidth(1999);
+            stackPane.setMaxHeight(1999);
+            //stackPane.setStyle("-fx-border-color:yellow;-fx-background-color:blue;");
+            stackPane.getChildren().setAll(root);
 
-                ScrollPane scrollPane = new ScrollPane();
-                scrollPane.setContent(stackPane);
-                scrollPane.setStyle("-fx-border-color:red;");
-                scrollPane.setFitToHeight(true);
-                scrollPane.setFitToWidth(true);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setContent(stackPane);
+            //scrollPane.setStyle("-fx-border-color:red;");
+            scrollPane.setFitToHeight(true);
+            scrollPane.setFitToWidth(true);
+            Scene scene = new Scene(scrollPane, 1000, 1000);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Pack And Go!");
+            primaryStage.show();
 
-
-
-                //root.getChildrenUnmodifiable().add(stackPane);
-                //scrollPane.getChildrenUnmodifiable().add(stackPane);
-                Scene scene = new Scene(scrollPane, 1000, 1000);
-                primaryStage.setScene(scene);
-                primaryStage.setTitle("Pack And Go!");
-                primaryStage.show();
-
-            } catch (Exception exception) {
-                System.err.println(exception.getMessage());
-            }
 
             //Test.test();
 
 
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        } catch (Exception exception) {
+            System.err.println(exception.getMessage());
         }
     }
 }

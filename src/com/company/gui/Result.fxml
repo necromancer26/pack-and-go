@@ -36,9 +36,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -46,21 +44,19 @@
 
 <VBox fx:id="pane" alignment="CENTER" style="-fx-padding: 0 50;" stylesheets="@Bootstrap.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.ResultController">
   <children>
-      <BorderPane prefHeight="1065.0" prefWidth="570.0">
-         <top>
-            <Label style="-fx-padding: 30 5;" text="Personality Report" textAlignment="CENTER" textFill="#62cdc6" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <graphic>
-                  <ImageView>
-                     <Image url="@/toolbarButtonGraphics/general/Information24.gif" />
-                  </ImageView>
-               </graphic>
-            </Label>
-         </top>
-         <center>
-            <VBox alignment="TOP_CENTER" prefHeight="306.0" prefWidth="640.0" style="-fx-padding: 30; -fx-max-width: 80; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 20; -fx-background-color: #edf2f4;" BorderPane.alignment="CENTER">
+      <Label style="-fx-padding: 30 5;" text="Personality Report" textAlignment="CENTER" textFill="#62cdc6">
+         <font>
+            <Font size="31.0" />
+         </font>
+         <graphic>
+            <ImageView>
+               <Image url="@/toolbarButtonGraphics/general/Information24.gif" />
+            </ImageView>
+         </graphic>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="306.0" prefWidth="640.0" style="-fx-padding: 30; -fx-max-width: 80; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 20; -fx-background-color: #edf2f4; -fx-padding: 20;">
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -153,20 +149,8 @@
                   </VBox>
                </children>
             </VBox>
-         </center>
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="204.0" prefWidth="643.0" style="-fx-border-insets: 20; -fx-background-insets: 20;" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane prefHeight="141.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="returnToMenu" alignment="CENTER" layoutX="48.0" layoutY="37.0" mnemonicParsing="false" onAction="#onButtonClicked" style="-fx-background-color: teal;" text="Return To Menu" textFill="WHITE" />
-                     </children>
-                  </Pane>
-               </children>
-            </HBox>
-         </bottom>
-         <right>
-            <VBox alignment="TOP_CENTER" prefHeight="609.0" prefWidth="100.0" style="-fx-background-color: #edf2f4; -fx-min-width: 450; -fx-padding: 30; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 30;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-min-width: 30;" />
+            <VBox alignment="TOP_CENTER" prefHeight="752.0" prefWidth="503.0" style="-fx-background-color: #edf2f4; -fx-min-width: 500; -fx-padding: 30; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 30; -fx-padding: 30;">
                <children>
                   <Label style="-fx-padding: 20;" text="Your Personality Chart" textFill="#8dcdda">
                      <font>
@@ -175,10 +159,25 @@
                   </Label>
                   <WebView fx:id="webView" prefHeight="259.0" prefWidth="380.0" />
                   <HBox prefHeight="55.0" prefWidth="380.0" />
-                  <WebView fx:id="webView2" prefHeight="266.0" prefWidth="380.0" />
+                  <WebView fx:id="webView2" prefHeight="266.0" prefWidth="378.0" />
                </children>
             </VBox>
-         </right>
-      </BorderPane>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 30;">
+         <children>
+            <Label text="Suggested Packages" textFill="#62cdc6">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="packagesContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: teal; -fx-border-width: 5; -fx-border-radius: 20;" />
+      <HBox alignment="CENTER" prefHeight="204.0" prefWidth="643.0" style="-fx-border-insets: 20; -fx-background-insets: 20; -fx-padding: 30 0;">
+         <children>
+            <Button fx:id="returnToMenu" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonClicked" style="-fx-background-color: teal;" text="Return To Menu" textFill="WHITE" />
+         </children>
+      </HBox>
   </children>
 </VBox>
