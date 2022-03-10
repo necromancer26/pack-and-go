@@ -6,6 +6,7 @@
 package gui;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -56,7 +57,7 @@ public class AfficherHotelFrontController implements Initializable {
         listHotels();
      
 
-    }    
+    }
 
     public void listHotels(){
      //   ObservableList<Pane> refresh = FXCollections.observableArrayList();
@@ -202,4 +203,17 @@ public class AfficherHotelFrontController implements Initializable {
         }
     }
 
+    public void toPersonalityTestMenu(MouseEvent mouseEvent) {
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("MenuTest.fxml"));
+        try {
+            Parent root = LOADER.load();
+            Scene sc = new Scene(root);
+            MenuTestController menuTestController = LOADER.getController();
+            Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            window.setScene(sc);
+            window.show();
+        } catch (IOException ioException) {
+            System.err.println(ioException.getMessage());
+        }
+    }
 }

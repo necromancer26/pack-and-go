@@ -17,7 +17,7 @@ public class DataSource {
     private Connection cnx;
     
     private String user = "root";
-    private String password = "";
+    private String password = "admin";
     private String url = "jdbc:mysql://localhost:3306/pack_and_go";
 
     private static DataSource instance;

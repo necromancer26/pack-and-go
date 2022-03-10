@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<VBox fx:id="pane" alignment="CENTER" style="-fx-padding: 0 50;" stylesheets="@Bootstrap.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="gui.ResultController">
+  <children>
+      <Label style="-fx-padding: 30 5;" text="Personality Report" textAlignment="CENTER" textFill="#62cdc6">
+         <font>
+            <Font size="31.0" />
+         </font>
+         <graphic>
+            <ImageView>
+               <Image url="@/toolbarButtonGraphics/general/Information24.gif" />
+            </ImageView>
+         </graphic>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="306.0" prefWidth="640.0" style="-fx-padding: 30; -fx-max-width: 80; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 20; -fx-background-color: #edf2f4; -fx-padding: 20;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label style="-fx-padding: 10;" text="Congratulations" textFill="#8dcdda">
+                           <font>
+                              <Font name="Ayuthaya" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" style="-fx-alignment: CENTER;" text="🎉">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Label text="✨">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" style="-fx-padding: 10;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Your Personality Type Is :" textFill="#62cdc6">
+                           <font>
+                              <Font name="Ayuthaya" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="personalityResult" style="-fx-padding: 0 10;" text="(PutPersonality From DB)" textFill="#e9c46a">
+                           <font>
+                              <Font name="Ayuthaya" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
+                     <children>
+                        <Label fx:id="socialStyle" style="-fx-padding: 10 5;" text="Component  1" textFill="#94d2bd">
+                           <font>
+                              <Font name="Ayuthaya" size="26.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="socialStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                           <font>
+                              <Font name="Ayuthaya" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
+                     <children>
+                        <Label fx:id="processingStyle" style="-fx-padding: 10 5;" text="Component 2" textFill="#94d2bd">
+                           <font>
+                              <Font name="Ayuthaya" size="26.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="processingStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                           <font>
+                              <Font name="Ayuthaya" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
+                     <children>
+                        <Label fx:id="decisionMakingStyle" style="-fx-padding: 10 0;" text="Component 3" textFill="#94d2bd">
+                           <font>
+                              <Font name="Ayuthaya" size="26.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="decisionMakingStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                           <font>
+                              <Font name="Ayuthaya" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 20;">
+                     <children>
+                        <Label fx:id="interactionStyle" style="-fx-padding: 10 0;" text="Component 4" textFill="#94d2bd">
+                           <font>
+                              <Font name="Ayuthaya" size="26.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="interactionStyleDescription" fill="#277da1" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is the personality aspect from database be each chajfbz hkcjeabc nebfkazb nkcankzb  ncoaenc hoincaez onca  oanca oakhnca nanfenadn alnvc onafekn" wrappingWidth="500.0">
+                           <font>
+                              <Font name="Ayuthaya" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-min-width: 30;" />
+            <VBox alignment="TOP_CENTER" prefHeight="752.0" prefWidth="503.0" style="-fx-background-color: #edf2f4; -fx-min-width: 500; -fx-padding: 30; -fx-border-color: #8ecae6; -fx-border-width: 5; -fx-border-radius: 30; -fx-padding: 30;">
+               <children>
+                  <Label style="-fx-padding: 20;" text="Your Personality Chart" textFill="#8dcdda">
+                     <font>
+                        <Font name="Ayuthaya" size="22.0" />
+                     </font>
+                  </Label>
+
+               <WebView  fx:id="webView" prefHeight="259.0" prefWidth="380.0" />
+                  <HBox prefHeight="55.0" prefWidth="380.0" />
+                  <WebView fx:id="webView2" prefHeight="266.0" prefWidth="378.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 30;">
+         <children>
+            <Label text="Suggested Packages" textFill="#62cdc6">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="packagesContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: teal; -fx-border-width: 5; -fx-border-radius: 20;" />
+      <HBox alignment="CENTER" prefHeight="204.0" prefWidth="643.0" style="-fx-border-insets: 20; -fx-background-insets: 20; -fx-padding: 30 0;">
+         <children>
+            <Button fx:id="returnToMenu" alignment="CENTER" mnemonicParsing="false" onAction="#onButtonClicked" style="-fx-background-color: teal;" text="Return To Menu" textFill="WHITE" />
+         </children>
+      </HBox>
+  </children>
+</VBox>

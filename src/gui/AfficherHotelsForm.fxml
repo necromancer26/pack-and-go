@@ -317,7 +317,7 @@
             <Font name="Cambria Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="117.0" layoutY="481.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Packs" textFill="#878787">
+      <Label layoutX="117.0"  layoutY="481.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Nos Packs" textFill="#878787">
          <font>
             <Font name="Cambria Bold" size="20.0" />
          </font>
