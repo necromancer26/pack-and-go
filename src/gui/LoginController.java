@@ -24,6 +24,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Roles;
+import models.User;
+import utils.UserSession;
 import services.ServiceUser;
 
 /**
@@ -86,7 +88,10 @@ public class LoginController implements Initializable {
         } else {
             try {
                 try {
-                    if (su.checkLogin(username_login.getText(), password_login.getText())) {
+                    User user = su.checkLogin(username_login.getText(), password_login.getText());
+                    if (user != null) {
+                        UserSession.getInstace(user.getId_user(), user.getRole());
+
                         System.out.println("Your loged in");
                     } else {
                         System.out.println("Check ur username or password!");
@@ -123,7 +128,7 @@ public class LoginController implements Initializable {
                     stage.show();
                 }
 
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

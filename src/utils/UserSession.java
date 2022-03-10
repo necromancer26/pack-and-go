@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.utils;
+package utils;
 
-import java.util.HashSet;
-import java.util.Set;
-import pidev.models.Roles;
+import models.Roles;
 
 /**
  *

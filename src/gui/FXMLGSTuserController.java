@@ -35,6 +35,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class FXMLGSTuserController implements Initializable {
@@ -140,7 +141,15 @@ public class FXMLGSTuserController implements Initializable {
                 ComboRoles.getValue(),
                 DPforum_B.getValue().atStartOfDay()
         );
-        su.ajouter(u);
+        try {
+            su.ajouter(u);
+        } catch(Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Required Fields Empty");
+            alert.setContentText("Email and Username must be unique try again.");
+            alert.showAndWait();
+        }
         String tilte;
         String message;
         TrayNotification tray = new TrayNotification();

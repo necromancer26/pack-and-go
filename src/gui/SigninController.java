@@ -1,9 +1,6 @@
-package pidev.GUI;
+package gui;
 
 import java.io.IOException;
-import pidev.models.Roles;
-import pidev.models.User;
-import pidev.services.ServiceUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,8 +16,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pidev.utils.Mailer;
-import pidev.utils.SMS;
+import models.Roles;
+import models.User;
+import services.ServiceUser;
+import utils.Mailer;
+import utils.SMS;
 
 
 public class SigninController implements Initializable {
@@ -66,13 +66,13 @@ public class SigninController implements Initializable {
         if(TFemail.getText().trim().isEmpty()){
             errors.append("- Please enter a Email.\n");
         }
-        if(TFnumber.getText().trim().isEmpty() && TFnumber.getText().length() == 8){
+        if(TFnumber.getText().trim().isEmpty()){
             errors.append("- Please enter a Number.\n");
         }
         if(DPbirthday.getValue() == null){
             errors.append("- Please enter a Birthday.\n");
         }
-        if(!isNumeric(TFnumber.getText())){
+        if(!isNumeric(TFnumber.getText()) || TFnumber.getText().length() == 8){
             errors.append("- Please enter a Valid Number.\n");
         }
         if (errors.length() > 0) {
@@ -123,7 +123,7 @@ public class SigninController implements Initializable {
                 alert.setContentText("Duplicate user, try again!");
                 alert.show();
             }
-     
+
         }
     }
 
