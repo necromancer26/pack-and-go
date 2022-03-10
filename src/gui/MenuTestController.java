@@ -1,4 +1,5 @@
 package gui;
+import javafx.scene.control.ScrollPane;
 import services.PersonalityController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,10 @@ public class MenuTestController implements Initializable {
         init();
     }
     public void init(){
+        ScrollPane scrollPane= new ScrollPane();
+        scrollPane.setContent(pane);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
         PersonalityController personalityController=new PersonalityController();
         //System.out.println(personalityController.getAllPersonality().toString());
     }

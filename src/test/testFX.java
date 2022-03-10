@@ -5,11 +5,19 @@
  */
 package test;
 
+import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -22,11 +30,22 @@ public class testFX extends Application {
 
         
         try{
+
+
             
             Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
-            Scene scene = new Scene(root);
-
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().add(root);
+            stackPane.setAlignment(Pos.CENTER);
+            stackPane.setMaxWidth(1999);
+            stackPane.setMaxHeight(1999);
+            ScrollPane scrollPane= new ScrollPane();
+            scrollPane.setContent(stackPane);
+            scrollPane.setFitToWidth(true);
+            scrollPane.setFitToHeight(true);
+            Scene scene = new Scene(scrollPane);
             stage.setScene(scene);
+            stage.setTitle("Pack And Go!");
             stage.show();
 
             }catch(Exception e){

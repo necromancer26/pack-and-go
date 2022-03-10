@@ -109,8 +109,12 @@ public class Question1Controller implements Initializable {
 
 
     public void init() {
+        ScrollPane scrollPane= new ScrollPane();
+        scrollPane.setContent(canvas);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
         pane.setAlignment(Pos.CENTER);
-        canvas.setAlignment(Pos.CENTER);
+        pane.getChildren().add(scrollPane);
         iterate(extroversionVsIntroversionTest, extrovertVsIntrovertAnswersStorage);
         //System.out.println(extrovertVsIntrovertAnswersStorage.toString());
     }
