@@ -304,6 +304,21 @@ public class FXMLGSTuserController implements Initializable {
         }
     }
 
+    @FXML
+    private void activiteBack(MouseEvent event) {
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Activite.fxml"));
+        try {
+            Parent root = LOADER.load();
+            Scene sc = new Scene(root);
+            ActiviteController cntr = LOADER.getController();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(sc);
+            window.show();
+        } catch (Exception ex) {
+
+        }
+    }
+
 }
 
 

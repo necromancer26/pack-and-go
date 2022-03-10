@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import models.Roles;
 import models.User;
 import services.ServiceUser;
-import utils.Mailer;
+//import utils.Mailer;
 import utils.SMS;
 
 
@@ -97,8 +97,8 @@ public class SigninController implements Initializable {
                 su.ajouter(u);
                 SMS sms = new SMS();
                 ///// sms.sendSMS("Votre compte a été créer avec succées");
-                Mailer mailer = new Mailer();
-                mailer.SendMail(TFemail.getText(), "Bienevenu " + TFusername_signup.getText() + "\nVotre compte a été créer avec succées.");
+                //Mailer mailer = new Mailer();
+               // mailer.SendMail(TFemail.getText(), "Bienevenu " + TFusername_signup.getText() + "\nVotre compte a été créer avec succées.");
 
                 Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stageclose.close();

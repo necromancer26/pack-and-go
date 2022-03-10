@@ -93,7 +93,7 @@
             <Font name="Cambria Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="92.0" layoutY="453.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#878787">
+      <Label layoutX="92.0" layoutY="453.0" onMouseClicked="#activiteBack" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#878787">
          <font>
             <Font name="Cambria Bold" size="20.0" />
          </font>

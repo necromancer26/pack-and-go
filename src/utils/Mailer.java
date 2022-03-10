@@ -2,17 +2,18 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+
 package utils;
 
 import javax.mail.*;
 import javax.mail.internet.*;
+import java.net.PasswordAuthentication;
 import java.util.Properties;
 
 /**
  *
  * @author Wala
- */
+
 public class Mailer {
 
     public Mailer() {
@@ -32,11 +33,11 @@ public class Mailer {
 
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
+                    @Override
+                    protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(from, password);
+                    }
+                });
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
@@ -54,3 +55,5 @@ public class Mailer {
     }
 
 }
+ */
+

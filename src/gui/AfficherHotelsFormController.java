@@ -248,8 +248,8 @@ public class AfficherHotelsFormController implements Initializable {
         tblIdCh_fk.setCellValueFactory(cellData -> 
             new SimpleStringProperty(sch.getNomByID(cellData.getValue().getId_chambre())));
         
-        id_user.setCellValueFactory(cellData -> 
-                new SimpleStringProperty( su.getUserById(cellData.getValue().getId_user()).getFirst_name()));
+        id_user.setCellValueFactory(cellData ->
+               new SimpleStringProperty( su.getUserById(cellData.getValue().getId_user()).getFirst_name()));
         
         tblHotelReserv.setCellValueFactory(cellData -> 
                 new SimpleIntegerProperty(sch.getChambreByID(cellData.getValue().getId_chambre()).getNum_chambre()).asObject());
