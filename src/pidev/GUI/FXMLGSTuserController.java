@@ -31,6 +31,8 @@ import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import pidev.utils.UserSession;
 
 public class FXMLGSTuserController implements Initializable {
 
@@ -93,6 +95,10 @@ public class FXMLGSTuserController implements Initializable {
         refreshlist();
 
         recherche_avance();
+        
+        if(UserSession.getInstace() != null) {
+            System.out.println(UserSession.getInstace().toString());
+        }
     }
     public void refreshlist(){
 
@@ -135,7 +141,15 @@ public class FXMLGSTuserController implements Initializable {
                 ComboRoles.getValue(),
                 DPforum_B.getValue().atStartOfDay()
         );
-        su.ajouter(u);
+        try {
+            su.ajouter(u);
+        } catch(Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Required Fields Empty");
+            alert.setContentText("Email and Username must be unique try again.");
+            alert.showAndWait();
+        }
         String tilte;
         String message;
         TrayNotification tray = new TrayNotification();

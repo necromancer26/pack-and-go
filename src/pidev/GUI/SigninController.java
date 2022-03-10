@@ -1,5 +1,6 @@
 package pidev.GUI;
 
+import java.io.IOException;
 import pidev.models.Roles;
 import pidev.models.User;
 import pidev.services.ServiceUser;
@@ -13,6 +14,11 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import pidev.utils.Mailer;
 import pidev.utils.SMS;
 
@@ -60,7 +66,7 @@ public class SigninController implements Initializable {
         if(TFemail.getText().trim().isEmpty()){
             errors.append("- Please enter a Email.\n");
         }
-        if(TFnumber.getText().trim().isEmpty()){
+        if(TFnumber.getText().trim().isEmpty() && TFnumber.getText().length() == 8){
             errors.append("- Please enter a Number.\n");
         }
         if(DPbirthday.getValue() == null){
@@ -75,7 +81,7 @@ public class SigninController implements Initializable {
             alert.setHeaderText("Required Fields Empty");
             alert.setContentText(errors.toString());
 
-            alert.showAndWait();
+            alert.show();
         }
         else{
             User u = new User(TFfirstname.getText(),
@@ -87,12 +93,37 @@ public class SigninController implements Initializable {
                     Roles.CLIENT,
                     DPbirthday.getValue().atStartOfDay()
             );
-            su.ajouter(u);
-            SMS sms = new SMS();
-            sms.sendSMS("Votre compte a été créer avec succées");
-            Mailer mailer = new Mailer();
-            mailer.SendMail(TFemail.getText(), "Bienevenu " + TFusername_signup.getText() + "\nVotre compte a été créer avec succées.");
-            
+            try {
+                su.ajouter(u);
+                SMS sms = new SMS();
+                ///// sms.sendSMS("Votre compte a été créer avec succées");
+                Mailer mailer = new Mailer();
+                mailer.SendMail(TFemail.getText(), "Bienevenu " + TFusername_signup.getText() + "\nVotre compte a été créer avec succées.");
+
+                Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stageclose.close();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/pidev/GUI/Login.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(parent));
+                stage.show();
+
+            }catch(Exception e){
+                System.out.println("duplicate err");
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText("Required Fields Empty");
+                alert.setContentText("Duplicate user, try again!");
+                alert.show();
+            }
+     
         }
     }
 

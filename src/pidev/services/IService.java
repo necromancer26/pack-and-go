@@ -13,7 +13,7 @@ import java.util.List;
  * @author Wala
  */
 public interface IService <T>{
-    public void ajouter(T t);
+    public void ajouter(T t) throws SQLException;
     public T getById(long id) throws SQLException;
     public List<T> getAll() throws SQLException;
     public void modifier(long id, T t) throws SQLException;

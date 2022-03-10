@@ -33,21 +33,17 @@ public class ServiceUser implements pidev.services.IService<User> {
     }
 
     @Override
-    public void ajouter(User user) {
+    public void ajouter(User user) throws SQLException {
 
-        Statement st;
-        try {
+        
+            Statement st;
             st = cnx.createStatement();
             String hashedPassword = hashPassword(user.getPassword());
             user.setPassword(hashedPassword);
             String query = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `number`,`username`, `password`, `role`,`birthday`, `date_created_user`, `last_updated_user`) VALUES ('" + user.getFirst_name() + "','" + user.getLast_name() + "','" + user.getEmail() + "','" + user.getNumber() + "','" + user.getUsername() + "','" + user.getPassword() + "','" + user.getRole() + "','" + user.getBirthday() + "','" + LocalDateTime.now() + "','" + LocalDateTime.now() + "')";
             st.executeUpdate(query);
+   
 
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println(ex.getMessage());
-        }
 
     }
 
@@ -158,8 +154,9 @@ public class ServiceUser implements pidev.services.IService<User> {
         return nbuser;
     }
 
-    public User SearchByUsername(String username) throws SQLException {
-        Statement stm = cnx.createStatement();
+    public User SearchByUsername(String username) {
+        try {
+            Statement stm = cnx.createStatement();
         User user = new User();
         String query = "SELECT * FROM user where username='" + username + "'";
         ResultSet rs = stm.executeQuery(query);
@@ -177,23 +174,38 @@ public class ServiceUser implements pidev.services.IService<User> {
             user.setLast_updated_user(rs.getTimestamp(11).toLocalDateTime());
         }
         return user;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public boolean checkLogin(String email_username, String password) throws SQLException, NoSuchAlgorithmException {
+    public User checkLogin(String email_username, String password) throws SQLException, NoSuchAlgorithmException {
         Statement stm = cnx.createStatement();
         String hashedPassword = hashPassword(password);
         String query = "SELECT * FROM user WHERE (email='" + email_username + "'OR username='" + email_username + "') AND password ='" + hashedPassword + "'";
         ResultSet rs = stm.executeQuery(query);
-        if (rs.next() == false) {
-            return false;
-        } else {
-            return true;
+        User user = new User();
+        while (rs.next()) {
+            System.out.println("user exist");
+            user.setId_user(rs.getInt("id_user"));
+            user.setFirst_name(rs.getString("first_name"));
+            user.setLast_name(rs.getString("last_name"));
+            user.setEmail(rs.getString("email"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setNumber(rs.getInt("number"));
+            user.setRole(Roles.valueOf(rs.getString("role")));
+            user.setBirthday(rs.getTimestamp(9).toLocalDateTime());
+            user.setDate_created_user(rs.getTimestamp(10).toLocalDateTime());
+            user.setLast_updated_user(rs.getTimestamp(11).toLocalDateTime());
         }
-
+        return user;
     }
 
-    private String hashPassword(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
 
         // Add password bytes to digest
         md.update(password.getBytes());
@@ -211,5 +223,9 @@ public class ServiceUser implements pidev.services.IService<User> {
         String generatedPassword = sb.toString();
 
         return generatedPassword;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
