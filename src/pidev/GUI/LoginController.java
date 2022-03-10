@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +25,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.models.Roles;
+import pidev.models.User;
 import pidev.services.ServiceUser;
+import pidev.utils.UserSession;
 
 /**
  * FXML Controller class
@@ -86,7 +89,10 @@ public class LoginController implements Initializable {
         } else {
             try {
                 try {
-                    if (su.checkLogin(username_login.getText(), password_login.getText())) {
+                    User user = su.checkLogin(username_login.getText(), password_login.getText());
+                    if (user != null) {
+                        UserSession.getInstace(user.getId_user(), user.getRole());
+
                         System.out.println("Your loged in");
                     } else {
                         System.out.println("Check ur username or password!");
@@ -97,6 +103,7 @@ public class LoginController implements Initializable {
                 Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stageclose.close();
                 if (su.SearchByUsername(username_login.getText()).getRole() == Roles.ADMIN) {
+                    
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/pidev/GUI/FXMLGSTuser.fxml"));
                     try {
@@ -110,7 +117,7 @@ public class LoginController implements Initializable {
                     stage.show();
                 }
 
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
