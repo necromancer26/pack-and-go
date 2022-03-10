@@ -39,11 +39,11 @@ public class MailRestau {
         //Set TLS encryption enabled
         properties.put("mail.smtp.starttls.enable", "true");
         //Set SMTP host
-       // properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.socketFactory.port", "465");
         //Set smtp port
         properties.put("mail.smtp.port", "465");
-     //  properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+       properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
       //  properties.put("mail.smtp.socketFactory.fallback", "false");
         //Your gmail address
         String myAccountEmail = "packandgomail@gmail.com";
@@ -69,9 +69,9 @@ public class MailRestau {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("PACK AND GO");
-            String htmlCode = "<h1 style='color: green;'> Voucher Client </h1> <br/> <h2><b> Cher(e) Mr/Mme </b></h2> <h3><b>Alerte "
-                    + " votre commentaire a éte supprimee </b> </h3> Merci pour votre confiance. <b><h3> Réservation </h3><b>";
+            message.setSubject("AVERTISSEMENT PACK AND GO");
+            String htmlCode = "<h1 style='color: RED;'> Avertissement de PACK AND GO </h1> <br/> <h2><b> Cher(e) Mr/Mme </b></h2> <h3><b>Alerte "
+                    + " votre commentaire a éte supprimee pour violation de nos consignes communautaires</b> </h3> Merci de bien respecter les règles de publication de commentaires. <b><h3>";
             message.setContent(htmlCode, "text/html");
             return message;
         } catch (Exception ex) {

@@ -182,7 +182,7 @@ public class AfficherChambresFrontController implements Initializable {
             try {
                 Parent root = LOADER.load();
                 Scene sc = new Scene(root);
-                FXMLGSTuserController cntr = LOADER.getController();
+                FrontRestauController cntr = LOADER.getController();
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(sc);
                 window.show();

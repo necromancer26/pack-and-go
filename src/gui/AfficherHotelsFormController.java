@@ -905,7 +905,7 @@ public class AfficherHotelsFormController implements Initializable {
 
     @FXML
     private void restauBack(MouseEvent event) {
-      /*  FXMLLoader LOADER = new FXMLLoader(getClass().getResource("ShowRestauForm.fxml"));
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("ShowRestauForm.fxml"));
             try {
                 Parent root = LOADER.load();
                 Scene sc = new Scene(root);
@@ -915,7 +915,7 @@ public class AfficherHotelsFormController implements Initializable {
                 window.show();
             } catch (Exception ex) {
 
-        }*/
+        }
     }
    
     

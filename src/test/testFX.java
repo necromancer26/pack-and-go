@@ -23,7 +23,7 @@ public class testFX extends Application {
         
         try{
             
-            Parent root = FXMLLoader.load(getClass().getResource("/gui/menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
