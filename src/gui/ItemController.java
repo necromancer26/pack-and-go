@@ -1,4 +1,5 @@
 package gui;
+import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 //import main.FXmain;
 import javafx.event.ActionEvent;
@@ -16,17 +17,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import models.Activite;
+import models.Roles;
 import models.User;
 import services.ServiceActivite;
+import utils.UserSession;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.ResourceBundle;
+
+import static models.Roles.CLIENT;
 
 
-
-public class ItemController {
+public class ItemController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -50,10 +56,12 @@ public class ItemController {
 
     private Activite activite;
     private MyListener myListener;
+
     @FXML
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(activite);
     }
+
     private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -62,15 +70,16 @@ public class ItemController {
         alert.initOwner(owner);
         alert.show();
     }
-    public void setData(Activite activite, MyListener myListener){
-        ServiceActivite sa= new ServiceActivite();
-        this.activite=activite;
+
+    public void setData(Activite activite, MyListener myListener) {
+        ServiceActivite sa = new ServiceActivite();
+        this.activite = activite;
         this.myListener = myListener;
         nameLabel.setText(activite.getNom_activite());
         priceLabel.setText(String.valueOf(activite.getPrix()));
         typeLabel.setText(String.valueOf(activite.getType_activite()));
         System.out.println(activite.getImgSrc());
-        Image image = new Image(getClass().getResourceAsStream("../"+activite.getImgSrc()));
+        Image image = new Image(getClass().getResourceAsStream("../" + activite.getImgSrc()));
         img.setImage(image);
 
         supprimer.setOnAction(
@@ -86,7 +95,7 @@ public class ItemController {
                         showAlert(Alert.AlertType.INFORMATION, ((Node) event.getSource()).getScene().getWindow(),
                                 " Succés de suppression ! ", " Suppression de l'activité est établie avec succés! ");
 
-                            sa.supprimer(activite);
+                        sa.supprimer(activite);
 
 
                         try {
@@ -115,6 +124,7 @@ public class ItemController {
                 }
         );
     }
+
     public void switchToEditPage(ActionEvent event, Activite activite) throws IOException {
         switchPage(event, "./EditActivity.fxml", activite);
 
@@ -128,5 +138,20 @@ public class ItemController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Roles userRole = null;
+        if (UserSession.getInstace() != null) {
+            userRole = UserSession.getInstace().getRole();
+        }
+        if (userRole == CLIENT) {
+            supprimer.setVisible(false);
+            supprimer.managedProperty().bind(supprimer.visibleProperty());
+            modifier.setVisible(false);
+            modifier.managedProperty().bind(modifier.visibleProperty());
+        }
+
     }
 }

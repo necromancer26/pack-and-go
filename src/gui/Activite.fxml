@@ -18,11 +18,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ActiviteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ActiviteController">
    <children>
-      <BorderPane layoutX="91.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" styleClass="search-box" stylesheets="@../values/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="91.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" styleClass="search-box" stylesheets="/values/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="/values/style.css" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
@@ -40,7 +40,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
                   <Pane prefHeight="21.0" prefWidth="435.0" />
-                  <VBox fx:id="ChosenActivityCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../values/style.css">
+                  <VBox fx:id="ChosenActivityCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="/values/style.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="30.0" />
                      </VBox.margin>
@@ -90,7 +90,7 @@
                         <Pane prefHeight="48.0" prefWidth="335.0" />
                         <ImageView fx:id="activityImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
                            <image>
-                              <Image url="@../img/pathe.png" />
+                              <Image url="@../../../projet/pack-and-go/src/img/pathe.png" />
                            </image>
                         </ImageView>
                         <Pane prefHeight="48.0" prefWidth="335.0" />
@@ -101,11 +101,11 @@
                                     <Font name="Tamil MN" size="36.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="nbTicket" prefHeight="45.0" prefWidth="130.0" styleClass="comboBox" stylesheets="@../values/style.css" />
+                              <ComboBox fx:id="nbTicket" prefHeight="45.0" prefWidth="130.0" styleClass="comboBox" stylesheets="/values/style.css" />
                            </children>
                         </HBox>
                         <Pane prefHeight="37.0" prefWidth="335.0" />
-                        <Button fx:id="boutonReserver" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" stylesheets="@../values/style.css" text="Réserver" textFill="#828282">
+                        <Button fx:id="boutonReserver" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" stylesheets="/values/style.css" text="Réserver" textFill="#828282">
                            <VBox.margin>
                               <Insets bottom="20.0" top="30.0" />
                            </VBox.margin>
@@ -131,7 +131,7 @@
                <children>
                   <HBox prefHeight="49.0" prefWidth="887.0">
                      <children>
-                        <Button fx:id="Ajouter" alignment="CENTER" mnemonicParsing="false" onAction="#switchToList" stylesheets="@../values/style.css" text="+" textFill="WHITE">
+                        <Button fx:id="Ajouter" alignment="CENTER" mnemonicParsing="false" onAction="#switchToList" stylesheets="/values/style.css" text="+" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -144,7 +144,59 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="menu1" alignment="CENTER" mnemonicParsing="false" onAction="#menuprincipal" stylesheets="@../values/style.css" text="&lt;- MENU" textFill="WHITE">
+                        <Button fx:id="menu1" alignment="CENTER" mnemonicParsing="false" onAction="#menuprincipal" stylesheets="/values/style.css" text="&lt;- MENU" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="add-btn" />
+                              <String fx:value="button-add" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" top="35.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="vol" alignment="CENTER" layoutX="97.0" layoutY="45.0" mnemonicParsing="false" stylesheets="/values/style.css" text="VOL" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="add-btn" />
+                              <String fx:value="button-add" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" top="35.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="resto" alignment="CENTER" layoutX="226.0" layoutY="10.0" mnemonicParsing="false" onAction="#resto" stylesheets="/values/style.css" text="RESTAURANT" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="add-btn" />
+                              <String fx:value="button-add" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" top="35.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="test" alignment="CENTER" layoutX="395.0" layoutY="45.0" mnemonicParsing="false" onAction="#test" stylesheets="/values/style.css" text="TEST" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="add-btn" />
+                              <String fx:value="button-add" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="20.0" top="35.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="hotel" alignment="CENTER" layoutX="545.0" layoutY="45.0" mnemonicParsing="false" onAction="#hotel" stylesheets="/values/style.css" text="HÔTEL" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -164,7 +216,7 @@
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../values/style.css">
+                        <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="/values/style.css">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>

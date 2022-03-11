@@ -220,4 +220,18 @@ public class AfficherHotelFrontController implements Initializable {
             System.err.println(ioException.getMessage());
         }
     }
+
+    public void toActivity(MouseEvent mouseEvent) {
+        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Activite.fxml"));
+        try {
+            Parent root = LOADER.load();
+            Scene sc = new Scene(root);
+            ActiviteController activiteController = LOADER.getController();
+            Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            window.setScene(sc);
+            window.show();
+        } catch (IOException ioException) {
+            System.err.println(ioException.getMessage());
+        }
+    }
 }

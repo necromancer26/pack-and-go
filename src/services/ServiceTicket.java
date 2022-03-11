@@ -1,5 +1,6 @@
 package services;
 
+import models.Roles;
 import models.Ticket;
 
 
@@ -9,6 +10,7 @@ import models.Activite;
 import models.User;
 import utils.DataSource;
 import utils.JavaMail;
+import utils.UserSession;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +27,21 @@ public class ServiceTicket implements IServiceS<Ticket> {
             String req = "INSERT INTO `ticket`( `id_activite`,`id_user` ) VALUES ('"+activite.getId_activite()+"','"+ user.getId_user()+"')  ";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
-            jvm.sendTextMail("Ticket", "samibenfadhl@gmail.com", "Votre Reservation est bien effectuée");
+            if (UserSession.getInstace() != null) {
+               Long  userId = UserSession.getInstace().getUserId();
+                String req1 = "select `email` from user where `id_user`="+userId;
+
+                Statement st1 = cnx.createStatement();
+                ResultSet rs = st.executeQuery(req1);
+                while(rs.next()){
+
+                    jvm.sendTextMail("Ticket", rs.getString(1), "Votre Reservation est bien effectuée");
+
+                }
+
+            }
+
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -44,6 +60,7 @@ public class ServiceTicket implements IServiceS<Ticket> {
     public List<Ticket> getAll() {
         List<Ticket> list = new ArrayList<>();
         try {
+
             String req = "Select * from ticket";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);

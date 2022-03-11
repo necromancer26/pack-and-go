@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 //import main.FXmain;
 import models.Activite;
+import models.Roles;
 import models.User;
 import services.ServiceActivite;
 import services.ServiceTicket;
@@ -30,6 +31,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import utils.UserSession;
+
 import javax.xml.soap.Text;
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +40,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static models.Roles.ADMIN;
 import static models.Roles.CLIENT;
 
 public class ActiviteController implements Initializable {
@@ -73,6 +77,16 @@ public class ActiviteController implements Initializable {
     private Button boutonReserver;
     @FXML
     private Button menu;
+    @FXML
+    private Button menu1;
+    @FXML
+    private Button Ajouter;
+    @FXML
+    private Button vol;
+    @FXML
+    private Button resto;
+    @FXML
+    private Button test;
 
 
 
@@ -145,7 +159,27 @@ public class ActiviteController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Roles userRole = null;
+        if (UserSession.getInstace() != null) {
+            userRole = UserSession.getInstace().getRole();
+        }
+        if (userRole == CLIENT) {
+            menu1.setVisible(false);
+            menu1.managedProperty().bind(menu1.visibleProperty());
+            Ajouter.setVisible(false);
+            Ajouter.managedProperty().bind(Ajouter.visibleProperty());
+        }
+        if (userRole == ADMIN) {
 
+            ChosenActivityCard.setVisible(false);
+            ChosenActivityCard.managedProperty().bind(ChosenActivityCard.visibleProperty());
+            vol.setVisible(false);
+            vol.managedProperty().bind(vol.visibleProperty());
+            test.setVisible(false);
+            test.managedProperty().bind(test.visibleProperty());
+            resto.setVisible(false);
+            resto.managedProperty().bind(resto.visibleProperty());
+        }
         ServiceActivite serviceActivite = new ServiceActivite();
         List<Activite> listeActivite=serviceActivite.getAll();
         nbTicket.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
@@ -201,6 +235,39 @@ public class ActiviteController implements Initializable {
     @FXML
     private void menuprincipal(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("FXMLGSTuser.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void vol(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("FXMLGSTuser.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void resto(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("FrontRestau.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void test(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("MenuTest.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void hotel(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("AfficherHotelFront.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

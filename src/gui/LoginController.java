@@ -89,7 +89,7 @@ public class LoginController implements Initializable {
                 try {
                     User user = su.checkLogin(username_login.getText(), password_login.getText());
                     if (user != null) {
-                        UserSession.getInstace(user.getId_user(), user.getRole()); 
+                        UserSession.getInstace(user.getId_user(), user.getRole() );
                         System.out.println("Your loged in");
                         Stage stageclose = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stageclose.close();
