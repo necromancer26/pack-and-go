@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="825.0" prefWidth="1190.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.services.volclient">
+   <children>
+      <TableView fx:id="tablevol" layoutX="37.0" layoutY="83.0" prefHeight="567.0" prefWidth="1116.0">
+        <columns>
+          <TableColumn fx:id="cln_compagnie" prefWidth="144.0" text="compagnie aerien" />
+          <TableColumn fx:id="cln_depart" minWidth="0.0" prefWidth="93.0" text="Départ" />
+            <TableColumn fx:id="cln_destination" prefWidth="96.0" text="Destination" />
+            <TableColumn fx:id="cln_date_depart" prefWidth="114.0" text="Date de départ" />
+            <TableColumn fx:id="cln_date_arrive" prefWidth="119.0" text="Date d'arrivé" />
+            <TableColumn fx:id="cln_type" prefWidth="123.0" text="Type d'avion" />
+            <TableColumn fx:id="cln_duree" prefWidth="75.0" text="Durée" />
+            <TableColumn fx:id="cln_prix" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="cln_action" prefWidth="276.0" text="Action" />
+        </columns>
+      </TableView>
+      <Label layoutX="75.0" layoutY="-5.0" prefHeight="72.0" prefWidth="132.0" text="Vols">
+         <font>
+            <Font name="System Bold Italic" size="60.0" />
+         </font>
+      </Label>
+      <TextField fx:id="valrecherche" layoutX="194.0" layoutY="682.0" prefHeight="42.0" prefWidth="795.0" promptText="Rechercher" />
+   </children>
+</AnchorPane>

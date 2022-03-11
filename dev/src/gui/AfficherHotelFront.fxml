@@ -82,7 +82,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="309.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+      <VBox layoutX="309.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" onMouseClicked="#volFront" stylesheets="@bootstrap.css">
          <children>
             <Label prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#00533a">
                <font>
