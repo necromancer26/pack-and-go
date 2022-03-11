@@ -22,9 +22,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,6 +42,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import models.Resteau;
@@ -402,7 +405,21 @@ public void editTableView(){
 
         }
     }
+
+    @FXML
+    private void imprimeR(ActionEvent event) {
+         System.out.println("To Printer!");
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            Window primaryStage = null;
+            job.showPrintDialog(primaryStage);
+            Node root = this.TableViewRestau;
+            job.printPage(root);
+            job.endJob();
+        }
     }
+    }
+    
 
 
                   

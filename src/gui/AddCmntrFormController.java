@@ -21,6 +21,7 @@ import org.controlsfx.control.Notifications;
 import models.Commentaire;
 import models.Resteau;
 import services.CommentaireResteau;
+import utils.UserSession;
 
 /**
  * FXML Controller class
@@ -41,6 +42,10 @@ public class AddCmntrFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          if(UserSession.getInstace() != null){
+            Long userId = UserSession.getInstace().getUserId();
+            System.out.println(userId);
+        }
         // TODO   
     }    
 
@@ -51,7 +56,7 @@ public class AddCmntrFormController implements Initializable {
            Commentaire C1=new Commentaire();
                //C1.setIdR(parseInt(lblIdR.getText())); 
                C1.setIdR(Resteau.getIdd());
-               C1.setid_user(parseInt(lbliduser.getText()));
+               C1.setid_user(UserSession.getInstace().getUserId().intValue());
                C1.setContenuCommentaireR(lblcontenucmntr.getText());  
                C.AjouterCommentaire(C1);
                Alert alert =new Alert(Alert.AlertType.INFORMATION);

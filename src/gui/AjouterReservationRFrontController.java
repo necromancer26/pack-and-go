@@ -30,6 +30,7 @@ import org.controlsfx.control.Notifications;
 import models.Resteau;
 import models.reservationR;
 import services.cReservationR;
+import utils.UserSession;
 
 /**
  * FXML Controller class
@@ -55,6 +56,10 @@ public class AjouterReservationRFrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+          if(UserSession.getInstace() != null){
+            Long userId = UserSession.getInstace().getUserId();
+            System.out.println(userId);
+        }
     }    
 
     @FXML
@@ -63,8 +68,9 @@ public class AjouterReservationRFrontController implements Initializable {
 reservationR RE1= new reservationR();
              // RE1.setIdR(parseInt(lblidR.getText())); 
              RE1.setIdR(Resteau.getIdd());
-             
-               RE1.setId_user(parseInt(lbliduser.getText()));
+             //               C1.setid_user(UserSession.getInstace().getUserId().intValue());
+
+               RE1.setId_user(UserSession.getInstace().getUserId().intValue());
                RE1.setNbrPersonneR(parseInt(lblnbpR.getText()));
                RE1.setTimeR(String.valueOf(llbltimeR.getValue())); 
                RE1.setDateR(String.valueOf(lblDateR.getValue()));  

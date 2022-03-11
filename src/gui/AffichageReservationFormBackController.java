@@ -43,6 +43,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.ServiceUser;
+import utils.UserSession;
 
 
 /**
@@ -59,7 +61,7 @@ public class AffichageReservationFormBackController implements Initializable {
     @FXML
         private TableColumn<reservationR, Integer>  colidR;
     @FXML
-    private TableColumn<reservationR, Integer>  colid_user;
+    private TableColumn<reservationR, String>  colid_user;
     @FXML
     private TableColumn<reservationR, Integer>  colnbrPersonneR;
     @FXML
@@ -74,7 +76,8 @@ public class AffichageReservationFormBackController implements Initializable {
     @FXML
     private TableColumn<reservationR, String> colNomR;
 
-    
+                ServiceUser su = new ServiceUser ();
+
 
     /**
      * Initializes the controller class.
@@ -85,7 +88,7 @@ public class AffichageReservationFormBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-  
+
                loadDate();
                editTableView();
                 modifier();
@@ -99,6 +102,10 @@ public class AffichageReservationFormBackController implements Initializable {
       //  ObservableList<reservationR> ReservationlList ;
         ReservationlList =RE.getListResteau();
                 TableViewReservation.setItems(ReservationlList);*/
+                    if(UserSession.getInstace() != null){
+            Long userId = UserSession.getInstace().getUserId();
+            System.out.println(userId);
+        }
 
     }    
     ServiceResteau sp = new ServiceResteau();
@@ -115,10 +122,12 @@ public class AffichageReservationFormBackController implements Initializable {
         ReservationlList = RE.getListResteau();
         coltidreservationR.setCellValueFactory(new PropertyValueFactory<>("idreservationR"));
         colidR.setCellValueFactory(new PropertyValueFactory<>("idR"));
-        colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+        //colid_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         colnbrPersonneR.setCellValueFactory(new PropertyValueFactory<>("nbrPersonneR"));
         coltimeR.setCellValueFactory(new PropertyValueFactory<>("timeR"));
         coldateR.setCellValueFactory(new PropertyValueFactory <>("dateR"));
+         colid_user.setCellValueFactory(cellData ->
+               new SimpleStringProperty(su.getUserById1(cellData.getValue().getId_user())));
   colNomR.setCellValueFactory(cellData -> 
        new SimpleStringProperty(sp.getNomByIDResteau(cellData.getValue().getIdR())));
 

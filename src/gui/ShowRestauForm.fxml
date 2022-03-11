@@ -104,6 +104,7 @@
          </children>
       </VBox>
       <Pane layoutX="192.0" prefHeight="550.0" prefWidth="4.0" style="-fx-background-color: #4DB6AC;" />
+      <Button layoutX="286.0" layoutY="116.0" mnemonicParsing="false" onAction="#imprimeR" prefHeight="25.0" prefWidth="159.0" text="Imprimer" />
     
       
    </children>

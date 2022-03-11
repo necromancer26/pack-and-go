@@ -29,7 +29,7 @@ public class testFX extends Application {
     public void start(Stage stage) {
         
         try{         
-            Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/FXMLGSTuser.fxml"));
             StackPane stackPane = new StackPane();
             stackPane.getChildren().add(root);
             stackPane.setAlignment(Pos.CENTER);

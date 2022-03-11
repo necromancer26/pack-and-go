@@ -23,7 +23,7 @@
         <columns>
           <TableColumn fx:id="colidcmntrR" prefWidth="75.0" text="ID cmntr" visible="false" />
           <TableColumn fx:id="colidR" prefWidth="75.0" text="ID restau" visible="false" />
-            <TableColumn fx:id="coliduser" prefWidth="75.0" text="id user" />
+            <TableColumn fx:id="coliduser" prefWidth="75.0" text="Client" />
             <TableColumn fx:id="colNomR" prefWidth="111.0" text="Nom Restau" />
             <TableColumn fx:id="colcmntrR" prefWidth="150.0" text="Commentaire" />
             <TableColumn fx:id="collllC" prefWidth="186.0" />

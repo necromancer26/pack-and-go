@@ -8,6 +8,9 @@ import MailR.MailRestau;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +40,9 @@ import models.Resteau;
 import models.Commentaire;
 import services.CommentaireResteau;
 import services.ServiceResteau;
+import services.ServiceUser;
+import utils.DataSource;
+import utils.UserSession;
 
 /**
  * FXML Controller class
@@ -52,7 +58,7 @@ public class ShowCommentaireController implements Initializable {
     @FXML
     private TableColumn<Commentaire, Integer> colidR;
     @FXML
-    private TableColumn<Commentaire, Integer> coliduser;
+    private TableColumn<Commentaire, String> coliduser;
     @FXML
     private TableColumn<Commentaire, String>colcmntrR;
         @FXML
@@ -67,6 +73,7 @@ public class ShowCommentaireController implements Initializable {
         ServiceResteau sp = new ServiceResteau();
     @FXML
     private TextField tfMail;
+          ServiceUser su = new ServiceUser ();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,6 +99,8 @@ public class ShowCommentaireController implements Initializable {
         coliduser.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         colcmntrR.setCellValueFactory(new PropertyValueFactory<>("contenuCommentaireR"));
         
+        coliduser.setCellValueFactory(cellData ->
+               new SimpleStringProperty(su.getUserById1(cellData.getValue().getId_user())));
         colNomR.setCellValueFactory(cellData -> 
        new SimpleStringProperty(sp.getNomByIDResteau(cellData.getValue().getIdR())));
            Callback<TableColumn<Commentaire, String>, TableCell<Commentaire, String>> cellFoctory = (TableColumn<Commentaire, String> param) -> {
@@ -103,14 +112,16 @@ public class ShowCommentaireController implements Initializable {
                         setGraphic(null);
                         setText(null);
                     } else {                      
-                        final Button deleteButton = new Button("DELETE");
+                       final Button deleteButton = new Button("DELETE");
                         deleteButton.setOnAction(event -> {
                             try {
                             Commentaire C1 = getTableView().getItems().get(getIndex());
                            C.supprimerCommentaireR(C1);                                  
                             refrechRestau();  
                             
-                                                    
+                           
+                            MailRestau.sendMail(tfMail.getText());
+                            
                          
                         } catch (Exception ex) {
                                 System.out.println(ex.getMessage());
@@ -118,30 +129,14 @@ public class ShowCommentaireController implements Initializable {
 
                         });
                        
+                                  
+ 
+                      
+                       
                                                                  
                         
-                        final Button editButton = new Button("UPDATE");
-                        editButton.setOnAction(event -> {
-                            modifier();
-                            
-                         /*Commentaire C1 = getTableView().getItems().get(getIndex());
-   try{
-
-            URL fxURL = getClass().getResource("../gui/ModifierCommentaireForm.fxml");
-            Parent root = FXMLLoader.load(fxURL);
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("modifier de commentaire");
-            stage.show();
-
-        } catch (IOException ex){
-            System.out.println(ex.getMessage());
-        }                                                           
-
-                 */
-                        });
-                         HBox managebtn = new HBox(editButton, deleteButton);
+                
+                         HBox managebtn = new HBox( deleteButton);
                         managebtn.setStyle("-fx-alignment:center");
                         setGraphic(managebtn);
                         setText(null);

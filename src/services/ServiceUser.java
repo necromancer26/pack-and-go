@@ -277,4 +277,18 @@ public class ServiceUser implements services.IService<User> {
         }
         return nom;
     }
+     public String getUserById1(long id_user) {
+        String nom = "";
+        try {
+            String req = "Select username from user WHERE id_user ="+id_user;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                nom = rs.getString("username");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return nom;
+    }
 }

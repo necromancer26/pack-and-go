@@ -72,34 +72,26 @@ public class CommentaireResteau implements ICom<Commentaire>  {
 
     @Override
     public boolean supprimerCommentaireR(Commentaire t) {
-    boolean modif=false;
+     boolean modif=false;
                   
 
         try {
-
             Statement st = cnx.createStatement();
             String req = "DELETE FROM Commentaire WHERE idCommentaireR=?";
-            if (UserSession.getInstace() != null) {
-               int  userId = UserSession.getInstace().getUserId().intValue();
-                String req1 = "select email from user where id_user="+userId;
-                PreparedStatement ps = cnx.prepareStatement(req);
-                ResultSet rs = ps.executeQuery(req1);
-                while(rs.next()){
-                    MailRestau.sendMail(rs.getString(1));
-                }
+               PreparedStatement ps =  cnx.prepareStatement(req);
             ps.setInt(1, t.getIdCommentaireR());
             ps.executeUpdate();
             System.out.println("commentaire a supprimee !");
-            }
+
         } catch (SQLException ex) {
                         System.err.println(ex.getMessage());
 
-        } catch (Exception ex) {
-            Logger.getLogger(CommentaireResteau.class.getName()).log(Level.SEVERE, null, ex);
         }
                 return modif;
 
-    }   
+       
+    }
+   
    
     @Override
        public List<Commentaire> getAll() {
