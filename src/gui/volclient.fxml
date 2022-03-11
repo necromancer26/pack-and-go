@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="825.0" prefWidth="1190.0" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.volclient">
+   <children>
+      <TableView fx:id="tablevol" layoutX="37.0" layoutY="83.0" prefHeight="567.0" prefWidth="1116.0">
+        <columns>
+          <TableColumn fx:id="cln_compagnie" prefWidth="144.0" text="compagnie aerien" />
+          <TableColumn fx:id="cln_depart" minWidth="0.0" prefWidth="93.0" text="Départ" />
+            <TableColumn fx:id="cln_destination" prefWidth="96.0" text="Destination" />
+            <TableColumn fx:id="cln_date_depart" prefWidth="114.0" text="Date de départ" />
+            <TableColumn fx:id="cln_date_arrive" prefWidth="119.0" text="Date d'arrivé" />
+            <TableColumn fx:id="cln_type" prefWidth="123.0" text="Type d'avion" />
+            <TableColumn fx:id="cln_duree" prefWidth="75.0" text="Durée" />
+            <TableColumn fx:id="cln_prix" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="cln_action" prefWidth="276.0" text="Action" />
+        </columns>
+      </TableView>
+      <Label layoutX="75.0" layoutY="-5.0" prefHeight="72.0" prefWidth="132.0" text="Vols">
+         <font>
+            <Font name="System Bold Italic" size="60.0" />
+         </font>
+      </Label>
+      <TextField fx:id="valrecherche" layoutX="194.0" layoutY="682.0" prefHeight="42.0" prefWidth="795.0" promptText="Rechercher" />
+      <VBox layoutX="889.0" layoutY="23.0" onMouseClicked="#restauFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Restaurants" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="693.0" layoutY="23.0" onMouseClicked="#activiteFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="515.0" layoutY="23.0" onMouseClicked="#toPersonalityTestMenu" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label onMouseClicked="#toPersonalityTestMenu" prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Test &amp; pack" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="35.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="322.0" layoutY="23.0" onMouseClicked="#HotelsFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+         <children>
+            <Label prefHeight="51.0" prefWidth="115.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Hotels" textFill="#00533a">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="50.0" top="7.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

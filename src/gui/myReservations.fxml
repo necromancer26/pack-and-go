@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1112.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.services.MyReservationsController">
+   <children>
+      <Label layoutX="37.0" layoutY="33.0" text="My reservations : ">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableview" layoutX="37.0" layoutY="96.0" prefHeight="506.0" prefWidth="983.0">
+        <columns>
+          <TableColumn fx:id="col_id_vol" minWidth="0.0" prefWidth="0.0" text="id vol" />
+            <TableColumn fx:id="col_depart" prefWidth="340.0" text="depart" />
+            <TableColumn fx:id="col_destination" prefWidth="170.0" text="destination" />
+            <TableColumn fx:id="col_classe" prefWidth="170.0" text="classe" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
