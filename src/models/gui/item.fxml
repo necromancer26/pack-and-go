@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMousePressed="#click" prefHeight="215.0" prefWidth="225.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ItemController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" styleClass="transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="37.0" prefWidth="185.0">
+               <children>
+                  <Label fx:id="nameLabel" prefHeight="30.0" prefWidth="139.0" text="Gaumont">
+                     <font>
+                        <Font name="Tamil MN" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="priceLabel" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" text="3,00DT">
+                     <font>
+                        <Font name="Tamil MN Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="30.0" layoutY="10.0" prefHeight="14.0" prefWidth="185.0">
+               <children>
+                  <Label fx:id="typeLabel" prefHeight="47.0" prefWidth="140.0" text="Cinéma">
+                     <font>
+                        <Font name="Tamil MN" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" styleClass="img">
+               <image>
+                  <Image url="@../img/pathe.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="modifier" mnemonicParsing="false" prefHeight="27.0" prefWidth="74.0" styleClass="modsup-btn" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE" />
+                  <Pane prefHeight="38.0" prefWidth="35.0" />
+                  <Button fx:id="supprimer" mnemonicParsing="false" styleClass="modsup-btn" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

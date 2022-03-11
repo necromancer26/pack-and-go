@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EditActivityController">
+   <children>
+      <BorderPane layoutX="91.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" styleClass="search-box" stylesheets="@../values/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="219.0" text="Pack &amp; Go " textFill="#878787">
+                           <font>
+                              <Font name="Herculanum" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="114.0" layoutY="40.0" prefHeight="50.0" prefWidth="182.0" text="Activites" textFill="#878787">
+                           <font>
+                              <Font name="Tamil MN Bold" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="21.0" prefWidth="435.0" />
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="110.0" prefWidth="200.0" />
+                  <Pane layoutX="10.0" layoutY="120.0" prefHeight="21.0" prefWidth="435.0" />
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox onMouseEntered="#receiveData" prefHeight="44.0" prefWidth="880.0" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox fx:id="ChosenActivityCard1" alignment="CENTER" prefHeight="646.0" prefWidth="463.0" styleClass="add-form" stylesheets="@../values/style.css">
+                           <children>
+                              <Pane prefHeight="48.0" prefWidth="335.0" />
+                              <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../values/style.css">
+                                       <children>
+                                          <TextField fx:id="activityNameLabel" prefHeight="40.0" prefWidth="372.0" promptText="Nom d'activité" styleClass="transparent" stylesheets="@../values/style.css">
+                                             <font>
+                                                <Font name="Tamil MN" size="18.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="search-box" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="50.0" right="50.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pane layoutX="10.0" layoutY="239.0" prefHeight="48.0" prefWidth="335.0" />
+                              <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../values/style.css">
+                                       <children>
+                                          <TextField fx:id="activityTypeLabel" prefHeight="40.0" prefWidth="372.0" promptText="Type" styleClass="transparent" stylesheets="@../values/style.css">
+                                             <font>
+                                                <Font name="Tamil MN" size="18.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="search-box" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="50.0" right="50.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pane prefHeight="37.0" prefWidth="335.0" />
+                              <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../values/style.css">
+                                       <children>
+                                          <TextField fx:id="activityPriceLabel" prefHeight="40.0" prefWidth="372.0" promptText="Prix" styleClass="transparent" stylesheets="@../values/style.css">
+                                             <font>
+                                                <Font name="Tamil MN" size="18.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="search-box" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="50.0" right="50.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pane prefHeight="48.0" prefWidth="335.0" />
+                              <HBox alignment="TOP_RIGHT" layoutX="60.0" layoutY="240.0" prefHeight="50.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../values/style.css">
+                                       <children>
+                                          <TextField fx:id="activityAdresseLabel" prefHeight="40.0" prefWidth="372.0" promptText="Adresse" styleClass="transparent" stylesheets="@../values/style.css">
+                                             <font>
+                                                <Font name="Tamil MN" size="18.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="search-box" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="50.0" right="50.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pane layoutX="10.0" layoutY="290.0" prefHeight="48.0" prefWidth="335.0" />
+                              <HBox alignment="TOP_RIGHT" layoutX="60.0" layoutY="376.0" prefHeight="50.0" prefWidth="285.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="460.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../values/style.css">
+                                       <children>
+                                          <TextField fx:id="activityPaysLabel" prefHeight="40.0" prefWidth="372.0" promptText="Pays" styleClass="transparent" stylesheets="@../values/style.css">
+                                             <font>
+                                                <Font name="Tamil MN" size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="search-box" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <HBox.margin>
+                                          <Insets left="50.0" right="50.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <Button fx:id="modifierPhoto" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#mod" prefHeight="9.0" prefWidth="234.0" stylesheets="@../values/style.css" text="Modifier la photo" textFill="#878787">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Tamil MN Bold" size="18.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="36.0" stylesheets="@../values/style.css" text="+" textFill="WHITE">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="button-add2" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </Button>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="btn-photo" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </Button>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#update" prefHeight="39.0" prefWidth="108.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Modifier" textFill="#828282">
+                                       <font>
+                                          <Font name="Tamil MN Bold" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Pane prefHeight="97.0" prefWidth="59.0" />
+                                    <Button mnemonicParsing="false" onAction="#switchToList" prefHeight="39.0" prefWidth="106.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Retour" textFill="#808080">
+                                       <font>
+                                          <Font name="Tamil MN Bold" size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

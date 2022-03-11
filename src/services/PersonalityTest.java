@@ -44,13 +44,19 @@ public class PersonalityTest implements IPersonalityTestService {
         return result;
     }
 
-    public void ajouterUserPersonality(User user,String personalityResult) {
+    public void ajouterUserPersonality(long userId,String personalityResult) {
         try {
+            System.out.println("inside ajout");
+            System.out.println(userId);
+            System.out.println(personalityResult);
+            System.out.println("inside ajout");
             //String req = "INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ((SELECT `id_user` FROM `user` WHERE (`username`=?)LIMIT 1), ?) ;";
-            String req="INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ( (SELECT `user`.`id_user` FROM `user` WHERE `username` LIKE ?), 'INTP' ) ON DUPLICATE KEY UPDATE `personality_id` = ?";
+            String req="INSERT INTO `user_personality` (`user_id`, `personality_id`) VALUES ( ?, ? ) ON DUPLICATE KEY UPDATE `personality_id` = ?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, user.getUsername());
+            ps.setLong(1, userId);
             ps.setString(2, personalityResult);
+            ps.setString(3, personalityResult);
+            //ps.setString(3, personalityResult);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
@@ -67,6 +73,7 @@ public class PersonalityTest implements IPersonalityTestService {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
+
     }
     public void modifierUserPersonality(UserPersonality userPersonality) {
         try {
@@ -127,14 +134,62 @@ public class PersonalityTest implements IPersonalityTestService {
     }
 
     @Override
-    public HashMap<String,String > getPersonalityReport(User user) {
+    public HashMap<String,String > getPersonalityReport(long userId) {
         HashMap<String, String> hashMap = new HashMap<>();
         List<String> queryList=new ArrayList<>();
         //PreparedStatement preparedStatement;
-        queryList.add("SELECT `social_name`, `social_details` FROM `social_style` WHERE `social_id` LIKE ( SELECT `social` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE ( SELECT `id_user` FROM `user` WHERE (`user`.`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
-        queryList.add("SELECT `processing_name`, `processing_details` FROM `processing_style` WHERE `processing_id` LIKE ( SELECT `processing` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE ( SELECT `id_user` FROM `user` WHERE (`user`.`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
-        queryList.add("SELECT `decision_making_name`, `decision_making_details` FROM `decision_making_style` WHERE `decision_making_id` LIKE ( SELECT `decision_making` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE( SELECT `id_user` FROM `user` WHERE (`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
-        queryList.add("SELECT `interaction_name`, `interaction_details` FROM `interaction_style` WHERE `interaction_id` LIKE ( SELECT `interaction` FROM `personality` WHERE `personality_id` LIKE ( SELECT `personality_id` FROM `user_personality` WHERE `user_id` LIKE( SELECT `id_user` FROM `user` WHERE (`username` = '"+user.getUsername()+"') ) LIMIT 1 ) );");
+        queryList.add("SELECT `social_name`,\n" +
+                "    `social_details`\n" +
+                "FROM `social_style`\n" +
+                "WHERE `social_id` LIKE (\n" +
+                "        SELECT `social`\n" +
+                "        FROM `personality`\n" +
+                "        WHERE `personality_id` LIKE (\n" +
+                "                SELECT `personality_id`\n" +
+                "                FROM `user_personality`\n" +
+                "                WHERE `user_id` = "+userId +" \n" +
+                "                LIMIT 1\n" +
+                "            )\n" +
+                "    );");
+        queryList.add("SELECT `processing_name`,\n" +
+                "    `processing_details`\n" +
+                "FROM `processing_style`\n" +
+                "WHERE `processing_id` LIKE (\n" +
+                "        SELECT `processing`\n" +
+                "        FROM `personality`\n" +
+                "        WHERE `personality_id` LIKE (\n" +
+                "                SELECT `personality_id`\n" +
+                "                FROM `user_personality`\n" +
+                "                WHERE `user_id` = "+userId +"\n" +
+                "                LIMIT 1\n" +
+                "            )\n" +
+                "    );");
+        queryList.add("SELECT `decision_making_name`,\n" +
+                "    `decision_making_details`\n" +
+                "FROM `decision_making_style`\n" +
+                "WHERE `decision_making_id` LIKE (\n" +
+                "        SELECT `decision_making`\n" +
+                "        FROM `personality`\n" +
+                "        WHERE `personality_id` LIKE (\n" +
+                "                SELECT `personality_id`\n" +
+                "                FROM `user_personality`\n" +
+                "                WHERE `user_id` = "+userId +"\n" +
+                "                LIMIT 1\n" +
+                "            )\n" +
+                "    );");
+        queryList.add("SELECT `interaction_name`,\n" +
+                "    `interaction_details`\n" +
+                "FROM `interaction_style`\n" +
+                "WHERE `interaction_id` LIKE (\n" +
+                "        SELECT `interaction`\n" +
+                "        FROM `personality`\n" +
+                "        WHERE `personality_id` LIKE (\n" +
+                "                SELECT `personality_id`\n" +
+                "                FROM `user_personality`\n" +
+                "                WHERE `user_id` = "+userId +"\n" +
+                "                LIMIT 1\n" +
+                "            )\n" +
+                "    );");
         queryList.forEach(request->{
             try {
                 Statement statement=cnx.createStatement();
