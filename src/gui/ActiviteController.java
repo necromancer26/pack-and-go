@@ -87,7 +87,8 @@ public class ActiviteController implements Initializable {
     private Button resto;
     @FXML
     private Button test;
-
+    @FXML
+    private Button hotel;
 
 
     @FXML
@@ -179,6 +180,8 @@ public class ActiviteController implements Initializable {
             test.managedProperty().bind(test.visibleProperty());
             resto.setVisible(false);
             resto.managedProperty().bind(resto.visibleProperty());
+            hotel.setVisible(false);
+            hotel.managedProperty().bind(hotel.visibleProperty());
         }
         ServiceActivite serviceActivite = new ServiceActivite();
         List<Activite> listeActivite=serviceActivite.getAll();

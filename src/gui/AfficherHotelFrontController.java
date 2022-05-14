@@ -218,7 +218,6 @@ public class AfficherHotelFrontController implements Initializable {
             window.setScene(sc);
             window.show();
         } catch (IOException ioException) {
-            System.err.println(ioException.getMessage());
         }
     }
 

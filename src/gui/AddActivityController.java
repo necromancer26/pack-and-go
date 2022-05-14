@@ -143,9 +143,11 @@ public class AddActivityController implements Initializable {
             System.out.println("1 "+imagecomp);
             int index = imagecomp.lastIndexOf('\\');
             if (index > 0) {
-                pathfile = path +imagecomp.substring(index + 1);
+                pathfile =  imagecomp.substring(index);
 
             }
+            String newpath =  path + pathfile ;
+            pathfile =  newpath ;
 
 
         });

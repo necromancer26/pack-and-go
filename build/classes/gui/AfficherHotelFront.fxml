@@ -29,23 +29,6 @@
             <Image url="@../img/hotels.jpg" />
          </image>
       </ImageView>
-      <VBox layoutX="1066.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
-         <children>
-            <FontAwesomeIcon glyphName="USER" size="30" styleClass="user" text="" wrappingWidth="29.785714149475098">
-               <VBox.margin>
-                  <Insets left="20.0" right="10.0" top="12.0" />
-               </VBox.margin>
-            </FontAwesomeIcon>
-            <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="My account" textFill="#00533a">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="50.0" top="-40.0" />
-               </VBox.margin>
-            </Label>
-         </children>
-      </VBox>
       <VBox layoutX="879.0" layoutY="25.0" onMouseClicked="#restauFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
          <children>
             <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Restaurants" textFill="#00533a">
@@ -58,7 +41,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="689.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+      <VBox layoutX="689.0" layoutY="25.0" onMouseClicked="#activiteFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
          <children>
             <Label prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#00533a">
                <font>
@@ -70,9 +53,9 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="505.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+      <VBox layoutX="505.0" layoutY="25.0" onMouseClicked="#toPersonalityTestMenu" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
          <children>
-            <Label prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Nos packs" textFill="#00533a">
+            <Label onMouseClicked="#toPersonalityTestMenu" prefHeight="51.0" prefWidth="121.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Test &amp; pack" textFill="#00533a">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
@@ -82,7 +65,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="309.0" layoutY="25.0" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
+      <VBox layoutX="309.0" layoutY="25.0" onMouseClicked="#volFront" prefHeight="60.0" prefWidth="160.0" styleClass="user" stylesheets="@bootstrap.css">
          <children>
             <Label prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#00533a">
                <font>
@@ -97,18 +80,6 @@
                   <Insets left="25.0" top="-45.0" />
                </VBox.margin>
             </FontAwesomeIcon>
-         </children>
-      </VBox>
-      <VBox layoutX="144.0" layoutY="26.0" prefHeight="60.0" prefWidth="149.0" styleClass="user" stylesheets="@bootstrap.css">
-         <children>
-            <Label prefHeight="51.0" prefWidth="65.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="HOME" textFill="#00533a">
-               <font>
-                  <Font name="Cambria Bold" size="21.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="40.0" right="20.0" top="5.0" />
-               </VBox.margin>
-            </Label>
          </children>
       </VBox>
       <Label layoutX="42.0" layoutY="197.0" prefHeight="68.0" prefWidth="218.0" text="The best holidays start here!" textFill="#07805d">

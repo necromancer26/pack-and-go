@@ -86,6 +86,16 @@ ObservableList<String> cities = FXCollections.observableArrayList();
     private TableColumn<Resteau, ImageView> colimg;
    
     ServiceResteau sp = new ServiceResteau();
+    @FXML
+    private Button usersButton;
+    @FXML
+    private Button hotelsButton;
+    @FXML
+    private Button restoButton;
+    @FXML
+    private Button activityButton;
+    @FXML
+    private Button flightsButton;
               
 
         
@@ -329,7 +339,6 @@ public void editTableView(){
             System.out.println(ex.getMessage());
         }
     }
-     @FXML
     private void hotelBack(MouseEvent event) {
         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AfficherHotelsForm.fxml"));
             try {
@@ -344,7 +353,6 @@ public void editTableView(){
         }
     }
 
-    @FXML
     private void UsersBack(MouseEvent event) {
         
         
@@ -361,7 +369,6 @@ public void editTableView(){
         }
     }
 
-    @FXML
     private void volBack(MouseEvent event) {
          FXMLLoader LOADER = new FXMLLoader(getClass().getResource("vol.fxml"));
             try {
@@ -376,7 +383,6 @@ public void editTableView(){
         }
     }
 
-    @FXML
     private void activback(MouseEvent event) {
          FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Activite.fxml"));
             try {
@@ -391,7 +397,6 @@ public void editTableView(){
         }
     }
 
-    @FXML
     private void packBack(MouseEvent event) {
          FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
             try {
@@ -418,8 +423,69 @@ public void editTableView(){
             job.endJob();
         }
     }
+
+   public void onUsersClicked(ActionEvent actionEvent) throws IOException {
+        //AfficherHotelsForm
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLGSTUser.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
-    
+
+    @FXML
+    public void onHotelsClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherHotelsForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onRestoClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onActivityClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Activite.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onFlightsClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("vol.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
 
 
                   

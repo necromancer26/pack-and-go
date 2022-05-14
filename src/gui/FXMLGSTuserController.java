@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import models.Roles;
 import models.User;
 import services.ServiceUser;
@@ -36,6 +37,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class FXMLGSTuserController implements Initializable {
@@ -86,6 +88,16 @@ public class FXMLGSTuserController implements Initializable {
     ServiceUser su =new ServiceUser();
     long id_user_modifier;
     ObservableList<User> data=FXCollections.observableArrayList();
+    @FXML
+    private Button usersButton;
+    @FXML
+    private Button hotelsButton;
+    @FXML
+    private Button restoButton;
+    @FXML
+    private Button activityButton;
+    @FXML
+    private Button flightsButton;
 
 
     @Override
@@ -275,77 +287,67 @@ public class FXMLGSTuserController implements Initializable {
         }
     }
 
-    @FXML
-    private void hotelBack(MouseEvent event) {
-        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AfficherHotelsForm.fxml"));
-            try {
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                AfficherHotelsFormController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
+   
 
-        }
+    public void onUsersClicked(ActionEvent actionEvent) throws IOException {
+        //AfficherHotelsForm
+        Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML
-    private void restauBack(MouseEvent event) {
-        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("ShowRestauForm.fxml"));
-            try {
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                ShowRestauFormController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
-        }
-    }
-
-    @FXML
-    private void activiteBack(MouseEvent event) {
-        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Activite.fxml"));
+    public void onHotelsClicked(ActionEvent actionEvent) {
         try {
-            Parent root = LOADER.load();
-            Scene sc = new Scene(root);
-            ActiviteController cntr = LOADER.getController();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(sc);
-            window.show();
-        } catch (Exception ex) {
-
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherHotelsForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
     @FXML
-    private void volBack(MouseEvent event) {
-          FXMLLoader LOADER = new FXMLLoader(getClass().getResource("vol.fxml"));
+    public void onRestoClicked(ActionEvent actionEvent) {
         try {
-            Parent root = LOADER.load();
-            Scene sc = new Scene(root);
-            volController cntr = LOADER.getController();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(sc);
-            window.show();
-        } catch (Exception ex) {
-
+            Parent root = FXMLLoader.load(getClass().getResource("ShowRestauForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
     @FXML
-    private void packBack(MouseEvent event) {
-          FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+    public void onActivityClicked(ActionEvent actionEvent) {
         try {
-            Parent root = LOADER.load();
-            Scene sc = new Scene(root);
-            DashboardController cntr = LOADER.getController();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(sc);
-            window.show();
-        } catch (Exception ex) {
+            Parent root = FXMLLoader.load(getClass().getResource("Activite.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
+    @FXML
+    public void onFlightsClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("vol.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 }

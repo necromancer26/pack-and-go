@@ -23,7 +23,7 @@
                <columns>
                   <TableColumn fx:id="coltidreservationR" prefWidth="94.0" text="idreservationR " visible="false" />
                   <TableColumn fx:id="colidR" prefWidth="79.0" text="idR " visible="false" />
-                  <TableColumn fx:id="colid_user" prefWidth="97.0" text="id_user" />
+                  <TableColumn fx:id="colid_user" prefWidth="97.0" text="client" />
                   <TableColumn fx:id="colnbrPersonneR" prefWidth="84.0" text="nbrPersonneR" />
                   <TableColumn fx:id="coltimeR" prefWidth="82.0" text="timeR" />
                   <TableColumn fx:id="coldateR" minWidth="0.0" prefWidth="99.0" text="dateR" />
@@ -78,7 +78,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="134.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#878787">
+                  <Label alignment="TOP_LEFT" onMouseClicked="#volBack" prefHeight="22.0" prefWidth="134.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#878787">
                      <font>
                         <Font name="Cambria Bold" size="20.0" />
                      </font>
@@ -88,12 +88,12 @@
                         <Font name="Cambria Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="49.0" prefWidth="137.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#878787">
+                  <Label onMouseClicked="#activiteBack" prefHeight="49.0" prefWidth="137.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#878787">
                      <font>
                         <Font name="Cambria Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="73.0" prefWidth="141.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Packs" textFill="#878787">
+                  <Label onMouseClicked="#packBack" prefHeight="73.0" prefWidth="141.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Packs" textFill="#878787">
                      <font>
                         <Font name="Cambria Bold" size="20.0" />
                      </font>

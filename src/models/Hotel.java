@@ -39,7 +39,7 @@ public class Hotel {
     public ImageView getImg() {
         ImageView img = null;
         try{
-            Image new_image = new Image("file:" +image);      
+            Image new_image = new Image("file:" +image);  
             img = new ImageView();
             img.setImage(new_image); 
             img.setFitWidth(150);

@@ -119,21 +119,15 @@ public class ShowCommentaireController implements Initializable {
                            C.supprimerCommentaireR(C1);                                  
                             refrechRestau();  
                             
-                           
                             MailRestau.sendMail(tfMail.getText());
                             
+                           
                          
                         } catch (Exception ex) {
                                 System.out.println(ex.getMessage());
                         } 
 
-                        });
-                       
-                                  
- 
-                      
-                       
-                                                                 
+                        });                                                          
                         
                 
                          HBox managebtn = new HBox( deleteButton);

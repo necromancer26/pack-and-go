@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" prefHeight="586.0" prefWidth="1265.0" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.billetController">
+<AnchorPane fx:id="anchor" prefHeight="586.0" prefWidth="1265.0" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.billetController">
    <children>
       <Label alignment="CENTER" layoutX="21.0" layoutY="4.0" prefHeight="67.0" prefWidth="360.0" text="Réservation Vol " textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
@@ -45,5 +45,6 @@
       <Label layoutX="21.0" layoutY="447.0" prefHeight="31.0" prefWidth="118.0" text="id" />
       <TextField fx:id="email" layoutX="163.0" layoutY="233.0" />
       <Label layoutX="21.0" layoutY="233.0" prefHeight="31.0" prefWidth="130.0" text="email" />
+      <Button fx:id="backbtn" layoutX="1129.0" layoutY="14.0" mnemonicParsing="false" onAction="#backClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>

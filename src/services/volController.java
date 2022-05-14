@@ -135,6 +135,18 @@ public class volController implements Initializable {
     ObservableList<modelVol> listDelete;
     @FXML
     private AnchorPane anchor;
+    @FXML
+    private Button usersButton;
+    @FXML
+    private Button hotelsButton;
+    @FXML
+    private Button restoButton;
+    @FXML
+    private Button activityButton;
+    @FXML
+    private Button flightsButton;
+    @FXML
+    private Button btnlistres;
     /**
      * Initializes the controller class.
      * @param url
@@ -463,83 +475,83 @@ public class volController implements Initializable {
     }
 
     @FXML
-    private void userBack(MouseEvent event) {
-       FXMLLoader LOADER = new FXMLLoader(getClass().getResource("FXMLGSTuser.fxml"));
-            try {
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                FXMLGSTuserController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
+    public void onUsersClicked(ActionEvent actionEvent) throws IOException {
+        //AfficherHotelsForm
+        Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-        }
     }
-    
 
     @FXML
-    private void hotelBack(MouseEvent event) {
-        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("AfficherHotelsForm.fxml"));
+    public void onHotelsClicked(ActionEvent actionEvent) {
         try {
-            Parent root = LOADER.load();
-            Scene sc = new Scene(root);
-            AfficherHotelsFormController ac = LOADER.getController();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(sc);
-            window.show();
-        } catch (IOException ioException) {
-            System.err.println(ioException.getMessage());
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherHotelsForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
+    }
     
-    }
-
     @FXML
-    private void restauBack(MouseEvent event) {
-            FXMLLoader LOADER = new FXMLLoader(getClass().getResource("ShowRestauForm.fxml"));
-            try {
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                ShowRestauFormController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
-
+    public void onRestoClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ShowRestauForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-
     }
 
+    
     @FXML
-    private void activBack(MouseEvent event) {
-        FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Activite.fxml"));
-            try {
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                ActiviteController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
-
+    public void onActivityClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Activite.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
     @FXML
-    private void packBack(MouseEvent event) {
-         FXMLLoader LOADER = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
-            try {
-                Parent root = LOADER.load();
-                Scene sc = new Scene(root);
-                DashboardController cntr = LOADER.getController();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(sc);
-                window.show();
-            } catch (Exception ex) {
-
+    public void onFlightsClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
 
+    @FXML
+    private void onVolClicked(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("billet.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    
 
 
     class ButtonCell extends TableCell<Object, Boolean> {
@@ -589,7 +601,6 @@ public class volController implements Initializable {
         }
     }
 
-
-
+     
 }
 

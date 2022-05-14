@@ -196,7 +196,7 @@ public class ResultController implements Initializable {
     public void onButtonHotel(ActionEvent actionEvent) {
         //return to hotel
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherHotelsForm.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherHotelFront.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -209,7 +209,7 @@ public class ResultController implements Initializable {
     public void onButtonResto(ActionEvent actionEvent) {
         //return to resto
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ShowRestauForm.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("FrontRestau.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

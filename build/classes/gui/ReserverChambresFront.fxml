@@ -38,7 +38,7 @@
                               <Font name="Eras Bold ITC" size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="id_user" layoutX="271.0" layoutY="284.0" prefHeight="38.0" prefWidth="118.0" promptText="id user" style="-fx-background-radius: 15;" />
+                        <TextField fx:id="id_user" layoutX="271.0" layoutY="284.0" prefHeight="38.0" prefWidth="118.0" promptText="id user" style="-fx-background-radius: 15;" visible="false" />
                         <Label layoutX="101.0" layoutY="521.0" text="PRIX TOTAL A PAYER ">
                            <font>
                               <Font name="Constantia Bold" size="16.0" />
@@ -64,7 +64,7 @@
                               <Font name="Eras Bold ITC" size="18.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="tfMail" layoutX="490.0" layoutY="260.0" />
+                        <TextField fx:id="tfMail" layoutX="490.0" layoutY="260.0" visible="false" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="80.0" right="20.0" top="20.0" />

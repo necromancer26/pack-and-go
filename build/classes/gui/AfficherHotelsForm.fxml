@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
@@ -242,11 +243,12 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tblReservations" layoutX="260.0" layoutY="112.0" prefHeight="437.0" prefWidth="867.0" stylesheets="@bootstrap.css">
+                        <TableView fx:id="tblReservations" layoutX="125.0" layoutY="112.0" prefHeight="437.0" prefWidth="1002.0" stylesheets="@bootstrap.css">
                           <columns>
                             <TableColumn fx:id="tblNumReserv" prefWidth="93.0" text="Num" />
                             <TableColumn fx:id="tblCheckin" prefWidth="207.0" text="Check-in" />
                               <TableColumn fx:id="tblCheckout" prefWidth="155.0" text="Check-out" />
+                              <TableColumn fx:id="nomClient" prefWidth="75.0" />
                               <TableColumn fx:id="id_user" prefWidth="75.0" text="Client" />
                               <TableColumn fx:id="tblHotelReserv" prefWidth="145.0" text="Num chambre" />
                               <TableColumn fx:id="tblIdCh_fk" prefWidth="188.0" text="Hotel" />
@@ -284,48 +286,40 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <HBox layoutX="74.0" layoutY="249.0" onMouseClicked="#UsersBack" prefWidth="147.0">
-         <children>
-            <FontAwesomeIcon fill="#229774" glyphName="USER" size="30" wrappingWidth="11.785714149475098">
-               <HBox.margin>
-                  <Insets top="6.0" />
-               </HBox.margin>
-            </FontAwesomeIcon>
-            <Label layoutX="20.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Users" textFill="#878787">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="6.0" left="20.0" right="2.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-      <Label layoutX="117.0" layoutY="311.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#878787">
-         <font>
-            <Font name="Cambria Bold" size="20.0" />
-         </font>
-      </Label>
-      <FontAwesomeIcon fill="#21836f" glyphName="PLANE" layoutX="85.0" layoutY="347.0" size="30" />
-      <Label layoutX="117.0" layoutY="362.0" onMouseClicked="#restauBack" prefHeight="51.0" prefWidth="130.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Restaurants" textFill="#878787">
-         <font>
-            <Font name="Cambria Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="117.0" layoutY="419.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#878787">
-         <font>
-            <Font name="Cambria Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="117.0" layoutY="481.0" prefHeight="51.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Packs" textFill="#878787">
-         <font>
-            <Font name="Cambria Bold" size="20.0" />
-         </font>
-      </Label>
+      <HBox layoutX="74.0" layoutY="249.0" onMouseClicked="#UsersBack" prefWidth="147.0" />
       <Label layoutX="69.0" layoutY="148.0" prefHeight="101.0" prefWidth="172.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="DASHBOARD" textFill="#015b3e">
          <font>
             <Font name="Cambria Bold" size="26.0" />
          </font>
       </Label>
+      <VBox alignment="CENTER" layoutX="39.0" layoutY="236.0" prefHeight="545.0" prefWidth="200.0" style="-fx-padding: 20; -fx-min-width: 200; -fx-border-color: #94d2bd; -fx-border-width: 3; -fx-border-radius: 20;">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="usersButton" mnemonicParsing="false" onAction="#onUsersClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Users" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="hotelsButton" mnemonicParsing="false" onAction="#onHotelsClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Packs" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="restoButton" mnemonicParsing="false" onAction="#onRestoClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Restaurants" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="activityButton" mnemonicParsing="false" onAction="#onActivityClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Activities" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="flightsButton" mnemonicParsing="false" onAction="#onFlightsClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Flights" textFill="WHITE" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

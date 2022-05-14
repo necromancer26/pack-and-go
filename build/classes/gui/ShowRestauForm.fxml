@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="551.0" prefWidth="1094.0" stylesheets="@StyleR.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShowRestauFormController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" stylesheets="@StyleR.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShowRestauFormController">
    <children>
-      <TableView fx:id="TableViewRestau" layoutX="199.0" layoutY="175.0" prefHeight="350.0" prefWidth="909.0" stylesheets="@bootstrap.css" AnchorPane.topAnchor="175.0">
+      <TableView fx:id="TableViewRestau" layoutX="199.0" layoutY="175.0" prefHeight="506.0" prefWidth="972.0" stylesheets="@bootstrap.css" AnchorPane.topAnchor="175.0">
         <columns>
           <TableColumn fx:id="coltypeR" prefWidth="94.0" text="Type Restau" />
           <TableColumn fx:id="colnomR" prefWidth="79.0" text="nom restau" />
@@ -62,48 +61,37 @@
                </font>
             </Label>
          </children></VBox>
-      <VBox alignment="CENTER_RIGHT" layoutX="27.0" layoutY="211.0" prefHeight="332.0" prefWidth="159.0">
+      <Pane layoutX="191.0" prefHeight="700.0" prefWidth="5.0" style="-fx-background-color: #4DB6AC;" />
+      <Button layoutX="286.0" layoutY="116.0" mnemonicParsing="false" onAction="#imprimeR" prefHeight="25.0" prefWidth="159.0" text="Imprimer" />
+      <VBox alignment="CENTER" layoutX="-4.0" layoutY="187.0" minWidth="169.0" prefHeight="451.0" prefWidth="169.0" style="-fx-padding: 20; -fx-min-width: 200; -fx-border-color: #94d2bd; -fx-border-width: 3; -fx-border-radius: 20;">
          <children>
-            <HBox onMouseClicked="#UsersBack" prefHeight="53.0" prefWidth="159.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <FontAwesomeIcon fill="#229774" glyphName="USER" size="30" wrappingWidth="11.785714149475098">
-                     <HBox.margin>
-                        <Insets top="6.0" />
-                     </HBox.margin>
-                  </FontAwesomeIcon>
-                  <Label layoutX="20.0" onMouseClicked="#UsersBack" prefHeight="53.0" prefWidth="85.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Users" textFill="#878787">
-                     <font>
-                        <Font name="Cambria Bold" size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="6.0" left="20.0" right="2.0" />
-                     </HBox.margin>
-                  </Label>
+                  <Button fx:id="usersButton" mnemonicParsing="false" onAction="#onUsersClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Users" textFill="WHITE" />
                </children>
             </HBox>
-            <Label alignment="TOP_LEFT" prefHeight="22.0" prefWidth="134.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Vols" textFill="#878787">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label onMouseClicked="#hotelBack" prefHeight="58.0" prefWidth="130.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Hotels" textFill="#878787">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="49.0" prefWidth="137.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Activités" textFill="#878787">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="73.0" prefWidth="141.0" styleClass="fancytext" stylesheets="@bootstrap.css" text="Packs" textFill="#878787">
-               <font>
-                  <Font name="Cambria Bold" size="20.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="hotelsButton" mnemonicParsing="false" onAction="#onHotelsClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Hotels" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="restoButton" mnemonicParsing="false" onAction="#onRestoClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Packs" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="activityButton" mnemonicParsing="false" onAction="#onActivityClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Activities" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="flightsButton" mnemonicParsing="false" onAction="#onFlightsClicked" style="-fx-background-color: #94d2bd #94d2bd; -fx-min-width: 100;" text="Flights" textFill="WHITE" />
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <Pane layoutX="192.0" prefHeight="550.0" prefWidth="4.0" style="-fx-background-color: #4DB6AC;" />
     
       
    </children>

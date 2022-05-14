@@ -34,6 +34,9 @@ import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 
 /**
@@ -44,8 +47,6 @@ import java.util.ResourceBundle;
 
 //controller empdata
 public class volController implements Initializable {
-    @FXML
-    private AnchorPane paneLoadGraph;
     @FXML
     private TextField Compagnie_aerien;
 
@@ -96,8 +97,6 @@ public class volController implements Initializable {
     @FXML
     private TableColumn<modelVol, Float> cln_prix;
 
-    @FXML
-    private TableColumn<Object, Image> cln_image;
 
     @FXML
     private TableColumn cln_action;
@@ -129,6 +128,20 @@ public class volController implements Initializable {
     ObservableList<modelVol> listData;
     private String statusCode,statusClick;
     ObservableList<modelVol> listDelete;
+    @FXML
+    private AnchorPane anchor;
+    @FXML
+    private Button usersButton;
+    @FXML
+    private Button hotelsButton;
+    @FXML
+    private Button restoButton;
+    @FXML
+    private Button activityButton;
+    @FXML
+    private Button flightsButton;
+    @FXML
+    private Button btnlistres;
     /**
      * Initializes the controller class.
      * @param url
@@ -389,7 +402,6 @@ public class volController implements Initializable {
         }
     }
 
-    @FXML
     private void tableDataClick(MouseEvent event) {
         if (statusClick.equals("1")) {
             statusCode = "1";
@@ -455,6 +467,82 @@ public class volController implements Initializable {
     private Boolean testDest(String s) {
         if (s.length()<5) {return false;}
         else {return true;}
+    }
+
+  @FXML
+     public void onUsersClicked(ActionEvent actionEvent) throws IOException {
+        //AfficherHotelsForm
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLGSTUser.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    public void onHotelsClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("AfficherHotelsForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onRestoClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ShowRestauForm.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onActivityClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Activite.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void onFlightsClicked(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    private void onVolClicked(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("billet.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 

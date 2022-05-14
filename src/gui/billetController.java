@@ -32,6 +32,12 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 
 /**
@@ -101,12 +107,14 @@ public class billetController implements Initializable {
     private TextField idtxt;
 
 
-    @FXML
-
     interBillet crudData = new implBillet();
     ObservableList<modelBillet> listData = crudData.getAll();
     private String statusCode, statusClick;
     ObservableList<modelBillet> listDelete;
+    @FXML
+    private ImageView view_image;
+    @FXML
+    private Button backbtn;
 
     /**
      * Initializes the controller class.
@@ -228,7 +236,6 @@ public class billetController implements Initializable {
 
     }}
 
-    @FXML
     private void tableDataClick(MouseEvent event) {
         if (statusClick.equals("1")) {
             statusCode = "1";
@@ -265,6 +272,19 @@ public class billetController implements Initializable {
         showData();
         autoId();
     }*/
+
+    @FXML
+    private void backClicked(ActionEvent event) {
+         try {
+            Parent root = FXMLLoader.load(getClass().getResource("vol.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
 
     private class ButtonCell extends TableCell<Object, Boolean> {
