@@ -32,7 +32,7 @@ public class User {
     private LocalDateTime date_created_user;
     
     private LocalDateTime last_updated_user;
-
+    
     public User() {
     }
 

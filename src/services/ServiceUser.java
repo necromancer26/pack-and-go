@@ -119,7 +119,7 @@ public class ServiceUser implements services.IService<User> {
 
         Statement stm = cnx.createStatement();
 
-        String query = "SELECT * FROM user";
+        String query = "SELECT `id_user`, `first_name`, `last_name`, `email`, `number`, `username`, `password`, `role`, `birthday`, `date_created_user`, `last_updated_user` FROM `user`";
         ResultSet rs = stm.executeQuery(query);
         while (rs.next()) {
             User user = new User();

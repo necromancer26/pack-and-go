@@ -18,16 +18,16 @@ import java.util.List;
 
 
 public class ServiceTicket implements IServiceS<Ticket> {
-    JavaMail jvm = new JavaMail();
+  //  JavaMail jvm = new JavaMail();
     Connection cnx = DataSource.getInstance().getCnx();
     public void ajouterTicket( Activite activite, User user) {
 
         try {
-
-            String req = "INSERT INTO `ticket`( `id_activite`,`id_user` ) VALUES ('"+activite.getId_activite()+"','"+ user.getId_user()+"')  ";
+            Long  userId = UserSession.getInstace().getUserId();
+            String req = "INSERT INTO `ticket`( `id_activite`,`id_user` ) VALUES ('"+activite.getId_activite()+"','"+ userId+"')  ";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
-            if (UserSession.getInstace() != null) {
+      /*      if (UserSession.getInstace() != null) {
                Long  userId = UserSession.getInstace().getUserId();
                 String req1 = "select `email` from user where `id_user`="+userId;
 
@@ -39,7 +39,7 @@ public class ServiceTicket implements IServiceS<Ticket> {
 
                 }
 
-            }
+            }*/
 
 
         } catch (SQLException ex) {

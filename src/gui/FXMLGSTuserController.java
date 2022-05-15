@@ -31,7 +31,6 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -119,7 +118,6 @@ public class FXMLGSTuserController implements Initializable {
         try {
             data= FXCollections.observableArrayList(su.afficher());
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -185,7 +183,6 @@ public class FXMLGSTuserController implements Initializable {
         try {
             su.supprimer(id_user);
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         String tilte;
         String message;
@@ -219,7 +216,6 @@ public class FXMLGSTuserController implements Initializable {
         try {
             su.modifier(id_user_modifier, u);
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         refreshlist();
         recherche_avance();
@@ -283,7 +279,6 @@ public class FXMLGSTuserController implements Initializable {
         try {
             su.modifier(user.getId_user(), user);
         } catch (SQLException ex) {
-            Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

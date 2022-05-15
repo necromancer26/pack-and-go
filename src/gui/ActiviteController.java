@@ -125,13 +125,14 @@ public class ActiviteController implements Initializable {
        activityAdresseLabel.setText(activite.getAdresse());
         boutonReserver.setOnAction(e ->{
             ServiceTicket ticket = new ServiceTicket();
-
-            User u = new User(1,"Salah", "kakou", "s@g.com","sasa","azerty",28383838, CLIENT, LocalDateTime.of(2019, 03, 28, 14, 33, 48, 640000),LocalDateTime.of(2019, 03, 28, 14, 33, 48, 640000),LocalDateTime.of(2019, 03, 28, 14, 33, 48, 640000));
+            long  userId = UserSession.getInstace().getUserId();
+            int user = (int) userId;
+            User u = new User( user,"Salah", "kakou", "s@g.com","sasa","azerty",28383838, CLIENT, LocalDateTime.of(2019, 03, 28, 14, 33, 48, 640000),LocalDateTime.of(2019, 03, 28, 14, 33, 48, 640000),LocalDateTime.of(2019, 03, 28, 14, 33, 48, 640000));
 
             ticket.ajouterTicket(activite,u);
 
             showAlert(Alert.AlertType.INFORMATION, ((Node) e.getSource()).getScene().getWindow(),
-                    "succès !", "Ajout d'activité effectuée avec succès");
+                    "succès !", "Reservation d'activité effectuée avec succès");
             Document document = new Document();
             try
             {
@@ -153,6 +154,7 @@ public class ActiviteController implements Initializable {
        // ChosenActivityCard.setStyle("-fx-background-color: #888888" +
               //  "    -fx-background-radius: 30;");
       Image image = new Image(getClass().getResourceAsStream("../"+activite.getImgSrc()));
+     //   System.out.println(activite.getImgSrc());
 
       activityImg.setImage(image);
 
@@ -174,6 +176,8 @@ public class ActiviteController implements Initializable {
 
             boutonReserver.setVisible(false);
             boutonReserver.managedProperty().bind(boutonReserver.visibleProperty());
+            ChosenActivityCard.setVisible(false);
+            ChosenActivityCard.managedProperty().bind(ChosenActivityCard.visibleProperty());
             vol.setVisible(false);
             vol.managedProperty().bind(vol.visibleProperty());
             test.setVisible(false);

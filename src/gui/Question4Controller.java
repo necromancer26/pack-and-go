@@ -122,7 +122,7 @@ iterate(judgingVsPerceivingTest,judgingVsPerceivingAnswersStorage);
                     answer="J";
                 }
                 ResultController.setTest(answer);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../gui/Result.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
                 VBox yourNewView = fxmlLoader.load();
                 pane.getChildren().setAll(yourNewView);
 
