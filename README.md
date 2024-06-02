@@ -64,13 +64,6 @@ Ce dossier contient les contrôleurs de votre application.
 
 - **FXML** : Les fichiers FXML définissent l'interface utilisateur de l'application. Ils sont créés à l'aide de Scene Builder, un outil visuel pour concevoir les interfaces JavaFX. Chaque fichier FXML décrit la disposition des éléments de l'interface et est associé à un contrôleur.
 
-### Conseils et Meilleures Pratiques
-
-- **Utilisez FXML** : Séparez la logique de la présentation en utilisant des fichiers FXML pour définir l'interface utilisateur et des contrôleurs pour la logique.
-- **Structure Modulaire** : Organisez votre code en utilisant des packages distincts pour les contrôleurs, modèles, services, etc.
-- **Documentation et Commentaires** : Commentez votre code et fournissez une documentation claire pour faciliter la compréhension et la maintenance du projet.
-- **Utilisez Scene Builder** : Pour concevoir les interfaces utilisateur graphiques facilement et efficacement.
-
 
 ### Création d'une Interface Utilisateur avec Scene Builder
 
@@ -97,4 +90,10 @@ Ce dossier contient les contrôleurs de votre application.
     - Ouvrez le fichier FXML dans un éditeur de texte.
     - Ajoutez l'attribut `fx:controller` pour lier le fichier FXML à la classe de contrôleur.
 
+### Conseils et Meilleures Pratiques
+
+- **Utilisez FXML** : Séparez la logique de la présentation en utilisant des fichiers FXML pour définir l'interface utilisateur et des contrôleurs pour la logique.
+- **Structure Modulaire** : Organisez votre code en utilisant des packages distincts pour les contrôleurs, modèles, services, etc.
+- **Documentation et Commentaires** : Commentez votre code et fournissez une documentation claire pour faciliter la compréhension et la maintenance du projet.
+- **Utilisez Scene Builder** : Pour concevoir les interfaces utilisateur graphiques facilement et efficacement.
 
